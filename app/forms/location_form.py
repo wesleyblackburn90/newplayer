@@ -13,4 +13,4 @@ class LocationForm(FlaskForm):
   address = StringField('Address', validators=[DataRequired()])
   city = StringField('City', validators=[DataRequired(), Length(max=30)])
   state = StringField('State', validators=[DataRequired(), Length(max=15)])
-  zip_code = Integer("Zip Code", validators=[DataRequired(), Length(max=5)])
+  zip_code = IntegerField("Zip Code", validators=[DataRequired(), Length(max=5)])
