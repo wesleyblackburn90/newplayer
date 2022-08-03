@@ -17,9 +17,8 @@ class User(db.Model, UserMixin):
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
     # relationships
-    organizer = db.relationship('Location', back_populates='locations.organizer_id')
-    player = db.relationship('User', back_populates='players.user_id')
-    reviewer = db.relationship('')
+    location = db.relationship('Location', back_populates='organizer')
+    player = db.relationship('Player', back_populates='user')
 
     @property
     def password(self):
@@ -74,6 +73,7 @@ class Location(db.Model):
 
     #relationship
     organizer = db.relationship('User', back_populates='location')
+    session = db.relationship('Session', back_populates='location')
 
     def to_dict(self):
         return {
@@ -100,6 +100,7 @@ class Session(db.Model):
 
     #relationships
     game = db.relationship('Game', back_populates='session')
+    player = db.relationship('Player', back_populates='session')
     location = db.relationship('Location', back_populates='session')
 
 class Player(db.Model):
@@ -110,7 +111,7 @@ class Player(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     #relationships
-    session = db.relationship('Session', back_populates='game')
+    session = db.relationship('Session', back_populates='player')
     user = db.relationship('User', back_populates='player')
 
     def to_dict(self):
