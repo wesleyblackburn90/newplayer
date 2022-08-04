@@ -4,6 +4,7 @@ from wtforms import IntegerField, StringField, TextAreaField
 from wtforms.validators import DataRequired, Length
 
 class SessionForm(FlaskForm):
+  organizer_id = IntegerField('organizer_id', validators=[DataRequired()])
   location_name = StringField('Location Name', validators=[DataRequired()])
   description = TextAreaField('Description', validators=[DataRequired()])
   address = StringField('Address', validators=[DataRequired()])

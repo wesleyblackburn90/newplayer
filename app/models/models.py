@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
     # relationships
-    # location = db.relationship('Location', back_populates='organizer')
+    session = db.relationship('Session', back_populates='organizer')
     player = db.relationship('Player', back_populates='user')
 
     @property
@@ -72,7 +72,7 @@ class User(db.Model, UserMixin):
 #     zip_code = db.Column(db.Integer, nullable=False)
 
 #     #relationship
-#     organizer = db.relationship('User', back_populates='location')
+    # organizer = db.relationship('User', back_populates='location')
 #     session = db.relationship('Session', back_populates='location')
 
 #     def to_dict(self):
@@ -91,6 +91,7 @@ class Session(db.Model):
     __tablename__ = 'sessions'
 
     id = db.Column(db.Integer, primary_key=True)
+    organizer_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     location_name = db.Column(db.String, nullable=False)
     address = db.Column(db.String, nullable=False)
     city = db.Column(db.String, nullable=False)
@@ -104,6 +105,7 @@ class Session(db.Model):
 
     #relationships
     # game = db.relationship('Game', back_populates='session')
+    organizer = db.relationship('User', back_populates='session')
     player = db.relationship('Player', back_populates='session')
     # location = db.relationship('Location', back_populates='session')
 

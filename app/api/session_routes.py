@@ -19,6 +19,7 @@ def create_session():
 
   if form.validate_on_submit():
     session = Session(
+      organizer_id = form.data['organizer_id'],
       location_name=form.data['location_name'],
       address=form.data['address'],
       city=form.data['city'],
@@ -43,6 +44,7 @@ def edit_session(id):
   form['csrf_token'].data = request.cookies['csrf_token']
 
   if form.validate_on_submit():
+    organizer_id = form.data['organizer_id'],
     location_name = form.data['location_name'],
     address = form.data['address'],
     city = form.data['city'],
@@ -53,6 +55,7 @@ def edit_session(id):
     pic_url = form.data['pic_url'],
     players_num = form.data['players_num']
 
+    session.organizer_id = organizer_id
     session.location_name = location_name
     session.address = address
     session.city = city
