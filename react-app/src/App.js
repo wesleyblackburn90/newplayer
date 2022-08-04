@@ -8,6 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
+import CreateSession from './components/GameSession/CreateSession';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -34,14 +35,17 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
+        {/* <ProtectedRoute path='/users' exact={true} >
           <UsersList />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <h1>Welcome to New Player</h1>
+        </ProtectedRoute>
+        <ProtectedRoute path='/sessions/new'>
+          <CreateSession />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

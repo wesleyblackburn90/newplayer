@@ -35,6 +35,7 @@ export const getSessionsThunk = () => async (dispatch) => {
 }
 
 export const startSessionThunk = (data) => async (dispatch) => {
+  console.log("I made it to the thunk")
   const res = await fetch('/api/sessions/new', {
     method: 'POST',
     headers: {
@@ -42,6 +43,8 @@ export const startSessionThunk = (data) => async (dispatch) => {
     },
     body: JSON.stringify(data)
   })
+  console.log(res)
+  console.log("The res is ok")
   if (res.ok) {
     const session = await res.json()
     return dispatch(startSession(session))
