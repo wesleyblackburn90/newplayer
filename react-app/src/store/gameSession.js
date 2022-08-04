@@ -36,6 +36,7 @@ export const getSessionsThunk = () => async (dispatch) => {
 
 export const startSessionThunk = (data) => async (dispatch) => {
   console.log("I made it to the thunk")
+  console.log(data)
   const res = await fetch('/api/sessions/new', {
     method: 'POST',
     headers: {

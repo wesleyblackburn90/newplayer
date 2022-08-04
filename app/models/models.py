@@ -97,7 +97,7 @@ class Session(db.Model):
     city = db.Column(db.String, nullable=False)
     state = db.Column(db.String, nullable=False)
     zip_code = db.Column(db.Integer, nullable=False)
-    game = db.Column(db.Integer, nullable=False)
+    game = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
     pic_url = db.Column(db.String)
     players_num = db.Column(db.Integer, nullable=False)
@@ -108,6 +108,22 @@ class Session(db.Model):
     organizer = db.relationship('User', back_populates='session')
     player = db.relationship('Player', back_populates='session')
     # location = db.relationship('Location', back_populates='session')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'organizer_id': self.organizer_id,
+            'location_name': self.location_name,
+            'address': self.address,
+            'city': self.city,
+            'state': self.state,
+            'zip_code': self.zip_code,
+            'game': self.game,
+            'description': self.description,
+            'pic_url': self.pic_url,
+            'players_num': self.players_num,
+            'created_at': self.created_at
+        }
 
 class Player(db.Model):
     __tablename__ = 'players'
