@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import CreateSession from './components/GameSession/CreateSession';
+import Sessions from './components/GameSession/Sessions';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -47,6 +48,9 @@ function App() {
         <ProtectedRoute path='/sessions/new'>
           <CreateSession />
         </ProtectedRoute>
+        <Route path='/sessions'>
+          <Sessions />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

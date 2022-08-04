@@ -11,11 +11,9 @@ const NavBar = () => {
   return (
     <nav>
       <ul>
-        <li>
-          <NavLink to='/' exact={true} activeClassName='active'>
-            Home
-          </NavLink>
-        </li>
+        <NavLink to='/' exact={true} activeClassName='active'>
+          New Player
+        </NavLink>
         {!sessionUser ?
           <div className="logged-out-buttons">
             <li>
