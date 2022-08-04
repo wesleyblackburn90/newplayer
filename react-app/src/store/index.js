@@ -9,8 +9,8 @@ import review from './review';
 const rootReducer = combineReducers({
   session,
   gameSession,
-  game,
-  location,
+  // game,
+  // location,
   review
 });
 
