@@ -1,5 +1,7 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
+from .reviews import seed_reviews, undo_reviews
+from .sessions import seed_sessions, undo_sessions
 # from .games import seed_games, undo_games
 
 # Creates a seed group to hold our commands
@@ -11,6 +13,8 @@ seed_commands = AppGroup('seed')
 @seed_commands.command('all')
 def seed():
     seed_users()
+    seed_reviews()
+    seed_sessions()
     # seed_games()
     # Add other seed functions here
 
@@ -19,5 +23,7 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_users()
+    undo_reviews()
+    undo_sessions()
     # undo_games()
     # Add other undo functions here

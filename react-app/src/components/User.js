@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import Reviews from './Reviews/Reviews';
 
 function User() {
   const [user, setUser] = useState({});
@@ -31,7 +32,7 @@ function User() {
       <li>
         <strong>Email</strong> {user.email}
       </li>
-      {/* <Reviews /> */}
+      <Reviews />
     </ul>
   );
 }
