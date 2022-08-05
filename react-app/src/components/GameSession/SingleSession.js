@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useHistory, useParams } from "react-router-dom";
 import { getSessionsThunk, deleteSessionThunk } from "../../store/gameSession";
 import EditSessionFormModal from "./EditSessionFormModal"
+import EditSessionForm from "./EditSessionForm";
 
 function SingleSession() {
   const history = useHistory()
@@ -47,7 +48,7 @@ function SingleSession() {
           <p>Number of players needed: {session.players_num}</p>
         </div>
       }
-      {userId === session.organizer_id ?
+      {session && userId === session.organizer_id ?
         <>
           <EditSessionFormModal session={session} />
           <button onClick={handleDelete}>Delete session</button>

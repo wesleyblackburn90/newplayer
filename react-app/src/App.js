@@ -57,9 +57,9 @@ function App() {
         <Route path='/sessions/:sessionId' exact={true}>
           <SingleSession />
         </Route>
-        <ProtectedRoute path='/sessions/:sessionId/edit'>
+        {/* <ProtectedRoute path='/sessions/:sessionId/edit'>
           <EditSessionForm />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
       </Switch>
     </BrowserRouter>
   );

@@ -51,9 +51,10 @@ export const startSessionThunk = (data) => async (dispatch) => {
   }
 }
 
-export const updateSessionThunk = (data) => async (dispatch) => {
-  const res = await fetch(`/api/sessions/${data.id}`, {
-    method: 'put',
+export const updateSessionThunk = (data, id) => async (dispatch) => {
+  console.log(id, "This is the id")
+  const res = await fetch(`/api/sessions/${id}/edit`, {
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
     },
@@ -61,6 +62,7 @@ export const updateSessionThunk = (data) => async (dispatch) => {
   })
 
   if (res.ok) {
+    console.log("The res was ok")
     const session = await res.json()
     dispatch(updateSession(session))
     return session

@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory, useParams } from 'react-router-dom';
-import { startSessionThunk } from '../../store/gameSession';
+import { getSessionsThunk, startSessionThunk, updateSessionThunk } from '../../store/gameSession';
 
 function EditSessionForm({ session, setShowModal }) {
   const dispatch = useDispatch()
   const history = useHistory()
   const { sessionId } = useParams()
   const sessionUser = useSelector(state => state.session.user)
+  console.log(session, "This is the session")
+  console.log(sessionUser, "This is the session user")
   console.log(sessionId)
-  console.log(sessionUser)
-  // const session = useSelector(state => state.gameSession[sessionId])
-  console.log(session)
 
   const [location_name, setLocation] = useState('')
   const [address, setAddress] = useState('')
@@ -53,6 +52,10 @@ function EditSessionForm({ session, setShowModal }) {
     setErrors(errors)
   }, [location_name, address, city, state, zip_code, game, description, pic_url, players_num])
 
+  useEffect(() => {
+    dispatch(getSessionsThunk())
+  }, [dispatch])
+
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -68,17 +71,19 @@ function EditSessionForm({ session, setShowModal }) {
       pic_url,
       players_num
     }
-
-    console.log(payload)
-
+    console.log(payload, "This is the payload")
+    console.log(session.id)
     // await dispatch(startSessionThunk(payload))
     // history.push("/sessions")
 
     try {
-      await dispatch(startSessionThunk(payload))
-      history.push("/sessions")
-    } catch (error) {
-      setErrors(error.errors)
+      await dispatch(updateSessionThunk(payload, sessionId)).then(history.push(`/sessions/${session.id}`))
+      setShowModal(false)
+    } catch {
+      return dispatch(updateSessionThunk(payload)).catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      })
     }
   }
 
