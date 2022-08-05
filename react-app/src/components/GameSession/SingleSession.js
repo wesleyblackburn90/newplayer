@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useHistory, useParams } from "react-router-dom";
@@ -13,12 +13,27 @@ function SingleSession() {
   const { sessionId } = useParams()
   const session = useSelector((state) => (state.gameSession[sessionId]))
   const userId = useSelector((state) => (state.session.user.id))
-  const users = useSelector((state) => (state.session.user))
-  console.log(users)
+  const [users, setUsers] = useState([])
 
   useEffect(() => {
     dispatch(getSessionsThunk())
   }, dispatch)
+
+  useEffect(() => {
+    async function fetchData() {
+      const res = await fetch('/api/users/')
+      const resData = await res.json()
+      console.log(resData)
+      console.log(resData.users)
+      setUsers(resData.users)
+    }
+    fetchData()
+  }, [])
+
+  let host;
+  if (session && users) {
+    host = users.filter(user => user.id === session.organizer_id)[0]
+  }
 
   const handleDelete = async () => {
     await dispatch(deleteSessionThunk(sessionId)).then(history.push('/sessions'))
@@ -47,7 +62,12 @@ function SingleSession() {
           <button onClick={handleDelete}>Delete session</button>
         </>
         :
-        <UsersProfile />
+        <div>
+          {host &&
+            <NavLink to={`/users/${host.id}`}>View {host.username}'s Profile</NavLink>
+          }
+          {/* <UsersProfile user={host} /> */}
+        </div>
       }
     </div>
   )
