@@ -5,6 +5,7 @@ import { NavLink, useHistory, useParams } from "react-router-dom";
 import { getSessionsThunk, deleteSessionThunk } from "../../store/gameSession";
 import EditSessionFormModal from "./EditSessionFormModal"
 import EditSessionForm from "./EditSessionForm";
+import UsersProfile from "../Profiles/UsersProfile";
 
 function SingleSession() {
   const history = useHistory()
@@ -12,23 +13,14 @@ function SingleSession() {
   const { sessionId } = useParams()
   const session = useSelector((state) => (state.gameSession[sessionId]))
   const userId = useSelector((state) => (state.session.user.id))
+  const users = useSelector((state) => (state.session.user))
+  console.log(users)
 
   useEffect(() => {
     dispatch(getSessionsThunk())
   }, dispatch)
 
-  // useEffect(() => {
-  //   (async () => {
-  //     const response = await fetch(`/api/sessions/${sessionId}`)
-  //     const session = await response.json()
-  //     getSessionsThunk()
-  //   })
-  // })
-
-  // const { organizer_id, location_name, address, city, state, zip_code, game, description, pic_url, players_num } = session
-
   const handleDelete = async () => {
-    console.log("hello")
     await dispatch(deleteSessionThunk(sessionId)).then(history.push('/sessions'))
   }
 
@@ -38,6 +30,7 @@ function SingleSession() {
       {session &&
         <div>
           <p>Location Name: {session.location_name}</p>
+          {/* {session && session.organizer_id === } */}
           <p>Address: {session.address}</p>
           <p>City: {session.city}</p>
           <p>State: {session.state}</p>
@@ -54,7 +47,7 @@ function SingleSession() {
           <button onClick={handleDelete}>Delete session</button>
         </>
         :
-        null
+        <UsersProfile />
       }
     </div>
   )

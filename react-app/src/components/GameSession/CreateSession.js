@@ -65,11 +65,6 @@ function CreateSession() {
       players_num
     }
 
-    console.log(payload)
-
-    // await dispatch(startSessionThunk(payload))
-    // history.push("/sessions")
-
     try {
       await dispatch(startSessionThunk(payload))
       history.push("/sessions")
