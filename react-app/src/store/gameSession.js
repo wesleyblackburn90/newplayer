@@ -35,8 +35,6 @@ export const getSessionsThunk = () => async (dispatch) => {
 }
 
 export const startSessionThunk = (data) => async (dispatch) => {
-  console.log("I made it to the thunk")
-  console.log(data)
   const res = await fetch('/api/sessions/new', {
     method: 'POST',
     headers: {
@@ -44,8 +42,6 @@ export const startSessionThunk = (data) => async (dispatch) => {
     },
     body: JSON.stringify(data)
   })
-  console.log(res)
-  console.log("The res is ok")
   if (res.ok) {
     const session = await res.json()
     return dispatch(startSession(session))
@@ -72,13 +68,16 @@ export const updateSessionThunk = (data) => async (dispatch) => {
 }
 
 export const deleteSessionThunk = (sessionId) => async (dispatch) => {
-  const response = await fetch(`/api/session/${sessionId}`, {
+  const response = await fetch(`/api/sessions/${sessionId}`, {
     method: 'delete',
   })
 
   if (response.ok) {
+    console.log("Response was ok though")
     const session = await response.json()
+    console.log(session)
     dispatch(deleteSession(session))
+    console.log("I did it!")
     return session
   }
 }
@@ -107,8 +106,11 @@ const gameSessionReducer = (state = initialState, action) => {
       return newState
     }
     case DELETE_SESSION: {
+      console.log("I'm in the reducer. Can I do that?")
       const newState = { ...state }
       delete newState[action.session.id]
+      console.log("I deleted the thing")
+      console.log(newState)
       return newState
     }
     default:

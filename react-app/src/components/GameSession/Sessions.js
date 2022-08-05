@@ -16,15 +16,17 @@ function Sessions() {
     <>
       {sessionList?.map(({ id, location_name, address, city, state, zip_code, game, description, pic_url, players_num }) => (
         <div key={id}>
-          <p>{location_name}</p>
-          <p>{address}</p>
-          <p>{city}</p>
-          <p>{state}</p>
-          <p>{zip_code}</p>
-          <p>{game}</p>
-          <p>{description}</p>
+          <p>Location Name: {location_name}</p>
+          <p>Address: {address}</p>
+          <p>City: {city}</p>
+          <p>State: {state}</p>
+          <p>Zipcode: {zip_code}</p>
+          <p>Game: {game}</p>
+          <p>Description: {description}</p>
           <img src={`${pic_url}`} />
-          <p>{players_num}</p>
+          <p>Number of players needed: {players_num}</p>
+          <p>Sound like fun?</p>
+          <NavLink to={`/sessions/${id}`} >Join now!</NavLink>
         </div>
       ))}
     </>
