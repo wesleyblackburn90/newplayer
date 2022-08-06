@@ -36,7 +36,7 @@ export const getReviewsThunk = () => async (dispatch) => {
 
 export const startReviewThunk = (data) => async (dispatch) => {
   const res = await fetch('/api/reviews/new', {
-    method: 'POST',
+    method: 'post',
     headers: {
       'Content-Type': 'application/json'
     },
@@ -67,9 +67,9 @@ export const updateReviewThunk = (data) => async (dispatch) => {
   }
 }
 
-export const deleteReviewThunk = (reviewId) => async (dispatch) => {
-  const response = await fetch(`/api/reviews/${reviewId}`, {
-    method: 'delete',
+export const deleteReviewThunk = (review) => async (dispatch) => {
+  const response = await fetch(`/api/reviews/${review.id}`, {
+    method: 'delete'
   })
 
   if (response.ok) {

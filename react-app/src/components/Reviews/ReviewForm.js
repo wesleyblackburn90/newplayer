@@ -31,9 +31,9 @@ function ReviewForm({ singleReview, profileId }) {
     history.push(`/users/${profileId}`)
   }
 
-  function handleDelete(id) {
-    dispatch(deleteReviewThunk(id))
-    history.push(`/users/${profileId}`)
+  const handleDelete = async () => {
+    e.preventDefault()
+    await dispatch(deleteReviewThunk(singleReview)).then(history.push(`/users/${profileId}`))
   }
 
   const handleClick = (e) => {
@@ -66,6 +66,7 @@ function ReviewForm({ singleReview, profileId }) {
           onChange={updateComment} />
         <button type="submit" className="reviewFormButton">Submit review</button>
         <button onClick={handleCancelClick} className="reviewFormButton">Cancel</button>
+        <button onClick={handleDelete}>Delete</button>
       </form >
     </div>
   )
