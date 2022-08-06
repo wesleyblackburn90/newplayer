@@ -14,13 +14,21 @@ def all_sessions():
 
 @session_routes.route('/new', methods=["GET", "POST"])
 def create_session():
+  print('Please make form ***********8')
   form = SessionForm()
+  print(form.data)
   form['csrf_token'].data = request.cookies['csrf_token']
 
   if form.validate_on_submit():
+    print("I was validated!")
     session = Session(
-      location_id = form.data['location_id'],
-      game_id = form.data['game_id'],
+      organizer_id = form.data['organizer_id'],
+      location_name=form.data['location_name'],
+      address=form.data['address'],
+      city=form.data['city'],
+      state=form.data['state'],
+      zip_code=form.data['zip_code'],
+      game=form.data['game'],
       description = form.data['description'],
       pic_url = form.data['pic_url'],
       players_num = form.data['players_num']
@@ -28,7 +36,7 @@ def create_session():
     db.session.add(session)
     db.session.commit()
     return session.to_dict()
-
+  print("I wasn't validated :(")
   return { 'errors' : validation_errors_to_error_messages(form.errors) }, 400
 
 @session_routes.route('/<int:id>/edit', methods=['PUT'])
@@ -39,14 +47,24 @@ def edit_session(id):
   form['csrf_token'].data = request.cookies['csrf_token']
 
   if form.validate_on_submit():
-    location_id = form.data['location_id'],
-    game_id = form.data['game_id'],
-    description = form.data['description'],
+    organizer_id = form.data['organizer_id'],
+    location_name = form.data['location_name'],
+    address = form.data['address'],
+    city = form.data['city'],
+    state = form.data['state'],
+    zip_code = form.data['zip_code'],
+    game = form.data['game'],
+    description = form.data['description']
     pic_url = form.data['pic_url'],
     players_num = form.data['players_num']
 
-    session.location_id = location_id
-    session.game_id =game_id
+    session.organizer_id = organizer_id
+    session.location_name = location_name
+    session.address = address
+    session.city = city
+    session.state = state
+    session.zip_code = zip_code
+    session.game = game
     session.description = description
     session.pic_url = pic_url
     session.players_num =players_num

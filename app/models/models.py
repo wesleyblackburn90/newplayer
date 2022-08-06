@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
     # relationships
-    location = db.relationship('Location', back_populates='organizer')
+    session = db.relationship('Session', back_populates='organizer')
     player = db.relationship('Player', back_populates='user')
 
     @property
@@ -42,66 +42,88 @@ class User(db.Model, UserMixin):
             'created_at': self.created_at
         }
 
-class Game(db.Model):
-    __tablename__ = 'games'
+# class Game(db.Model):
+#     __tablename__ = 'games'
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(200), nullable=False)
-    description = db.Column(db.String(2000))
+#     id = db.Column(db.Integer, primary_key=True)
+#     name = db.Column(db.String(200), nullable=False)
+#     description = db.Column(db.String(2000))
 
-    #relationship
-    session = db.relationship('Session', back_populates='game')
+#     #relationship
+#     session = db.relationship('Session', back_populates='game')
 
-    def to_dict(self):
-        return {
-            'id': self.id,
-            'name': self.name,
-            'description': self.description
-        }
+#     def to_dict(self):
+#         return {
+#             'id': self.id,
+#             'name': self.name,
+#             'description': self.description
+#         }
 
-class Location(db.Model):
-    __tablename__ = 'locations'
+# class Location(db.Model):
+#     __tablename__ = 'locations'
 
-    id = db.Column(db.Integer, primary_key=True)
-    organizer_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    name = db.Column(db.String, nullable=False)
-    description = db.Column(db.String, nullable=False)
-    address = db.Column(db.String, nullable=False)
-    city = db.Column(db.String, nullable=False)
-    state = db.Column(db.String, nullable=False)
-    zip_code = db.Column(db.Integer, nullable=False)
+#     id = db.Column(db.Integer, primary_key=True)
+#     organizer_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+#     name = db.Column(db.String, nullable=False)
+#     description = db.Column(db.String, nullable=False)
+#     address = db.Column(db.String, nullable=False)
+#     city = db.Column(db.String, nullable=False)
+#     state = db.Column(db.String, nullable=False)
+#     zip_code = db.Column(db.Integer, nullable=False)
 
-    #relationship
-    organizer = db.relationship('User', back_populates='location')
-    session = db.relationship('Session', back_populates='location')
+#     #relationship
+    # organizer = db.relationship('User', back_populates='location')
+#     session = db.relationship('Session', back_populates='location')
 
-    def to_dict(self):
-        return {
-            'id': self.id,
-            'organizer': self.organizer,
-            'name': self.name,
-            'description': self.description,
-            'address': self.address,
-            'city': self.city,
-            'state': self.state,
-            'zip_code': self.zip_code
-        }
+#     def to_dict(self):
+#         return {
+#             'id': self.id,
+#             'organizer': self.organizer,
+#             'name': self.name,
+#             'description': self.description,
+#             'address': self.address,
+#             'city': self.city,
+#             'state': self.state,
+#             'zip_code': self.zip_code
+#         }
 
 class Session(db.Model):
     __tablename__ = 'sessions'
 
     id = db.Column(db.Integer, primary_key=True)
-    location_id = db.Column(db.Integer, db.ForeignKey('locations.id'), nullable=False)
-    game_id = db.Column(db.Integer, db.ForeignKey("games.id"), nullable=False)
+    organizer_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    location_name = db.Column(db.String, nullable=False)
+    address = db.Column(db.String, nullable=False)
+    city = db.Column(db.String, nullable=False)
+    state = db.Column(db.String, nullable=False)
+    zip_code = db.Column(db.Integer, nullable=False)
+    game = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
     pic_url = db.Column(db.String)
     players_num = db.Column(db.Integer, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
     #relationships
-    game = db.relationship('Game', back_populates='session')
+    # game = db.relationship('Game', back_populates='session')
+    organizer = db.relationship('User', back_populates='session')
     player = db.relationship('Player', back_populates='session')
-    location = db.relationship('Location', back_populates='session')
+    # location = db.relationship('Location', back_populates='session')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'organizer_id': self.organizer_id,
+            'location_name': self.location_name,
+            'address': self.address,
+            'city': self.city,
+            'state': self.state,
+            'zip_code': self.zip_code,
+            'game': self.game,
+            'description': self.description,
+            'pic_url': self.pic_url,
+            'players_num': self.players_num,
+            'created_at': self.created_at
+        }
 
 class Player(db.Model):
     __tablename__ = 'players'
@@ -130,7 +152,7 @@ class Review(db.Model):
     reviewer_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     reviewee_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     rating = db.Column(db.Integer, nullable=False)
-    review = db.Column(db.String)
+    comment = db.Column(db.String)
 
     reviewer = db.relationship('User', foreign_keys=[reviewer_id])
     reviewee = db.relationship('User', foreign_keys=[reviewee_id])
@@ -141,5 +163,5 @@ class Review(db.Model):
             'reviewer_id': self.reviewer_id,
             'reviewee_id': self.reviewee_id,
             'rating': self.rating,
-            'review': self.review
+            'comment': self.comment
         }
