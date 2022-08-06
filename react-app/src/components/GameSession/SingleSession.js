@@ -23,8 +23,6 @@ function SingleSession() {
     async function fetchData() {
       const res = await fetch('/api/users/')
       const resData = await res.json()
-      console.log(resData)
-      console.log(resData.users)
       setUsers(resData.users)
     }
     fetchData()
