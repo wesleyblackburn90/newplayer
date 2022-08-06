@@ -5,19 +5,19 @@ def seed_reviews():
     reviewer_id='1',
     reviewee_id='2',
     rating='2',
-    review="Very mediocre"
+    comment="Very mediocre"
   )
   two = Review(
     reviewer_id='2',
     reviewee_id='3',
     rating='5',
-    review="Awesome!"
+    comment="Awesome!"
   )
   three = Review(
     reviewer_id='3',
     reviewee_id='1',
     rating='1',
-    review="The worst"
+    comment="The worst"
   )
 
   db.session.add(one)

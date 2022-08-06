@@ -10,7 +10,7 @@ def reviews():
   reviews = Review.query.all()
   return {'reviews': [review.to_dict() for review in reviews]}
 
-@review_routes.route('', methods=['POST'])
+@review_routes.route('/new', methods=['POST'])
 def new_review():
     form = ReviewForm()
 

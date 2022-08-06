@@ -1,58 +1,74 @@
+import React, { useEffect, useState } from "react"
+import { startTransition } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { useHistory } from "react-router-dom"
+import { startReviewThunk, deleteReviewThunk } from "../../store/review"
 
-  // const [rating, setRating] = useState("1")
-  // const [review, setReview] = useState("")
-  // const [showReviewForm, setShowReviewForm] = useState("hide-review-form")
+function ReviewForm({ singleReview, profileId }) {
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const currentUserId = useSelector(state => state.session.user.id)
+  const [rating, setRating] = useState("1")
+  const [comment, setComment] = useState("")
+  const [showReviewForm, setShowReviewForm] = useState("hide-review-form")
 
 
-  // const updateRating = (e) => setRating(e.target.value)
-  // const updateReview = (e) => setReview(e.target.value)
+  const updateRating = (e) => setRating(e.target.value)
+  const updateComment = (e) => setComment(e.target.value)
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault()
+  const handleSubmit = async (e) => {
+    e.preventDefault()
 
-  //   const payload = {
-  //     userId: currentUserId,
-  //     businessId: businessId,
-  //     rating,
-  //     review
-  //   }
+    const payload = {
+      reviewer_id: currentUserId,
+      reviewee_id: profileId,
+      rating,
+      comment
+    }
 
-  //   dispatch(createReview(payload))
-  //   setShowReviewForm("hide-review-form")
-  //   history.push(`/business/${businessId}`)
-  // }
+    dispatch(startReviewThunk(payload))
+    setShowReviewForm("hide-review-form")
+    history.push(`/users/${profileId}`)
+  }
 
-  // function handleDelete(id) {
-  //   dispatch(deleteReviews(id, businessId))
-  //   history.push(`/business/${businessId}`)
-  // }
+  function handleDelete(id) {
+    dispatch(deleteReviewThunk(id))
+    history.push(`/users/${profileId}`)
+  }
 
-  // const handleClick = (e) => {
-  //   e.preventDefault()
-  //   setShowReviewForm("review-form")
-  // }
+  const handleClick = (e) => {
+    e.preventDefault()
+    setShowReviewForm("review-form")
+  }
 
-  // const handleCancelClick = (e) => {
-  //   e.preventDefault()
-  //   setShowReviewForm("hide-review-form")
-  // }
+  const handleCancelClick = (e) => {
+    e.preventDefault()
+    setShowReviewForm("hide-review-form")
+  }
 
-  // <form onSubmit={handleSubmit} id="leaveReviewInputs">
-  //           <h3> Rating </h3>
-  //           <select onChange={updateRating}>
-  //             <option value="1">1</option>
-  //             <option value="2">2</option>
-  //             <option value="3">3</option>
-  //             <option value="4">4</option>
-  //             <option value="5">5</option>
-  //           </select>
-  //           <h3> Review </h3>
-  //           <input
-  //             id="reviewBody"
-  //             type="text"
-  //             placeholder="Leave your review"
-  //             value={review}
-  //             onChange={updateReview} />
-  //           <button type="submit" className="reviewFormButton">Submit review</button>
-  //           <button onClick={handleCancelClick} className="reviewFormButton">Cancel</button>
-  //         </form>
+  return (
+    <div>
+      < form onSubmit={handleSubmit} id="leaveReviewInputs" >
+        <h3> Rating </h3>
+        <select onChange={updateRating}>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        <h3> Review </h3>
+        <input
+          id="reviewBody"
+          type="text"
+          placeholder="Leave your review"
+          value={comment}
+          onChange={updateComment} />
+        <button type="submit" className="reviewFormButton">Submit review</button>
+        <button onClick={handleCancelClick} className="reviewFormButton">Cancel</button>
+      </form >
+    </div>
+  )
+}
+
+export default ReviewForm

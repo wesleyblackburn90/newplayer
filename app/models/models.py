@@ -152,7 +152,7 @@ class Review(db.Model):
     reviewer_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     reviewee_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     rating = db.Column(db.Integer, nullable=False)
-    review = db.Column(db.String)
+    comment = db.Column(db.String)
 
     reviewer = db.relationship('User', foreign_keys=[reviewer_id])
     reviewee = db.relationship('User', foreign_keys=[reviewee_id])
@@ -163,5 +163,5 @@ class Review(db.Model):
             'reviewer_id': self.reviewer_id,
             'reviewee_id': self.reviewee_id,
             'rating': self.rating,
-            'review': self.review
+            'comment': self.comment
         }

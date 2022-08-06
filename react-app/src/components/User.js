@@ -1,20 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import {useDispatch, useSelector} from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import Reviews from './Reviews/Reviews';
-import {getReviewsThunk} from '../store/review.js'
+import { getReviewsThunk } from '../store/review.js'
 
 function User() {
   const dispatch = useDispatch()
   const [user, setUser] = useState({});
   const { userId } = useParams();
   const reviews = useSelector(state => state.review)
-  // console.log(reviewsArr)
-  // console.log(userId)
-  // console.log(reviews)
-  // // console.log(reviews[2].reviewee_id)
-  // let newArr = Object.keys(reviews)
-  // console.log(newArr)
+
   let userReviews
   if (reviews && userId) {
     userReviews = Object.values(reviews).filter(review => review.reviewee_id == userId)
@@ -49,7 +44,7 @@ function User() {
       <li>
         <strong>Email</strong> {user.email}
       </li>
-      <Reviews userReviews={userReviews}/>
+      <Reviews userReviews={userReviews} />
     </ul>
   );
 }

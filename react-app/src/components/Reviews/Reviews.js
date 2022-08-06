@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { getReviewsThunk } from '../../store/review'
+import ReviewForm from "./ReviewForm";
 import SingleReview from "./SingleReview";
 
-function Reviews({userReviews}) {
+function Reviews({ userReviews }) {
   const dispatch = useDispatch()
   const { userId } = useParams()
   const currentUserId = useSelector((state) => state.session.user.id)
@@ -39,10 +40,10 @@ function Reviews({userReviews}) {
     <div>
       {userReviews && userReviews.map(review => {
         return (
-        <>
-        <p>{review.rating}</p>
-        <p>{review.review}</p>
-        </>
+          <>
+            <p>{review.comment}</p>
+            <ReviewForm singleReview={review} profileId={userId} />
+          </>
         )
       })
       }
