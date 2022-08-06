@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getReviewsThunk } from '../../store/review'
 import ReviewForm from "./ReviewForm";
 import SingleReview from "./SingleReview";
+import EditReviewFormModal from "./EditReviewFormModal";
 
-function Reviews({ userReviews }) {
+function Reviews({ userReviews, user }) {
   const dispatch = useDispatch()
   const { userId } = useParams()
   const currentUserId = useSelector((state) => state.session.user.id)
   const users = useSelector((state) => state.users)
-  console.log(userReviews)
 
   useEffect(() => {
     dispatch(getReviewsThunk())
@@ -41,12 +41,12 @@ function Reviews({ userReviews }) {
       {userReviews && userReviews.map(review => {
         return (
           <>
-            <p>{review.comment}</p>
-            <ReviewForm singleReview={review} profileId={userId} />
+            <SingleReview singleReview={review} userId={userId} />
           </>
         )
       })
       }
+      <ReviewForm userReviews={userReviews} profileId={userId} />
     </div>
   )
 }

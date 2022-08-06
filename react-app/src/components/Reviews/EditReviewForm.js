@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
-import { startReviewThunk, deleteReviewThunk } from "../../store/review"
+import { startReviewThunk, deleteReviewThunk, updateReviewThunk } from "../../store/review"
 
-function ReviewForm({ singleReview, profileId }) {
+function EditReviewForm({ singleReview, profileId, setShowModal }) {
   const dispatch = useDispatch()
   const history = useHistory()
   const currentUserId = useSelector(state => state.session.user.id)
@@ -15,24 +15,22 @@ function ReviewForm({ singleReview, profileId }) {
   const updateRating = (e) => setRating(e.target.value)
   const updateComment = (e) => setComment(e.target.value)
 
-  const handleSubmit = async (e) => {
+  const handleUpdate = async (e) => {
     e.preventDefault()
 
     const payload = {
+      id: singleReview.id,
       reviewer_id: currentUserId,
       reviewee_id: profileId,
       rating,
       comment
     }
+    console.log(payload, "Payload in handle submit")
 
-    dispatch(startReviewThunk(payload))
-    setShowReviewForm("hide-review-form")
-    history.push(`/users/${profileId}`)
-  }
+    await dispatch(updateReviewThunk(payload)).then(history.push(`/users/${profileId}`))
+    setShowModal(false)
+    // setShowReviewForm("hide-review-form")
 
-  const handleDelete = async (e) => {
-    e.preventDefault()
-    await dispatch(deleteReviewThunk(singleReview)).then(history.push(`/users/${profileId}`))
   }
 
   const handleClick = (e) => {
@@ -47,7 +45,7 @@ function ReviewForm({ singleReview, profileId }) {
 
   return (
     <div>
-      < form onSubmit={handleSubmit} id="leaveReviewInputs" >
+      < form id="leaveReviewInputs" >
         <h3> Rating </h3>
         <select onChange={updateRating}>
           <option value="1">1</option>
@@ -63,12 +61,10 @@ function ReviewForm({ singleReview, profileId }) {
           placeholder="Leave your review"
           value={comment}
           onChange={updateComment} />
-        <button type="submit" className="reviewFormButton">Submit review</button>
-        <button onClick={handleCancelClick} className="reviewFormButton">Cancel</button>
-        <button onClick={handleDelete}>Delete</button>
+        <button onClick={handleUpdate} className="reviewFormButton">Submit review</button>
       </form >
     </div>
   )
 }
 
-export default ReviewForm
+export default EditReviewForm

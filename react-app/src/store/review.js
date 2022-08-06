@@ -52,6 +52,7 @@ export const startReviewThunk = (data) => async (dispatch) => {
 }
 
 export const updateReviewThunk = (data) => async (dispatch) => {
+  console.log(data, "Update review thunk id")
   const res = await fetch(`/api/reviews/${data.id}`, {
     method: 'put',
     headers: {

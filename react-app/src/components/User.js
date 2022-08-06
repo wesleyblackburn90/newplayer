@@ -44,7 +44,7 @@ function User() {
       <li>
         <strong>Email</strong> {user.email}
       </li>
-      <Reviews userReviews={userReviews} />
+      <Reviews userReviews={userReviews} user={user} />
     </ul>
   );
 }

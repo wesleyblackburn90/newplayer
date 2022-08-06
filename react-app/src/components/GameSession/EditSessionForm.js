@@ -8,9 +8,6 @@ function EditSessionForm({ session, setShowModal }) {
   const history = useHistory()
   const { sessionId } = useParams()
   const sessionUser = useSelector(state => state.session.user)
-  console.log(session, "This is the session")
-  console.log(sessionUser, "This is the session user")
-  console.log(sessionId)
 
   const [location_name, setLocation] = useState('')
   const [address, setAddress] = useState('')
@@ -71,10 +68,6 @@ function EditSessionForm({ session, setShowModal }) {
       pic_url,
       players_num
     }
-    console.log(payload, "This is the payload")
-    console.log(session.id)
-    // await dispatch(startSessionThunk(payload))
-    // history.push("/sessions")
 
     try {
       await dispatch(updateSessionThunk(payload, sessionId)).then(history.push(`/sessions/${session.id}`))

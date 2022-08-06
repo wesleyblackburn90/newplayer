@@ -1,21 +1,23 @@
 import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { deleteReviewThunk, getReviewsThunk } from '../../store/review'
+import EditReviewFormModal from "./EditReviewFormModal"
 
-function SingleReview({ review }) {
+function SingleReview({ singleReview, userId }) {
   const dispatch = useDispatch()
   const sessionUser = useSelector((state) => state.session.user)
 
   const deleteHandler = async () => {
-    await dispatch(deleteReviewThunk(review))
+    await dispatch(deleteReviewThunk(singleReview))
   }
 
   return (
     <div>
-      {review &&
+      {singleReview &&
         <div>
-          <h1>Rating: {review.rating}</h1>
-          <h1>Review: {review.review}</h1>
+          <h1>Rating: {singleReview.rating}</h1>
+          <h1>Review: {singleReview.comment}</h1>
+          <EditReviewFormModal singleReview={singleReview} profileId={userId} />
         </div>
       }
     </div>
