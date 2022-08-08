@@ -108,7 +108,7 @@ function CreateSession() {
           value={state}
           onChange={updateState}
         />
-        <p>Zip code?</p>
+        <p>Zip code? </p>
         <input
           type="text"
           placeholder="Zip code (i.e. 54321)"
