@@ -9,15 +9,15 @@ function EditSessionForm({ session, setShowModal }) {
   const { sessionId } = useParams()
   const sessionUser = useSelector(state => state.session.user)
 
-  const [location_name, setLocation] = useState('')
-  const [address, setAddress] = useState('')
-  const [city, setCity] = useState('')
-  const [state, setState] = useState('')
-  const [zip_code, setZipCode] = useState(0)
-  const [game, setGame] = useState('')
-  const [description, setDescription] = useState('')
-  const [pic_url, setPic] = useState('https://i2.wp.com/s802022855.onlinehome.us/wp-content/uploads/2014/12/settlers_startgame.jpg')
-  const [players_num, setPlayers] = useState(0)
+  const [location_name, setLocation] = useState(session.location_name)
+  const [address, setAddress] = useState(session.address)
+  const [city, setCity] = useState(session.city)
+  const [state, setState] = useState(session.state)
+  const [zip_code, setZipCode] = useState(session.zip_code)
+  const [game, setGame] = useState(session.game)
+  const [description, setDescription] = useState(session.description)
+  const [pic_url, setPic] = useState(session.pic_url)
+  const [players_num, setPlayers] = useState(session.players_num)
   const [errors, setErrors] = useState([])
 
   const updateLocation = (e) => setLocation(e.target.value)
@@ -108,13 +108,66 @@ function EditSessionForm({ session, setShowModal }) {
           onChange={updateCity}
         />
         <p>What is the name of the state?</p>
-        <input
+        {/* <input
           type="text"
           placeholder="State"
           required
           value={state}
           onChange={updateState}
-        />
+        /> */}
+        <select value={state} onChange={updateState}>
+          <option value={"Alabama"}> Alabama </option>
+          <option value={"Alaska"}> Alaska </option>
+          <option value={"Arizona"}> Arizona </option>
+          <option value={"Arkansas"}> Arkansas </option>
+          <option value={"California"}> California </option>
+          <option value={"Colorado"}> Colorado </option>
+          <option value={"Connecticut"}> Connecticut </option>
+          <option value={"Delaware"}> Delaware </option>
+          <option value={"Florida"}> Florida </option>
+          <option value={"Georgia"}> Georgia </option>
+          <option value={"Hawaii"}> Hawaii </option>
+          <option value={"Idaho"}> Idaho </option>
+          <option value={"Illinois"}> Illinois </option>
+          <option value={"Indiana"}> Indiana </option>
+          <option value={"Iowa"}> Iowa </option>
+          <option value={"Kansas"}> Kansas </option>
+          <option value={"Kentucky"}> Kentucky </option>
+          <option value={"Louisiana"}> Louisiana </option>
+          <option value={"Maine"}> Maine </option>
+          <option value={"Maine"}> Maine </option>
+          <option value={"Maryland"}> Maryland </option>
+          <option value={"Massachusetts"}> Massachusetts </option>
+          <option value={"Michigan"}> Michigan </option>
+          <option value={"Minnesota"}> Minnesota </option>
+          <option value={"Mississippi"}> Mississippi </option>
+          <option value={"Missouri"}> Missouri </option>
+          <option value={"Montana"}> Montana </option>
+          <option value={"Nebraska"}> Nebraska </option>
+          <option value={"Nevada"}> Nevada </option>
+          <option value={"New Hampshire"}> New Hampshire </option>
+          <option value={"New Jersey"}> New Jersey </option>
+          <option value={"New Mexico"}> New Mexico </option>
+          <option value={"New York"}> New York </option>
+          <option value={"North Carolina"}> North Carolina </option>
+          <option value={"North Dakota"}> North Dakota </option>
+          <option value={"Ohio"}> Ohio </option>
+          <option value={"Oklahoma"}> Oklahoma </option>
+          <option value={"Oregon"}> Oregon </option>
+          <option value={"Pennsylvania"}> Pennsylvania </option>
+          <option value={"Rhode Island"}> Rhode Island </option>
+          <option value={"South Carolina"}> South Carolina </option>
+          <option value={"South Dakota"}> South Dakota </option>
+          <option value={"Tennessee"}> Tennessee </option>
+          <option value={"Texas"}> Texas </option>
+          <option value={"Utah"}> Utah </option>
+          <option value={"Vermont"}> Vermont </option>
+          <option value={"Virginia"}> Virginia </option>
+          <option value={"Washington"}> Washington </option>
+          <option value={"West Virginia"}> West Virginia </option>
+          <option value={"Wisconsin"}> Wisconsin </option>
+          <option value={"Wyoming"}> Wyoming </option>
+        </select>
         <p>Zip code?</p>
         <input
           type="text"

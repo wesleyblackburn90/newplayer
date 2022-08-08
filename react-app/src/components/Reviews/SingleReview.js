@@ -19,14 +19,14 @@ function SingleReview({ singleReview, userId }) {
       {singleReview && singleReview.reviewer_id === sessionUser.id ?
         (
           <div>
-            <h1>Rating: Hello{singleReview.rating}</h1>
+            <h1>Rating: {singleReview.rating}</h1>
             <h1>Review: {singleReview.comment}</h1>
             <EditReviewFormModal singleReview={singleReview} profileId={userId} />
             <button onClick={handleDelete}>Delete</button>
           </div>
         ) : (
           <div>
-            <h1>Rating: Hello{singleReview.rating}</h1>
+            <h1>Rating: {singleReview.rating}</h1>
             <h1>Review: {singleReview.comment}</h1>
           </div>
         )
