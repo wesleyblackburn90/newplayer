@@ -75,11 +75,9 @@ export const deleteSessionThunk = (sessionId) => async (dispatch) => {
   })
 
   if (response.ok) {
-    console.log("Response was ok though")
     const session = await response.json()
     console.log(session)
     dispatch(deleteSession(session))
-    console.log("I did it!")
     return session
   }
 }

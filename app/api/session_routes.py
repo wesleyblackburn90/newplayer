@@ -14,13 +14,10 @@ def all_sessions():
 
 @session_routes.route('/new', methods=["GET", "POST"])
 def create_session():
-  print('Please make form ***********8')
   form = SessionForm()
-  print(form.data)
   form['csrf_token'].data = request.cookies['csrf_token']
 
   if form.validate_on_submit():
-    print("I was validated!")
     session = Session(
       organizer_id = form.data['organizer_id'],
       location_name=form.data['location_name'],
@@ -36,7 +33,6 @@ def create_session():
     db.session.add(session)
     db.session.commit()
     return session.to_dict()
-  print("I wasn't validated :(")
   return { 'errors' : validation_errors_to_error_messages(form.errors) }, 400
 
 @session_routes.route('/<int:id>/edit', methods=['PUT'])

@@ -3,13 +3,15 @@ import thunk from 'redux-thunk';
 import session from './session'
 import gameSession from './gameSession';
 import review from './review';
+import players from './players'
 
 const rootReducer = combineReducers({
   session,
   gameSession,
   // game,
   // location,
-  review
+  review,
+  players
 });
 
 
