@@ -17,17 +17,17 @@ const NavBar = () => {
         </NavLink>
         {!sessionUser ?
           <div className="logged-out-buttons-div">
-            <NavLink to='/login' exact={true} activeClassName='active' className="logged-out-buttons">
+            <NavLink to='/login' exact={true} activeClassName='active' className="button">
               Login
             </NavLink>
-            <NavLink to='/sign-up' exact={true} activeClassName='active' className="logged-out-buttons">
+            <NavLink to='/sign-up' exact={true} activeClassName='active' className="button">
               Sign Up
             </NavLink>
             <DemoUser />
           </div>
           :
           <div className="logged-in-buttons-div">
-            <NavLink to='/sessions/new' exact={true}>
+            <NavLink className='button' to='/sessions/new' exact={true}>
               Create a session
             </NavLink>
             <LogoutButton />

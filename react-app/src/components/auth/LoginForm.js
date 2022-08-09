@@ -61,10 +61,12 @@ const LoginForm = () => {
               value={password}
               onChange={updatePassword}
             />
-            <button className='button' id='login-button' type='submit'>Login</button>
+            <div id="login-signup-buttons">
+              <button className='button' type='submit'>Login</button>
+              <NavLink className='button' to='/signup'>Sign up</NavLink>
+            </div>
           </div>
         </form>
-        <NavLink className='button' to='/signup'></NavLink>
       </div>
       <img id='login-pic' src='https://image.freepik.com/free-photo/company-young-people-playing-board-game_158595-4898.jpg' alt='family playing game'></img>
     </div>

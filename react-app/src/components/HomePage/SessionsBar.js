@@ -9,21 +9,11 @@ function SessionsBar() {
   const dispatch = useDispatch()
   const history = useHistory()
   const sessions = useSelector(state => state.gameSession)
+  const sessionsArr = Object.values(sessions)
   const [state, setState] = useState("")
   const [displaySessions, setDisplaySessions] = useState([])
 
-  // if (sessions) {
-  //   let sessionList = Object.values(sessions)
-  //   setDisplaySessions(sessionList)
-  // }
-
-  const updateState = (e) => {
-    setState(e.target.value)
-    // if (state) {
-    //   displaySessions = Object.values(sessions).filter((currentState) => currentState.state)
-    //   console.log(displaySessions)
-    // }
-  }
+  const updateState = (e) => setState(e.target.value)
 
   useEffect(() => {
     const statesArr = Object.values(sessions).filter((currentState) => currentState.state === state)
@@ -32,6 +22,10 @@ function SessionsBar() {
 
   while (displaySessions.length > 4) {
     displaySessions.splice(4)
+  }
+
+  while (sessionsArr.length > 4) {
+    sessionsArr.splice(4)
   }
 
   useEffect(() => {
@@ -104,21 +98,19 @@ function SessionsBar() {
         </div>
         <div>
           <h1>Events that you might like </h1>
-          <div id='events-session-bar'>
-            {state ?
-              <div>
-                {Object.values(displaySessions).map((session) => (
-                  <SessionCard session={session} />
-                ))}
-              </div>
-              :
-              <div>
-                {Object.values(sessions).map((session) => (
-                  <SessionCard session={session} />
-                ))}
-              </div>
-            }
-          </div>
+          {state ?
+            <div id='events-session-bar'>
+              {Object.values(displaySessions).map((session) => (
+                <SessionCard session={session} />
+              ))}
+            </div>
+            :
+            <div id='events-session-bar'>
+              {sessionsArr.map((session) => (
+                <SessionCard session={session} />
+              ))}
+            </div>
+          }
         </div>
       </> :
       <p> ... Searching </p>
