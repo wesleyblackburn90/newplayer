@@ -7,6 +7,7 @@ import EditSessionFormModal from "./EditSessionFormModal"
 import EditSessionForm from "./EditSessionForm";
 import UsersProfile from "../Profiles/UsersProfile";
 import { addNewPlayer, getAllPlayers } from "../../store/players";
+import "./SingleSession.css"
 
 function SingleSession() {
   const history = useHistory()
@@ -64,29 +65,35 @@ function SingleSession() {
     await dispatch(deleteSessionThunk(sessionId)).then(history.push('/sessions'))
   }
 
-
   return (
     <div>
-      {session &&
-        <div>
-          <p>Location Name: {session.location_name}</p>
-          {/* {session && session.organizer_id === } */}
-          <p>Address: {session.address}</p>
-          <p>City: {session.city}</p>
-          <p>State: {session.state}</p>
-          <p>Zipcode: {session.zip_code}</p>
-          <p>Game: {session.game}</p>
-          <p>Description: {session.description}</p>
-          <img src={`${session.pic_url}`} />
-          <p>Number of players needed: {session.players_num}</p>
-          <p>Number of players joined: {sessionPlayers.length}</p>
-          <button onClick={handleJoin}>Join now!</button>
+      {session && host &&
+        <div id="whole-single-session-div">
+          <div id="main-single-session-div">
+            <div id='single-session-div-top'>
+              <img id='single-session-img' src={`${session.pic_url}`} />
+              <div id='single-session-div-top-right'>
+                <p>Game: {session.game}</p>
+                <p>Hosted by: {host.username}</p>
+                <button id='join-now-btn' className="button" onClick={handleJoin}>Join now!</button>
+              </div>
+            </div>
+            <p>Location Name: {session.location_name}</p>
+            {/* {session && session.organizer_id === } */}
+            <p>Address: {session.address}</p>
+            <p>City: {session.city}</p>
+            <p>State: {session.state}</p>
+            <p>Zipcode: {session.zip_code}</p>
+            <p>Description: {session.description}</p>
+            <p>Number of players needed: {session.players_num}</p>
+            <p>Number of players joined: {sessionPlayers.length}</p>
+          </div>
         </div>
       }
       {session && userId === session.organizer_id ?
         <>
           <EditSessionFormModal session={session} />
-          <button onClick={handleDelete}>Delete session</button>
+          <button className="button" onClick={handleDelete}>Delete session</button>
         </>
         :
         <div>

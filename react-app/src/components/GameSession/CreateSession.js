@@ -200,7 +200,7 @@ function CreateSession() {
           value={players_num}
           onChange={updatePlayers}
         />
-        <button type="submit">Create your session!</button>
+        <button  className="button" type="submit">Create your session!</button>
       </form>
     </>
   )

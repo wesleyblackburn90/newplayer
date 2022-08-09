@@ -82,6 +82,9 @@ function EditSessionForm({ session, setShowModal }) {
 
   return (
     <>
+      {errors.map((error) => {
+        <ul> {error} </ul>
+      })}
       <form onSubmit={handleSubmit}>
         <p>Where is the name of the location of the game session?</p>
         <input
@@ -207,7 +210,7 @@ function EditSessionForm({ session, setShowModal }) {
           value={players_num}
           onChange={updatePlayers}
         />
-        <button type="submit">Update your session!</button>
+        <button className="button" type="submit">Update your session!</button>
         {/* <NavLink to={`/sessions/${sessionId}`}>Cancel</NavLink> */}
       </form>
     </>

@@ -11,7 +11,7 @@ const DemoUser = () => {
   }
 
   return (
-    <button onClick={handleDemoLogin}>Demo User</button>
+    <button className="button" onClick={handleDemoLogin}>Demo User</button>
   )
 }
 

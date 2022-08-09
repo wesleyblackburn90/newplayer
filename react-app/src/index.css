@@ -1,4 +1,26 @@
 /* TODO Add site wide styles */
 body {
   font-family: 'DM Serif Display', serif;
+  background-color: RGB(215, 217, 206);
+  color: RGB(4, 4, 4);
+}
+
+.button {
+  text-decoration: none;
+  background-color: #d7d9ce;
+  font-family: 'DM Serif Display', serif;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.button:hover {
+  background-color: #13505B;
+  color: #d7d9ce;
+}
+
+.a {
+  text-decoration: none;
 }

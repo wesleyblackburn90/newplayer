@@ -8,7 +8,9 @@
 }
 
 #new-player-logo {
-  font-size: 30pt;
+  font-family: 'DM Serif Display', serif;
+  font-family: 'Playball';
+  font-size: 50pt;
   margin: 40px;
   text-decoration: none;
 }

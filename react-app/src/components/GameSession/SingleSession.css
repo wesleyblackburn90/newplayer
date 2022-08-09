@@ -1,0 +1,40 @@
+#whole-single-session-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+#main-single-session-div {
+  border: 1px black solid;
+  border-radius: 5px;
+  width: 60%;
+  margin: 50px;
+}
+
+#single-session-div-top {
+  display: flex;
+  flex-direction: row;
+  height: 500px;
+  width: 100%;
+}
+
+#single-session-img {
+  height: 500px;
+  width: 700px;
+}
+
+#single-session-div-top-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  width: 50%;
+}
+
+#join-now-btn {
+  background-color: #13505B;
+  color: #d7d9ce;
+}

@@ -1,0 +1,23 @@
+#games-near-you-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90px;
+}
+
+#games-near-you-inner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 60%;
+  height: 45px;
+}
+
+#events-session-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}

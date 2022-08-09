@@ -6,16 +6,16 @@ def seed_sessions():
     location_name='On the lake',
     address='In the middle',
     city='On a boat',
-    state='With me',
+    state='Wisconsin',
     zip_code='12345',
-    game='Bailey"s Shoe',
-    description='We drink Bailey"s from a shoe cause I"m Old Greg',
+    game="Bailey's Shoe",
+    description="We drink Bailey's from a shoe cause I'm Old Greg",
     pic_url='https://yt3.ggpht.com/-iVtjZ_WXTUo/AAAAAAAAAAI/AAAAAAAAAAA/T5tW3ZoVGWQ/s900-c-k-no-mo-rj-c0xffffff/photo.jpg',
     players_num='2'
     )
   session_two = Session(
     organizer_id='1',
-    location_name='My Grandma"s house',
+    location_name="My Grandma's house",
     address='123 Easy Street',
     city='Louisville',
     state='Kentucky',
@@ -45,7 +45,7 @@ def seed_sessions():
     state='South Carolina',
     zip_code='29345',
     game='Werewolves of Miller"s Hollow',
-    description='A bunch of us gotta lie to each other that we aren"t werewolves!',
+    description="A bunch of us gotta lie to each other that we aren't werewolves!",
     pic_url='http://images10.newegg.com/ProductImage/A02L_1_20110421_7f4ec90f-06ae-43fe-92cc-ba74f10a4838890386.jpg',
     players_num='12'
     )
