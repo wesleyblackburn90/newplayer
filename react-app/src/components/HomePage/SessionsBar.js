@@ -9,21 +9,26 @@ function SessionsBar() {
   const dispatch = useDispatch()
   const history = useHistory()
   const sessions = useSelector(state => state.gameSession)
-
   const [state, setState] = useState("")
+  const [displaySessions, setDisplaySessions] = useState([])
 
-  let displaySessions = []
-
-  if (sessions) {
-    displaySessions = Object.values(sessions)
-  }
+  // if (sessions) {
+  //   let sessionList = Object.values(sessions)
+  //   setDisplaySessions(sessionList)
+  // }
 
   const updateState = (e) => {
     setState(e.target.value)
-    // displaySessions = Object.values(sessions).filter((currentState) => currentState.state)
-    console.log(state)
-    // console.log(displaySessions)
+    // if (state) {
+    //   displaySessions = Object.values(sessions).filter((currentState) => currentState.state)
+    //   console.log(displaySessions)
+    // }
   }
+
+  useEffect(() => {
+    const statesArr = Object.values(sessions).filter((currentState) => currentState.state === state)
+    setDisplaySessions(statesArr)
+  }, [state])
 
   while (displaySessions.length > 4) {
     displaySessions.splice(4)
@@ -100,9 +105,19 @@ function SessionsBar() {
         <div>
           <h1>Events that you might like </h1>
           <div id='events-session-bar'>
-            {Object.values(displaySessions).map((session) => (
-              <SessionCard session={session} />
-            ))}
+            {state ?
+              <div>
+                {Object.values(displaySessions).map((session) => (
+                  <SessionCard session={session} />
+                ))}
+              </div>
+              :
+              <div>
+                {Object.values(sessions).map((session) => (
+                  <SessionCard session={session} />
+                ))}
+              </div>
+            }
           </div>
         </div>
       </> :
