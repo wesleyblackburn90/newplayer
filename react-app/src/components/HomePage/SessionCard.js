@@ -5,6 +5,7 @@ import { getSessionsThunk } from "../../store/gameSession"
 function SessionCard({ session }) {
   return (
     <>
+      <h1> {session.location_name} </h1>
     </>
   )
 }

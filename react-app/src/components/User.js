@@ -14,7 +14,7 @@ function User() {
   if (reviews && userId) {
     console.log(reviews)
     console.log(userId)
-    userReviews = Object.values(reviews).filter(review => review.reviewee_id == userId)
+    userReviews = Object.values(reviews).filter(review => review.reviewee_id === parseInt(userId))
   }
 
   // useEffect(() => )

@@ -17,8 +17,8 @@ function SingleSession() {
   const players = useSelector((state) => (state.players))
   console.log(players)
   console.log(sessionId)
-  const sessionPlayers = Object.values(players).filter((player) => player.session_id == sessionId)
-  console.log(sessionPlayers)
+  const sessionPlayers = Object.values(players).filter((player) => player.session_id === parseInt(sessionId))
+
 
   const [users, setUsers] = useState([])
 
