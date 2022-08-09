@@ -11,7 +11,7 @@ function SingleReview({ singleReview, userId }) {
 
   const handleDelete = async (e) => {
     e.preventDefault()
-    await dispatch(deleteReviewThunk(singleReview)).then(history.push(`/users/${sessionUser.id}`))
+    await dispatch(deleteReviewThunk(singleReview)).then(history.push(`/users/${userId}`))
   }
 
   return (
