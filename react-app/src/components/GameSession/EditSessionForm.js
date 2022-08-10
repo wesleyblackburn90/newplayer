@@ -138,7 +138,6 @@ function EditSessionForm({ session, setShowModal }) {
           <option value={"Kentucky"}> Kentucky </option>
           <option value={"Louisiana"}> Louisiana </option>
           <option value={"Maine"}> Maine </option>
-          <option value={"Maine"}> Maine </option>
           <option value={"Maryland"}> Maryland </option>
           <option value={"Massachusetts"}> Massachusetts </option>
           <option value={"Michigan"}> Michigan </option>

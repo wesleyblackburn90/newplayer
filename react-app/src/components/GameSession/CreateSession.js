@@ -8,12 +8,11 @@ function CreateSession() {
   const dispatch = useDispatch()
   const history = useHistory()
   const sessionUser = useSelector(state => state.session.user)
-  console.log(sessionUser.id, "<==== session user id")
 
   const [location_name, setLocation] = useState('')
   const [address, setAddress] = useState('')
   const [city, setCity] = useState('')
-  const [state, setState] = useState('')
+  const [state, setState] = useState('Alabama')
   const [zip_code, setZipCode] = useState('')
   const [game, setGame] = useState('')
   const [description, setDescription] = useState('')
@@ -35,17 +34,14 @@ function CreateSession() {
     let errors = []
     if (location_name.length < 3) errors.push("Location name is too short!")
     if (location_name.length > 50) errors.push("Location name is too long!")
-    if (address.length < 0) errors.push("Please enter an address!")
-    if (address.length > 75) errors.push("Address is too long! Please enter a valid address!")
-    if (city.length < 0) errors.push("Please enter a city name!")
-    if (city.length > 30) errors.push("Name is too long! Please enter a valid city name")
+    if (address.length < 0 && address.length > 75) errors.push('Address must be longer than 3 characters and less than 75')
+    if (city.length < 0 && city.length > 30) errors.push("Name is too long! Please enter a valid city name")
     // if (state.length < 4 || state.length > 14) errors.push("Please enter a valid state!")
     if (zip_code.length !== 5) errors.push("Please enter a valid 5 digit zipcode!")
-    if (game.length < 1) errors.push("Please give the name of your game!")
-    if (game.length > 50) errors.push("Please shorten the name of your game!")
+    if (game.length < 2) errors.push("Please give the name of your game!")
+    if (game.length > 100) errors.push("Please shorten the name of your game!")
     if (description.length > 2000) errors.push("Please leave a shorter description!")
-    if (!pic_url.endsWith(".jpg") || !pic_url.endsWith(".png")) errors.push("Please submit a picture that is a PNG or JPG file!")
-    if (players_num < 2) errors.push("Number of players must be 2 or higher!")
+    if (players_num < 2 || players_num > 2000) errors.push("Number of players must be 2 or higher!")
 
     setErrors(errors)
   }, [location_name, address, city, state, zip_code, game, description, pic_url, players_num])
@@ -123,7 +119,6 @@ function CreateSession() {
             <option value={"Kentucky"}> Kentucky </option>
             <option value={"Louisiana"}> Louisiana </option>
             <option value={"Maine"}> Maine </option>
-            <option value={"Maine"}> Maine </option>
             <option value={"Maryland"}> Maryland </option>
             <option value={"Massachusetts"}> Massachusetts </option>
             <option value={"Michigan"}> Michigan </option>
@@ -197,10 +192,21 @@ function CreateSession() {
           />
           <button className="button" type="submit">Create your session!</button>
         </form>
-        {errors.map((error) => {
-          <ul>{error}</ul>
-        })}
+        {/* {errors && errors?.map((error) => {
+          <div id="The right div">
+            <p>{error}</p>
+            <h1>Howdy</h1>
+          </div>
+        })} */}
+        {console.log(errors)}
       </div>
+      {errors.length > 0 &&
+        <ul>
+          {errors?.map((error) => (
+            <li> {error} </li>
+          ))}
+        </ul>
+      }
     </>
   )
 }
