@@ -1,0 +1,11 @@
+#create-session-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#create-session-form {
+  width: 300px;
+  height: 800px;
+}

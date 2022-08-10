@@ -1,0 +1,10 @@
+#session-card-div {
+  width: 250px;
+  height: 200px;
+}
+
+.session-card-img {
+  width: 250px;
+  height: 100px;
+  background-size: contain;
+}

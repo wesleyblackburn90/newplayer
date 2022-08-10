@@ -27,7 +27,7 @@ const NavBar = () => {
           </div>
           :
           <div className="logged-in-buttons-div">
-            <NavLink className='button' to='/sessions/new' exact={true}>
+            <NavLink className='button' id='create-button' to='/sessions/new' exact={true}>
               Create a session
             </NavLink>
             <LogoutButton />

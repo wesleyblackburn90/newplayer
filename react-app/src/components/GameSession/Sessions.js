@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from "react-router-dom";
 import { getSessionsThunk } from "../../store/gameSession";
+import "./Sessions.css"
 
 function Sessions() {
   const dispatch = useDispatch()
@@ -14,21 +15,18 @@ function Sessions() {
 
   return (
     <>
-      {sessionList?.map(({ id, location_name, address, city, state, zip_code, game, description, pic_url, players_num }) => (
-        <div key={id}>
-          <p>Location Name: {location_name}</p>
-          <p>Address: {address}</p>
-          <p>City: {city}</p>
-          <p>State: {state}</p>
-          <p>Zipcode: {zip_code}</p>
-          <p>Game: {game}</p>
-          <p>Description: {description}</p>
-          <img src={`${pic_url}`} />
-          <p>Number of players needed: {players_num}</p>
-          <p>Sound like fun?</p>
-          <NavLink to={`/sessions/${id}`} >Join now!</NavLink>
-        </div>
-      ))}
+      <h1>Look for a session</h1>
+      <div id="sessions-main-div">
+        {sessionList?.map(({ id, location_name, address, city, state, zip_code, game, description, pic_url, players_num }) => (
+          <div key={id} className='sessions-main-div-cards'>
+            <img class="sessions-main-div-img" src={`${pic_url}`} />
+            <p>{location_name} at {city}, {state}</p>
+            <p>Game: {game}</p>
+            <p>Number of players needed: {players_num}</p>
+            <NavLink to={`/sessions/${id}`} >Click for more details...</NavLink>
+          </div>
+        ))}
+      </div>
     </>
   )
 }

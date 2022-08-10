@@ -97,18 +97,22 @@ function SessionsBar() {
           </div>
         </div>
         <div>
-          <h1>Events that you might like </h1>
+          <h1 style={{ 'color': 'blue' }}>Events that you might like </h1>
           {state ?
             <div id='events-session-bar'>
-              {Object.values(displaySessions).map((session) => (
-                <SessionCard session={session} />
-              ))}
+              <div id='events-session-bar-inner'>
+                {Object.values(displaySessions).map((session) => (
+                  <SessionCard session={session} />
+                ))}
+              </div>
             </div>
             :
             <div id='events-session-bar'>
-              {sessionsArr.map((session) => (
-                <SessionCard session={session} />
-              ))}
+              <div id='events-session-bar-inner'>
+                {sessionsArr.map((session) => (
+                  <SessionCard session={session} />
+                ))}
+              </div>
             </div>
           }
         </div>
