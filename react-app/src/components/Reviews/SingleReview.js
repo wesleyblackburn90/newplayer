@@ -22,7 +22,7 @@ function SingleReview({ singleReview, userId }) {
             <h1>Rating: {singleReview.rating}</h1>
             <h1>Review: {singleReview.comment}</h1>
             <EditReviewFormModal singleReview={singleReview} profileId={userId} />
-            <button onClick={handleDelete}>Delete</button>
+            <button className='button' onClick={handleDelete}>Delete</button>
           </div>
         ) : (
           <div>

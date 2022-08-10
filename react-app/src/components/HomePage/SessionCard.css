@@ -1,10 +1,15 @@
 #session-card-div {
+  border-radius: 5px;
+  border: 1px black solid;
   width: 250px;
-  height: 200px;
+  height: 360px;
+  margin: 30px;
+  box-shadow: 10px 10px 10px grey;
 }
 
 .session-card-img {
   width: 250px;
-  height: 100px;
+  height: 150px;
+  border-radius: 5px;
   background-size: contain;
 }

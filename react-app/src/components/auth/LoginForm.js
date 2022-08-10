@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import DemoUser from './DemoUser';
 import "./LoginForm.css"
 
 const LoginForm = () => {
@@ -34,13 +35,14 @@ const LoginForm = () => {
   return (
     <div id='login-form-div'>
       <div id='left-side-login-div'>
+        <NavLink to='/' id='login-newplayer-link'>New Player</NavLink>
         <form id='login-form' onSubmit={onLogin}>
           <div>
-            {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
+            {errors.map((error, index) => (
+              <div key={index}>{error}</div>
             ))}
           </div>
-          <NavLink to='/' id='login-newplayer-link'>New Player</NavLink>
+          {/* <NavLink to='/' id='login-newplayer-link'>New Player</NavLink> */}
           <h1>Log in</h1>
           <div className='login-inputs'>
             <label htmlFor='email'>Email:  </label>
@@ -63,8 +65,10 @@ const LoginForm = () => {
             />
             <div id="login-signup-buttons">
               <button className='button' type='submit'>Login</button>
-              <NavLink className='button' to='/signup'>Sign up</NavLink>
+              <DemoUser />
             </div>
+            <p>Don't have an account? Sign up now!</p>
+            <NavLink className='button sign-up-btn' to='/signup'>Sign up</NavLink>
           </div>
         </form>
       </div>

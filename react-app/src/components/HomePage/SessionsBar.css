@@ -28,7 +28,7 @@
 #events-session-bar-inner {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-between flex-start;
   align-items: flex-start;
   height: 300px;
   width: 80%;

@@ -40,7 +40,7 @@ function SessionsBar() {
       <>
         <div id="games-near-you-div">
           <div id="games-near-you-inner">
-            <h1>Game sessions near you :</h1>
+            <h1>Game sessions near you: </h1>
             <select value={state} onChange={updateState}>
               <option value={"Alabama"}> Alabama </option>
               <option value={"Alaska"}> Alaska </option>

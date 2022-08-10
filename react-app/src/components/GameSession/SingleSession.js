@@ -73,7 +73,20 @@ function SingleSession() {
               <div id='single-session-div-top-right'>
                 <p>Game: {session.game}</p>
                 <p>Hosted by: {host.username}</p>
-                <button id='join-now-btn' className="button" onClick={handleJoin}>Join now!</button>
+                {host.id !== userId ?
+                  <div>
+                    {host &&
+                      <div>
+                        <button id='join-now-btn' className="button" onClick={handleJoin}>Join now!</button>
+                        <NavLink to={`/users/${host.id}`}>View {host.username}'s Profile</NavLink>
+                      </div>
+                    }
+                  </div>
+                  : <>
+                    <EditSessionFormModal session={session} />
+                    <button className="button" onClick={handleDelete}>Delete session</button>
+                  </>
+                }
               </div>
             </div>
             <p>Location Name: {session.location_name}</p>
@@ -86,19 +99,6 @@ function SingleSession() {
             <p>Number of players needed: {session.players_num}</p>
             <p>Number of players joined: {sessionPlayers.length}</p>
           </div>
-        </div>
-      }
-      {session && userId === session.organizer_id ?
-        <>
-          <EditSessionFormModal session={session} />
-          <button className="button" onClick={handleDelete}>Delete session</button>
-        </>
-        :
-        <div>
-          {host &&
-            <NavLink to={`/users/${host.id}`}>View {host.username}'s Profile</NavLink>
-          }
-          {/* <UsersProfile user={host} /> */}
         </div>
       }
     </div>

@@ -33,6 +33,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  width: 175px;
 }
 
 .login-inputs {
@@ -45,4 +46,8 @@
   margin: 20px;
   border: none;
   text-decoration: none;
+}
+
+.sign-up-btn {
+  width: 60px;
 }

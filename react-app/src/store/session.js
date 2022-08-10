@@ -110,7 +110,6 @@ export const signUp = (username, first_name, last_name, email, password) => asyn
       password,
     }),
   });
-  console.log(response)
 
   if (response.ok) {
     const data = await response.json();
