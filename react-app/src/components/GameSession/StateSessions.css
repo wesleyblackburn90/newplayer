@@ -1,0 +1,42 @@
+.sessions-main-div {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.state-sessions-main-div-cards {
+  border: black 1px solid;
+  border-radius: 5px;
+  font-size: larger;
+  height: 450px;
+  width: 300px;
+  margin: 30px;
+  padding: 15px;
+  overflow: auto;
+  overflow-x: hidden;
+  box-shadow: 5px 5px 5px rgb(155, 152, 152);
+}
+
+h3 {
+  text-decoration: underline;
+}
+
+.sessions-main-div-cards::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sessions-main-div-cards::-webkit-scrollbar-track {
+  background: rgb(64, 136, 191)
+}
+
+.sessions-main-div-cards::-webkit-scrollbar-thumb {
+  background: rgb(18, 83, 133)
+}
+
+
+
+.sessions-main-div-img {
+  width: 200px;
+  height: 150px;
+  border-radius: 3px;
+}

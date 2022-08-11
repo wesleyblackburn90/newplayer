@@ -68,7 +68,7 @@ const LoginForm = () => {
               <DemoUser />
             </div>
             <p>Don't have an account? Sign up now!</p>
-            <NavLink className='button sign-up-btn' to='/signup'>Sign up</NavLink>
+            <NavLink className='button sign-up-btn' to='/sign-up'>Sign up</NavLink>
           </div>
         </form>
       </div>

@@ -3,7 +3,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useParams } from "react-router-dom";
 import { getSessionsThunk } from "../../store/gameSession";
-import "./Sessions.css"
+import "./StateSessions.css"
 
 function StateSessions() {
   const dispatch = useDispatch()
@@ -17,22 +17,7 @@ function StateSessions() {
     newArr = Object.values(sessionList).filter((ele) => ele.state === stateName[0])
     console.log(newArr)
   }
-  const [statesArr, setStatesArr] = useState([])
 
-
-  // useEffect(() => {
-  //   const getSessions = async () => {
-  //     const res = await fetch('/api/sessions')
-  //     console.log(res)
-  //     const data = await res.json()
-  //     console.log(data)
-  //     const stateName = Object.values(data.state)
-  //     console.log(stateName)
-  //     const newArr = Object.values(sessionList).filter((currentState) => currentState.state === stateName)
-  //     setStatesArr(newArr)
-  //   }
-  //   getSessions()
-  // }, [])
 
   useEffect(() => {
     dispatch(getSessionsThunk())
@@ -43,13 +28,16 @@ function StateSessions() {
       {/* {state && */}
       <div>
         <h1>Look for a session in {stateName}</h1>
-        <div id="sessions-main-div">
+        <div className="sessions-main-div">
           {newArr?.map(({ id, location_name, address, city, state, zip_code, game, description, pic_url, players_num }) => (
-            <div key={id} className='sessions-main-div-cards'>
+            <div key={id} className='state-sessions-main-div-cards'>
               <img className="sessions-main-div-img" src={`${pic_url}`} />
+              <h3>Location</h3>
               <p>{location_name} at {city}, {state}</p>
-              <p>Game: {game}</p>
-              <p>Number of players needed: {players_num}</p>
+              <h3>Game</h3>
+              <p>{game}</p>
+              <h3>Number of players needed </h3>
+              <p>{players_num}</p>
               <NavLink to={`/sessions/${id}`} >Click for more details...</NavLink>
             </div>
           ))}

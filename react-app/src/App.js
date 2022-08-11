@@ -14,6 +14,7 @@ import HomePage from './components/HomePage/HomePage';
 import SingleSession from './components/GameSession/SingleSession';
 import StateSessions from './components/GameSession/StateSessions'
 import EditSessionForm from './components/GameSession/EditSessionForm';
+import Footer from './components/Footer/Footer'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -65,6 +66,7 @@ function App() {
           <EditSessionForm />
         </ProtectedRoute> */}
       </Switch>
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 }
