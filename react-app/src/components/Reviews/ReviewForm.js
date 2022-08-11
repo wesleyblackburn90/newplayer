@@ -64,8 +64,8 @@ function ReviewForm({ singleReview, profileId }) {
           value={comment}
           onChange={updateComment} />
         <button type="submit" className="reviewFormButton button">Submit review</button>
-        <button onClick={handleCancelClick} className="reviewFormButton button">Cancel</button>
-        <button onClick={handleDelete}>Delete</button>
+        {/* <button onClick={handleCancelClick} className="reviewFormButton button">Cancel</button> */}
+        <button className="button" onClick={handleDelete}>Delete</button>
       </form >
     </div>
   )

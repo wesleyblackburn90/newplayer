@@ -61,7 +61,11 @@ function User() {
         <div id="profile-wrapper-div">
           <div id="profile-top-div">
             <h1>Host: {user.username}</h1>
-            <p>Rating: {Math.floor(actualRating / totalRating.length)} out of 5</p>
+            {actualRating ?
+              <p>Rating: {Math.floor(actualRating / totalRating.length)} out of 5</p>
+              :
+              <p>This user has no ratings yet!</p>
+            }
           </div>
         </div>
         <h2>Other events hosted by {user.username}</h2>

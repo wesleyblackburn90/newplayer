@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
-import { startReviewThunk, deleteReviewThunk, updateReviewThunk } from "../../store/review"
+import { startReviewThunk, deleteReviewThunk, updateReviewThunk, getReviewsThunk } from "../../store/review"
 
 function EditReviewForm({ singleReview, profileId, setShowModal }) {
   const dispatch = useDispatch()
@@ -32,6 +32,11 @@ function EditReviewForm({ singleReview, profileId, setShowModal }) {
     // setShowReviewForm("hide-review-form")
 
   }
+  console.log()
+
+  useEffect(() => {
+    dispatch(getReviewsThunk())
+  }, dispatch)
 
   const handleClick = (e) => {
     e.preventDefault()

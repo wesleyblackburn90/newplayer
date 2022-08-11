@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { deleteReviewThunk, getReviewsThunk } from '../../store/review'
 import { useHistory } from "react-router-dom"
 import EditReviewFormModal from "./EditReviewFormModal"
+import './SingleReview.css'
 
 function SingleReview({ singleReview, userId }) {
   const history = useHistory()
@@ -18,14 +19,14 @@ function SingleReview({ singleReview, userId }) {
     <div>
       {singleReview && singleReview.reviewer_id === sessionUser.id ?
         (
-          <div>
+          <div className="review-div">
             <h1>Rating: {singleReview.rating}</h1>
             <h1>Review: {singleReview.comment}</h1>
             <EditReviewFormModal singleReview={singleReview} profileId={userId} />
             <button className="button" onClick={handleDelete}>Delete</button>
           </div>
         ) : (
-          <div>
+          <div className="review-div">
             <h1>Rating: {singleReview.rating}</h1>
             <h1>Review: {singleReview.comment}</h1>
           </div>

@@ -35,6 +35,7 @@ const LoginForm = () => {
   return (
     <div id='login-form-div'>
       <div id='left-side-login-div'>
+        <h1>Please log in to use New Player</h1>
         <NavLink to='/' id='login-newplayer-link'>New Player</NavLink>
         <form id='login-form' onSubmit={onLogin}>
           <div>

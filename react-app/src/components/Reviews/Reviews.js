@@ -14,9 +14,10 @@ function Reviews({ userReviews, user }) {
   const reviews = useSelector((state) => state.review)
   const currentUserReviews = Object.values(reviews).filter((review) => review.reviewee_id === parseInt(userId))
   const reviewed = Object.values(currentUserReviews).filter((review) => review.reviewer_id === parseInt(currentUserId))
-  console.log(reviews)
-  console.log(currentUserId)
+  console.log(userReviews)
+  console.log(userId)
   console.log(reviewed)
+  console.log(reviewed.length)
 
 
   useEffect(() => {
@@ -53,8 +54,10 @@ function Reviews({ userReviews, user }) {
         )
       })
       }
-      {reviewed ? null : <ReviewForm userReviews={userReviews} profileId={userId} />
-      }
+      <div>
+        {reviewed.length ? null : <ReviewForm userReviews={userReviews} profileId={userId} />
+        }
+      </div>
     </div>
   )
 }
