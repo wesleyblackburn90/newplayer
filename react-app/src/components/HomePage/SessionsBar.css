@@ -9,11 +9,19 @@
 #games-near-you-inner {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   width: 60%;
   height: 45px;
   color: rgb(129, 129, 243);
+}
+
+#games-near-you-inner>select {
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px gray;
+  border: none;
+  margin: 20px;
+  size: 10px;
 }
 
 #events-session-bar {
@@ -21,7 +29,7 @@
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  height: 300px;
+  height: 370px;
   width: 100%;
 }
 
@@ -30,6 +38,6 @@
   flex-direction: row;
   justify-content: space-between flex-start;
   align-items: flex-start;
-  height: 300px;
+  height: 370px;
   width: 80%;
 }

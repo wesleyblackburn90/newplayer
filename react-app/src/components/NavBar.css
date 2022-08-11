@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Lato:wght@400;900&family=Montserrat+Subrayada:wght@700&family=Mouse+Memoirs&family=Playball&display=swap');
+
 #main-nav-bar-div {
   display: flex;
   flex-direction: row;
@@ -9,12 +11,11 @@
 }
 
 #new-player-logo {
-  font-family: 'DM Serif Display', serif;
-  font-family: 'Playball';
+  font-family: 'Montserrat Subrayada', sans-serif;
   font-size: 50pt;
   margin: 40px;
   text-decoration: none;
-  color: rgb(0, 0, 254);
+  color: rgb(37, 37, 200);
 }
 
 .logged-out-buttons-div,

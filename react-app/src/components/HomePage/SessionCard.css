@@ -3,8 +3,24 @@
   border: 1px black solid;
   width: 250px;
   height: 360px;
-  margin: 30px;
+  margin-right: 56px;
+  margin-left: 55px;
+  padding: 2px;
   box-shadow: 10px 10px 10px grey;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#session-card-div::-webkit-scrollbar {
+  width: 6px;
+}
+
+#session-card-div::-webkit-scrollbar-track {
+  background: rgb(64, 136, 191)
+}
+
+#session-card-div::-webkit-scrollbar-thumb {
+  background: rgb(18, 83, 133)
 }
 
 .session-card-img {
@@ -12,4 +28,13 @@
   height: 150px;
   border-radius: 5px;
   background-size: contain;
+}
+
+.session-card {
+  text-decoration: none;
+  color: rgb(255, 83, 83)
+}
+
+.session-card>p {
+  margin: 8px;
 }

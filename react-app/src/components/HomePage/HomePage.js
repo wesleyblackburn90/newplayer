@@ -15,7 +15,6 @@ function HomePage() {
         </div>
       </div>
       <SessionsBar />
-      <NavLink to='/sessions'>See more...</NavLink>
     </>
   )
 }

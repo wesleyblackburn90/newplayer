@@ -12,6 +12,7 @@ import CreateSession from './components/GameSession/CreateSession';
 import Sessions from './components/GameSession/Sessions';
 import HomePage from './components/HomePage/HomePage';
 import SingleSession from './components/GameSession/SingleSession';
+import StateSessions from './components/GameSession/StateSessions'
 import EditSessionForm from './components/GameSession/EditSessionForm';
 
 function App() {
@@ -54,9 +55,12 @@ function App() {
         <Route path='/sessions' exact={true}>
           <Sessions />
         </Route>
-        <Route path='/sessions/:sessionId' exact={true}>
+        <ProtectedRoute path='/:stateId/sessions'>
+          <StateSessions />
+        </ProtectedRoute>
+        <ProtectedRoute path='/sessions/:sessionId' exact={true}>
           <SingleSession />
-        </Route>
+        </ProtectedRoute>
         {/* <ProtectedRoute path='/sessions/:sessionId/edit'>
           <EditSessionForm />
         </ProtectedRoute> */}

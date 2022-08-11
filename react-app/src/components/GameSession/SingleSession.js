@@ -17,14 +17,15 @@ function SingleSession() {
   const userId = useSelector((state) => (state.session.user.id))
   const players = useSelector((state) => (state.players))
   const sessionPlayers = Object.values(players).filter((player) => player.session_id === parseInt(sessionId))
-
-
   const [users, setUsers] = useState([])
 
   useEffect(() => {
     dispatch(getSessionsThunk())
     dispatch(getAllPlayers())
-  }, dispatch)
+    if (!userId) {
+      history.push('/login')
+    }
+  }, [dispatch])
 
   useEffect(() => {
     async function fetchData() {

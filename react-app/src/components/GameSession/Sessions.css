@@ -12,7 +12,23 @@
   width: 200px;
   margin: 30px;
   padding: 5px;
+  overflow: auto;
+  overflow-x: hidden;
 }
+
+.sessions-main-div-cards::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sessions-main-div-cards::-webkit-scrollbar-track {
+  background: rgb(64, 136, 191)
+}
+
+.sessions-main-div-cards::-webkit-scrollbar-thumb {
+  background: rgb(18, 83, 133)
+}
+
+
 
 .sessions-main-div-img {
   width: 200px;

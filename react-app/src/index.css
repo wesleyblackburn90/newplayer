@@ -3,6 +3,7 @@ body {
   font-family: 'DM Serif Display', serif;
   background-color: white;
   color: rgb(172, 172, 247);
+  text-decoration: none;
 }
 
 .button {

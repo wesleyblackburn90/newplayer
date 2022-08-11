@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { useHistory } from "react-router-dom"
+import { NavLink, useHistory } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { getSessionsThunk } from "../../store/gameSession"
 import SessionCard from "./SessionCard"
@@ -105,6 +105,7 @@ function SessionsBar() {
                   <SessionCard session={session} />
                 ))}
               </div>
+              <NavLink to={`/${state}/sessions`}>See all sessions in {state}</NavLink>
             </div>
             :
             <div id='events-session-bar'>

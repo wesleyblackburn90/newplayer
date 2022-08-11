@@ -4,8 +4,6 @@ import EditReviewForm from './EditReviewForm';
 
 function EditReviewFormModal({ singleReview, profileId }) {
   const [showModal, setShowModal] = useState(false)
-  console.log(profileId, "profile id in modal")
-  console.log(singleReview, "This should be the review I want to edit")
 
   return (
     <>
