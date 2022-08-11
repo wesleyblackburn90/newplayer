@@ -1,0 +1,43 @@
+#profile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+}
+
+#profile-wrapper-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+  width: 70%;
+  height: 300px;
+  border: 2px black solid;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px gray;
+}
+
+#profile-top-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%
+}
+
+#profile-bottom-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%;
+  margin: 30px;
+
+}
+
+#profile-session-cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 80%;
+}

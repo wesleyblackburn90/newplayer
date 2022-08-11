@@ -42,6 +42,7 @@ function SessionsBar() {
           <div id="games-near-you-inner">
             <h1>Start looking for a game near you: </h1>
             <select value={state} onChange={updateState}>
+              <option value={""}></option>
               <option value={"Alabama"}> Alabama </option>
               <option value={"Alaska"}> Alaska </option>
               <option value={"Arizona"}> Arizona </option>
@@ -60,7 +61,6 @@ function SessionsBar() {
               <option value={"Kansas"}> Kansas </option>
               <option value={"Kentucky"}> Kentucky </option>
               <option value={"Louisiana"}> Louisiana </option>
-              <option value={"Maine"}> Maine </option>
               <option value={"Maine"}> Maine </option>
               <option value={"Maryland"}> Maryland </option>
               <option value={"Massachusetts"}> Massachusetts </option>

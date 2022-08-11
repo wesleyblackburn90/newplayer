@@ -3,8 +3,9 @@
   border: 1px black solid;
   width: 250px;
   height: 360px;
-  margin-right: 56px;
-  margin-left: 55px;
+  margin-right: 46px;
+  margin-left: 45px;
+  margin: 20px;
   padding: 2px;
   box-shadow: 10px 10px 10px grey;
   overflow-x: hidden;
@@ -32,7 +33,7 @@
 
 .session-card {
   text-decoration: none;
-  color: rgb(255, 83, 83)
+  color: rgb(129, 129, 243);
 }
 
 .session-card>p {
