@@ -18,10 +18,10 @@ function SingleSession() {
   const players = useSelector((state) => (state.players))
   const sessionPlayers = Object.values(players).filter((player) => player.session_id === parseInt(sessionId))
   const [users, setUsers] = useState([])
-  console.log(players)
+  console.log(sessionPlayers)
   const playersArr = Object.values(players)
   console.log(playersArr)
-  const alreadyJoined = Object.values(playersArr).filter((player) => player.user_id === parseInt(userId))
+  const alreadyJoined = Object.values(sessionPlayers).filter((player) => player.user_id === parseInt(userId))
   // const allUsers = useSelector((state) => state.user)
   console.log(alreadyJoined)
 
@@ -87,7 +87,10 @@ function SingleSession() {
                         {alreadyJoined.length > 0 ?
                           <p>You've joined this session!</p>
                           :
-                          <button id='join-now-btn' className="button" onClick={handleJoin}>Join now!</button>}
+                          sessionPlayers && sessionPlayers.length === session.players_num ?
+                            <p>This session has reached its max number of players</p>
+                            :
+                            <button id='join-now-btn' className="button" onClick={handleJoin}>Join now!</button>}
                         <NavLink to={`/users/${host.id}`}>View {host.username}'s Profile</NavLink>
                       </div>
                     }
