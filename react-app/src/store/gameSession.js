@@ -66,6 +66,9 @@ export const updateSessionThunk = (data, id) => async (dispatch) => {
     const session = await res.json()
     dispatch(updateSession(session))
     return session
+  } else {
+    const error = await res.json()
+    throw error
   }
 }
 
@@ -79,6 +82,9 @@ export const deleteSessionThunk = (sessionId) => async (dispatch) => {
     console.log(session)
     dispatch(deleteSession(session))
     return session
+  } else {
+    const error = await response.json()
+    throw error
   }
 }
 

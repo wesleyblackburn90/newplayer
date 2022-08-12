@@ -1,6 +1,9 @@
 .review-div {
+  width: 400px;
+  max-height: 300px;
   margin: 3px;
   padding: 5px;
   border: 2px black solid;
   border-radius: 10px;
+  overflow: auto;
 }

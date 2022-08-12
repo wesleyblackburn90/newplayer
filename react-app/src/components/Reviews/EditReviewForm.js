@@ -10,29 +10,37 @@ function EditReviewForm({ singleReview, profileId, setShowModal }) {
   const [rating, setRating] = useState("1")
   const [comment, setComment] = useState("")
   const [showReviewForm, setShowReviewForm] = useState("hide-review-form")
+  const [validationErrors, setValidationErrors] = useState([])
 
 
   const updateRating = (e) => setRating(e.target.value)
   const updateComment = (e) => setComment(e.target.value)
 
   const handleUpdate = async (e) => {
-    e.preventDefault()
+    try {
+      e.preventDefault()
 
-    const payload = {
-      id: singleReview.id,
-      reviewer_id: currentUserId,
-      reviewee_id: profileId,
-      rating,
-      comment
+      const payload = {
+        id: singleReview.id,
+        reviewer_id: currentUserId,
+        reviewee_id: profileId,
+        rating,
+        comment
+      }
+
+      const newReview = await dispatch(updateReviewThunk(payload))
+
+      if (newReview) {
+        history.push(`/users/${profileId}`)
+        setShowModal(false)
+      }
+      console.log(validationErrors)
     }
-    console.log(payload, "Payload in handle submit")
-
-    await dispatch(updateReviewThunk(payload)).then(history.push(`/users/${profileId}`))
-    setShowModal(false)
-    // setShowReviewForm("hide-review-form")
-
+    catch (error) {
+      setValidationErrors(error.errors)
+      console.log(validationErrors)
+    }
   }
-  console.log()
 
   useEffect(() => {
     dispatch(getReviewsThunk())
@@ -50,7 +58,11 @@ function EditReviewForm({ singleReview, profileId, setShowModal }) {
 
   return (
     <div>
-      < form id="leaveReviewInputs" >
+      <h1>Edit your review</h1>
+      {validationErrors && validationErrors.length > 0 && validationErrors.map((error) => {
+        return <li>{error}</li>
+      })}
+      <form onSubmit={handleUpdate} id="leaveReviewInputs" >
         <h3> Rating </h3>
         <select onChange={updateRating}>
           <option value="1">1</option>
@@ -66,7 +78,7 @@ function EditReviewForm({ singleReview, profileId, setShowModal }) {
           placeholder="Leave your review"
           value={comment}
           onChange={updateComment} />
-        <button onClick={handleUpdate} className="reviewFormButton button">Submit review</button>
+        <button type='submit' className="reviewFormButton button">Submit review</button>
       </form >
     </div>
   )

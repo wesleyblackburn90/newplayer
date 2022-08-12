@@ -66,6 +66,10 @@ export const updateReviewThunk = (data) => async (dispatch) => {
     dispatch(updateReview(review))
     return review
   }
+  else {
+    const error = await res.json()
+    throw error
+  }
 }
 
 export const deleteReviewThunk = (review) => async (dispatch) => {
@@ -77,6 +81,9 @@ export const deleteReviewThunk = (review) => async (dispatch) => {
     const review = await response.json()
     dispatch(deleteReview(review))
     return review
+  } else {
+    const error = await response.json()
+    throw error
   }
 }
 
