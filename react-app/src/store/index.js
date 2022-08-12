@@ -4,6 +4,7 @@ import session from './session'
 import gameSession from './gameSession';
 import review from './review';
 import players from './players'
+import user from './user'
 
 const rootReducer = combineReducers({
   session,
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
   // game,
   // location,
   review,
-  players
+  players,
+  user
 });
 
 

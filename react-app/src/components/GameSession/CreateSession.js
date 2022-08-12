@@ -16,7 +16,7 @@ function CreateSession() {
   const [zip_code, setZipCode] = useState('')
   const [game, setGame] = useState('')
   const [description, setDescription] = useState('')
-  const [pic_url, setPic] = useState('https://i2.wp.com/s802022855.onlinehome.us/wp-content/uploads/2014/12/settlers_startgame.jpg')
+  let [pic_url, setPic] = useState('')
   const [players_num, setPlayers] = useState(0)
   const [errors, setErrors] = useState([])
 
@@ -42,12 +42,17 @@ function CreateSession() {
     if (game.length > 100) errors.push("Please shorten the name of your game!")
     if (description.length > 2000) errors.push("Please leave a shorter description!")
     if (players_num < 2 || players_num > 2000) errors.push("Number of players must be 2 or higher!")
+    if (!pic_url.endsWith("jpg") && !pic_url.endsWith("png")) errors.push("Please make sure your pic is in JPG or PNG format")
 
     setErrors(errors)
   }, [location_name, address, city, state, zip_code, game, description, pic_url, players_num])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+
+    if (!pic_url) {
+      pic_url = "https://i2.wp.com/s802022855.onlinehome.us/wp-content/uploads/2014/12/settlers_startgame.jpg"
+    }
 
     const payload = {
       organizer_id: sessionUser.id,

@@ -19,7 +19,7 @@ function Sessions() {
       <div id="sessions-main-div">
         {sessionList?.map(({ id, location_name, address, city, state, zip_code, game, description, pic_url, players_num }) => (
           <div key={id} className='sessions-main-div-cards'>
-            <img class="sessions-main-div-img" src={`${pic_url}`} />
+            <img className="sessions-main-div-img" src={`${pic_url}`} />
             <p>{location_name} at {city}, {state}</p>
             <p>Game: {game}</p>
             <p>Number of players needed: {players_num}</p>

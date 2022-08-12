@@ -8,6 +8,7 @@ import EditSessionForm from "./EditSessionForm";
 import UsersProfile from "../Profiles/UsersProfile";
 import { addNewPlayer, getAllPlayers } from "../../store/players";
 import "./SingleSession.css"
+import { getAllUsers } from "../../store/user";
 
 function SingleSession() {
   const history = useHistory()
@@ -16,18 +17,27 @@ function SingleSession() {
   const session = useSelector((state) => (state.gameSession[sessionId]))
   const userId = useSelector((state) => (state.session.user.id))
   const players = useSelector((state) => (state.players))
+  const allUsers = useSelector((state) => (state.user))
   const sessionPlayers = Object.values(players).filter((player) => player.session_id === parseInt(sessionId))
-  const [users, setUsers] = useState([])
-  console.log(sessionPlayers)
-  const playersArr = Object.values(players)
-  console.log(playersArr)
   const alreadyJoined = Object.values(sessionPlayers).filter((player) => player.user_id === parseInt(userId))
-  // const allUsers = useSelector((state) => state.user)
-  console.log(alreadyJoined)
+
+  const [users, setUsers] = useState([])
+  let newArr = []
+  if (sessionPlayers && allUsers) {
+    sessionPlayers.map((player) => {
+      return Object.values(allUsers).forEach((user) => {
+        if (player.user_id === user.id) {
+          newArr.push(user)
+        }
+      })
+    })
+    console.log(newArr)
+  }
 
   useEffect(() => {
     dispatch(getSessionsThunk())
     dispatch(getAllPlayers())
+    dispatch(getAllUsers())
     if (!userId) {
       history.push('/login')
     }
@@ -91,7 +101,6 @@ function SingleSession() {
                             <p>This session has reached its max number of players</p>
                             :
                             <button id='join-now-btn' className="button" onClick={handleJoin}>Join now!</button>}
-                        <NavLink to={`/users/${host.id}`}>View {host.username}'s Profile</NavLink>
                       </div>
                     }
                   </div>
@@ -100,6 +109,7 @@ function SingleSession() {
                     <button className="button" onClick={handleDelete}>Delete session</button>
                   </>
                 }
+                <NavLink to={`/users/${host.id}`}>View {host.username}'s Profile</NavLink>
               </div>
             </div>
             <p>Location Name: {session.location_name}</p>
@@ -111,6 +121,15 @@ function SingleSession() {
             <p>Description: {session.description}</p>
             <p>Number of players needed: {session.players_num}</p>
             <p>Number of players joined: {sessionPlayers.length}</p>
+            {newArr && newArr.length ?
+              <div>
+                <p> Players Joined:</p>
+                {newArr && newArr.map((player) => {
+                  return <p>{player.username}</p>
+                })}
+              </div>
+              : <p>No players yet</p>
+            }
           </div>
         </div>
       }
