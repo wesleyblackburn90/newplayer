@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Flask React Project
 
 Welcome to New Player! An app that you can use to find other users that are looking for people to join in on their table top games. Meet up with friends or make new new ones!
@@ -60,6 +59,8 @@ Live Link: https://new-player-app.herokuapp.com/
 
 6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
 
-=======
-### New Player
->>>>>>> a61f870b6cc14bca70103617f7aba28bbb4b1477
+Enjoy New Player!
+
+About me: 
+[Github](https://github.com/wesleyblackburn90)
+[Linkedin](https://www.linkedin.com/in/wesley-blackburn-333286232/)
