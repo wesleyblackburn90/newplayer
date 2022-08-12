@@ -1,13 +1,13 @@
 #session-card-div {
   border-radius: 5px;
-  border: 1px black solid;
+  /* border: 1px black solid; */
   width: 250px;
   height: 360px;
   margin-right: 46px;
   margin-left: 45px;
   margin: 20px;
   padding: 2px;
-  box-shadow: 10px 10px 10px grey;
+  box-shadow: 3px 3px 3px grey;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -28,6 +28,7 @@
   width: 250px;
   height: 150px;
   border-radius: 5px;
+  margin: none;
   background-size: contain;
 }
 

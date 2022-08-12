@@ -7,15 +7,12 @@ const getUsers = (users) => ({
 
 
 export const getAllUsers = () => async (dispatch) => {
-  console.log("hello")
   const response = await fetch('/api/users/users')
 
   if (response.ok) {
-    console.log("I'm ok!")
     const data = await response.json()
     dispatch(getUsers(data))
   } else {
-    console.log("I'm not ok :(")
     const error = await response.json()
     throw error
   }

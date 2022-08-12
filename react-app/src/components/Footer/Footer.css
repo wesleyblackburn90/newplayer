@@ -1,15 +1,25 @@
 #footer-div {
-  background-color: cadetblue;
+
   bottom: 5px;
   display: flex;
-  justify-content: center;
-  width: 100%;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 80%;
   height: 10%;
   flex: 1;
+  text-decoration: none;
 }
 
 #footer-wrap {
   display: flex;
   flex-direction: column;
-  min-height: 50px;
+  align-items: center;
+  height: 100px;
+  background-color: cadetblue;
+}
+
+.about-me-links {
+  height: 40px;
+  width: 40px;
 }

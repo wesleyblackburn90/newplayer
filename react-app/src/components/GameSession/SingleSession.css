@@ -1,16 +1,19 @@
 #whole-single-session-div {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
+  height: 1100px;
 }
 
 #main-single-session-div {
-  border: 1px black solid;
-  border-radius: 5px;
+  /* border: 1px black solid; */
+  border-radius: 15px;
   width: 60%;
+  height: 80%;
   margin: 50px;
+  z-index: 1;
 }
 
 #single-session-div-top {
@@ -23,6 +26,7 @@
 #single-session-img {
   height: 500px;
   width: 700px;
+  border-radius: 10px 0px 0px 0px;
 }
 
 #single-session-div-top-right {
@@ -32,9 +36,41 @@
   align-items: center;
   height: 500px;
   width: 50%;
+  background-color: rgb(247, 245, 245);
+  border-radius: 0px 10px 0px 0px;
 }
 
 #join-now-btn {
   background-color: #13505B;
   color: #d7d9ce;
+}
+
+#top-right-info {
+  width: 80%;
+  height: 80%;
+  font-size: 30pt;
+}
+
+#top-right-info>p {
+  margin: 20px;
+}
+
+#join-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#profile-background-img {
+  filter: blur(50px);
+  display: inline-block;
+  width: 200%;
+  height: 400px;
+  position: absolute;
+  top: 15%;
+  left: 0;
+}
+
+#single-session-div-bottom {
+  background-color: rgb(247, 245, 245);
 }

@@ -66,7 +66,7 @@ function App() {
           <EditSessionForm />
         </ProtectedRoute> */}
       </Switch>
-      {/* <Footer /> */}
+      <Footer />
     </BrowserRouter>
   );
 }
