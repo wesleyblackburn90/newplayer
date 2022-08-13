@@ -7,8 +7,8 @@ function EditReviewForm({ singleReview, profileId, setShowModal }) {
   const dispatch = useDispatch()
   const history = useHistory()
   const currentUserId = useSelector(state => state.session.user.id)
-  const [rating, setRating] = useState("1")
-  const [comment, setComment] = useState("")
+  const [rating, setRating] = useState(singleReview ? singleReview.rating : 0)
+  const [comment, setComment] = useState(singleReview.comment)
   const [showReviewForm, setShowReviewForm] = useState("hide-review-form")
   const [validationErrors, setValidationErrors] = useState([])
 

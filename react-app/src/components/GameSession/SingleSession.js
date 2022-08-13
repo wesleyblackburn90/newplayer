@@ -109,7 +109,11 @@ function SingleSession() {
                       }
                     </div>
                     : <>
-                      <EditSessionFormModal session={session} />
+                      {newArr.length === session.players_num ?
+                        <p>Cannot edit after player list is full!</p>
+                        :
+                        <EditSessionFormModal session={session} />
+                      }
                       <button className="button" onClick={handleDelete}>Delete session</button>
                     </>
                   }
