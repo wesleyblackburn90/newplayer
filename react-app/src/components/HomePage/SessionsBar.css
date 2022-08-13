@@ -54,7 +54,15 @@
   width: 90%;
 }
 
-#suggestion-header {
+.suggestion-header {
   color: black;
   margin: 20px;
+}
+
+#no-events-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
 }

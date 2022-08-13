@@ -34,7 +34,7 @@ function SessionsBar() {
     }
     fetchSessions().catch(console.error)
   }, [dispatch])
-
+  console.log(displaySessions)
   return (
     sessions ?
       <>
@@ -98,16 +98,22 @@ function SessionsBar() {
         </div>
         <div id="sessions-container">
           <div id='sessions-bar-container'>
-            <h1 id="suggestion-header" style={{ 'color': 'black' }}>Events that you might like </h1>
             {state ?
-              <div id='events-session-bar'>
-                <div id='events-session-bar-inner'>
-                  {Object.values(displaySessions).map((session) => (
-                    <SessionCard session={session} />
-                  ))}
-                </div>
-                <NavLink to={`/${state}/sessions`}>See all sessions in {state}</NavLink>
-              </div>
+              <h1 className="suggestion-header">Events in {state}</h1>
+              :
+              <h1 className="suggestion-header" style={{ 'color': 'black' }}>Events that you might like </h1>
+            }
+            {state ?
+              displaySessions && displaySessions.length > 0 ?
+                <div id='events-session-bar'>
+                  <div id='events-session-bar-inner'>
+                    {Object.values(displaySessions).map((session) => (
+                      <SessionCard session={session} />
+                    ))}
+                  </div>
+                  <NavLink to={`/${state}/sessions`}>See all sessions in {state}</NavLink>
+                </div> :
+                <h1 id="no-events-header">There are currently no events being held in this state! Click Create a Session at the top of the page to be the first!</h1>
               :
               <div id='events-session-bar'>
                 <div id='events-session-bar-inner'>

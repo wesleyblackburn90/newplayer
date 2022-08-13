@@ -121,24 +121,31 @@ function SingleSession() {
               </div>
             </div>
             <div id="single-session-div-bottom">
-              <p>Location Name: {session.location_name}</p>
-              {/* {session && session.organizer_id === } */}
-              <p>Address: {session.address}</p>
-              <p>City: {session.city}</p>
-              <p>State: {session.state}</p>
-              <p>Zipcode: {session.zip_code}</p>
-              <p>Description: {session.description}</p>
-              <p>Number of players needed: {session.players_num}</p>
-              <p>Number of players joined: {sessionPlayers.length}</p>
-              {newArr && newArr.length ?
-                <div>
-                  <p> Players Joined:</p>
-                  {newArr && newArr.map((player) => {
-                    return <p>{player.username}</p>
-                  })}
+              <div id="single-session-div-bottom-left">
+                <p>Description: {session.description}</p>
+                <p>Number of players needed: {session.players_num}</p>
+                <div id="players-list-div">
+                  <p style={{ "text-decoration": "underline" }}>Players joined</p>
+                  {newArr && newArr.length ?
+                    <div>
+                      <p> Players Joined:</p>
+                      {newArr && newArr.map((player) => {
+                        return <p>{player.username}</p>
+                      })}
+                    </div>
+                    : <p>No players yet</p>
+                  }
                 </div>
-                : <p>No players yet</p>
-              }
+              </div>
+              <div id="single-session-div-bottom-right">
+                <img id="location-icon" src='/static/location.png' />
+                <div id='location-info-div'>
+                  <h2 style={{ "font-weight": "bold" }}>Location</h2>
+                  <p>{session.location_name}</p>
+                  <p>{session.address}</p>
+                  <p>{session.city}, {session.state} {session.zip_code}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
