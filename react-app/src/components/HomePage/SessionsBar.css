@@ -27,19 +27,34 @@
 #events-session-bar {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
   height: 370px;
   width: 100%;
-  margin: 50px;
+  /* margin: 50px; */
 }
 
 #events-session-bar-inner {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: flex-start;
   height: 370px;
   width: 80%;
+}
+
+#sessions-container {
+  display: flex;
+  justify-content: center;
+  margin: 50px;
+}
+
+#sessions-bar-container {
+  width: 90%;
+}
+
+#suggestion-header {
+  color: black;
+  margin: 20px;
 }

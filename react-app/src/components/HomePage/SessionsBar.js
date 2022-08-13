@@ -96,26 +96,28 @@ function SessionsBar() {
             </select>
           </div>
         </div>
-        <div>
-          <h1 style={{ 'color': 'blue' }}>Events that you might like </h1>
-          {state ?
-            <div id='events-session-bar'>
-              <div id='events-session-bar-inner'>
-                {Object.values(displaySessions).map((session) => (
-                  <SessionCard session={session} />
-                ))}
+        <div id="sessions-container">
+          <div id='sessions-bar-container'>
+            <h1 id="suggestion-header" style={{ 'color': 'black' }}>Events that you might like </h1>
+            {state ?
+              <div id='events-session-bar'>
+                <div id='events-session-bar-inner'>
+                  {Object.values(displaySessions).map((session) => (
+                    <SessionCard session={session} />
+                  ))}
+                </div>
+                <NavLink to={`/${state}/sessions`}>See all sessions in {state}</NavLink>
               </div>
-              <NavLink to={`/${state}/sessions`}>See all sessions in {state}</NavLink>
-            </div>
-            :
-            <div id='events-session-bar'>
-              <div id='events-session-bar-inner'>
-                {sessionsArr.map((session) => (
-                  <SessionCard session={session} />
-                ))}
+              :
+              <div id='events-session-bar'>
+                <div id='events-session-bar-inner'>
+                  {sessionsArr.map((session) => (
+                    <SessionCard session={session} />
+                  ))}
+                </div>
               </div>
-            </div>
-          }
+            }
+          </div>
         </div>
       </> :
       <p> ... Searching </p>
