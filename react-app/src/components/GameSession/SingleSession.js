@@ -81,7 +81,7 @@ function SingleSession() {
   }
 
   return (
-    <div>
+    <div id="single-session-container">
       {session && host &&
         <div id="whole-single-session-div">
           <img id="profile-background-img" src={session.pic_url}></img>
@@ -122,13 +122,12 @@ function SingleSession() {
             </div>
             <div id="single-session-div-bottom">
               <div id="single-session-div-bottom-left">
-                <p>Description: {session.description}</p>
+                <p style={{ "margin": "20px" }}>Description: {session.description}</p>
                 <p>Number of players needed: {session.players_num}</p>
                 <div id="players-list-div">
                   <p style={{ "text-decoration": "underline" }}>Players joined</p>
                   {newArr && newArr.length ?
                     <div>
-                      <p> Players Joined:</p>
                       {newArr && newArr.map((player) => {
                         return <p>{player.username}</p>
                       })}
