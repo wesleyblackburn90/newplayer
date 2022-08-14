@@ -21,19 +21,31 @@ const SignUpForm = () => {
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, first_name, last_name, email, password));
       if (data) {
-        setErrors(data)
+        let newErrors
+        let prettyErrors
+        if (data) {
+          newErrors = Object.values(data).map((error) => error.split(":"))
+          if (newErrors) {
+            prettyErrors = Object.values(newErrors).map((error) => error[1])
+            console.log(prettyErrors)
+          }
+        }
+        setErrors(prettyErrors)
       }
     }
   };
 
+
   useEffect(() => {
     let errors = []
 
-    if (username.length > 40) errors.push("Please entera valid username that's less than 40 characters")
+    if (username.length > 40) errors.push("Please enter a valid username that's less than 40 characters")
     if (first_name.length > 50) errors.push("Name too long")
     if (last_name.length > 50) errors.push("Name too long")
     if (email.length > 255) errors.push("Please enter a shorter email address")
     if (password !== repeatPassword) errors.push("Please make sure your passwords match!")
+
+
 
     setErrors(errors)
   }, [username, first_name, last_name, email, password, repeatPassword])
@@ -61,6 +73,16 @@ const SignUpForm = () => {
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
   };
+
+  let newErrors
+  let prettyErrors
+  if (errors) {
+    newErrors = Object.values(errors).map((error) => error.split(":"))
+    if (newErrors) {
+      prettyErrors = Object.values(newErrors).map((error) => error[1])
+      console.log(prettyErrors)
+    }
+  }
 
   if (user) {
     return <Redirect to='/' />;

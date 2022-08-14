@@ -19,3 +19,12 @@
 #signup-form>label {
   margin: 2px;
 }
+
+#signup-form>* {
+  margin: 3px;
+}
+
+#signup-form {
+
+  height: 300px;
+}
