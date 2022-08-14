@@ -15,6 +15,7 @@ import SingleSession from './components/GameSession/SingleSession';
 import StateSessions from './components/GameSession/StateSessions'
 import EditSessionForm from './components/GameSession/EditSessionForm';
 import Footer from './components/Footer/Footer'
+import PageNotFound from './components/404page/404page';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -65,6 +66,9 @@ function App() {
         {/* <ProtectedRoute path='/sessions/:sessionId/edit'>
           <EditSessionForm />
         </ProtectedRoute> */}
+        <Route path="*">
+          <PageNotFound />
+        </Route>
       </Switch>
       <Footer />
     </BrowserRouter>

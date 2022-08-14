@@ -122,7 +122,7 @@ function SingleSession() {
             </div>
             <div id="single-session-div-bottom">
               <div id="single-session-div-bottom-left">
-                <p style={{ "margin": "20px" }}>Description: {session.description}</p>
+                <p id="description" style={{ "margin": "20px" }}>Description: {session.description}</p>
                 <p>Number of players needed: {session.players_num}</p>
                 <div id="players-list-div">
                   <p style={{ "text-decoration": "underline" }}>Players joined</p>
@@ -140,9 +140,9 @@ function SingleSession() {
                 <img id="location-icon" src='/static/location.png' />
                 <div id='location-info-div'>
                   <h2 style={{ "font-weight": "bold" }}>Location</h2>
-                  <p>{session.location_name}</p>
-                  <p>{session.address}</p>
-                  <p>{session.city}, {session.state} {session.zip_code}</p>
+                  <p className="location-info">{session.location_name}</p>
+                  <p className="location-info">{session.address}</p>
+                  <p className="location-info">{session.city}, {session.state} {session.zip_code}</p>
                 </div>
               </div>
             </div>
