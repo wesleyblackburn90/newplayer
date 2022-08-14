@@ -1,19 +1,27 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { deleteReviewThunk, getReviewsThunk } from '../../store/review'
 import { useHistory } from "react-router-dom"
 import EditReviewFormModal from "./EditReviewFormModal"
 import './SingleReview.css'
+import { getAllUsers } from "../../store/user"
 
 function SingleReview({ singleReview, userId }) {
   const history = useHistory()
   const dispatch = useDispatch()
   const sessionUser = useSelector((state) => state.session.user)
+  const users = useSelector((state) => state.user)
+  console.log(users)
+  // const reviewer = Object.values()
 
   const handleDelete = async (e) => {
     e.preventDefault()
     await dispatch(deleteReviewThunk(singleReview)).then(history.push(`/users/${userId}`))
   }
+
+  useEffect(() => {
+    getAllUsers()
+  }, dispatch)
 
   return (
     <div>
