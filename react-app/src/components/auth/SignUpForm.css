@@ -9,7 +9,7 @@
 
 #left-side-sign-up-div {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 50%;
   height: 100%;
   justify-content: center;
@@ -21,10 +21,19 @@
 }
 
 #signup-form>* {
-  margin: 3px;
+  margin: 10px;
 }
 
 #signup-form {
 
   height: 300px;
+}
+
+#signup-errors-div {
+  margin: 50px;
+  width: 350px;
+}
+
+#signup-errors-div>* {
+  margin: 10px;
 }

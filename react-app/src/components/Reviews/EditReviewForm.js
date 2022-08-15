@@ -11,6 +11,8 @@ function EditReviewForm({ singleReview, profileId, setShowModal }) {
   const [comment, setComment] = useState(singleReview.comment)
   const [showReviewForm, setShowReviewForm] = useState("hide-review-form")
   const [validationErrors, setValidationErrors] = useState([])
+  console.log(comment)
+  console.log(rating)
 
 
   const updateRating = (e) => setRating(e.target.value)
@@ -31,14 +33,24 @@ function EditReviewForm({ singleReview, profileId, setShowModal }) {
       const newReview = await dispatch(updateReviewThunk(payload))
 
       if (newReview) {
+        console.log(newReview)
         history.push(`/users/${profileId}`)
         setShowModal(false)
       }
-      console.log(validationErrors)
     }
-    catch (error) {
-      setValidationErrors(error.errors)
-      console.log(validationErrors)
+    catch (err) {
+      let newErrors
+      let prettyErrors
+      if (err) {
+        console.log(err)
+        newErrors = Object.values(err).map((error) => error[0].split(":"))
+        console.log(newErrors)
+        if (newErrors) {
+          prettyErrors = Object.values(newErrors).map((error) => error[1])
+          console.log(prettyErrors)
+        }
+      }
+      setValidationErrors(prettyErrors)
     }
   }
 
@@ -64,7 +76,7 @@ function EditReviewForm({ singleReview, profileId, setShowModal }) {
       })}
       <form onSubmit={handleUpdate} id="leaveReviewInputs" >
         <h3> Rating </h3>
-        <select onChange={updateRating}>
+        <select value={rating} onChange={updateRating}>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>

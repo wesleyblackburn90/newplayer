@@ -74,15 +74,15 @@ const SignUpForm = () => {
     setRepeatPassword(e.target.value);
   };
 
-  let newErrors
-  let prettyErrors
-  if (errors) {
-    newErrors = Object.values(errors).map((error) => error.split(":"))
-    if (newErrors) {
-      prettyErrors = Object.values(newErrors).map((error) => error[1])
-      console.log(prettyErrors)
-    }
-  }
+  // let newErrors
+  // let prettyErrors
+  // if (errors) {
+  //   newErrors = Object.values(errors).map((error) => error.split(":"))
+  //   if (newErrors) {
+  //     prettyErrors = Object.values(newErrors).map((error) => error[1])
+  //     console.log(prettyErrors)
+  //   }
+  // }
 
   if (user) {
     return <Redirect to='/' />;

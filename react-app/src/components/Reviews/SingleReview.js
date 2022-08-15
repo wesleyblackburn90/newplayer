@@ -11,8 +11,6 @@ function SingleReview({ singleReview, userId }) {
   const dispatch = useDispatch()
   const sessionUser = useSelector((state) => state.session.user)
   const users = useSelector((state) => state.user)
-  console.log(users)
-  // const reviewer = Object.values()
 
   const handleDelete = async (e) => {
     e.preventDefault()

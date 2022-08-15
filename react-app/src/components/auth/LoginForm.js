@@ -49,6 +49,7 @@ const LoginForm = () => {
   return (
     <div id='login-form-div'>
       <div id='left-side-login-div'>
+        <p id="blurb">Welcome to New Player! Log in or sign up to get started! Navigate to your state to start looking for a game session to join near you so you can meet people and play board games!</p>
         <h1>Please log in to use New Player</h1>
         <NavLink to='/' id='login-newplayer-link'>New Player</NavLink>
         <form id='login-form' onSubmit={onLogin}>

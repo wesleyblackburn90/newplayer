@@ -91,9 +91,7 @@ function SingleSession() {
               <div id='single-session-div-top-right'>
                 <div id='top-right-info'>
                   <p>{session.game}</p>
-                  <p>Host:
-                    <NavLink to={`/users/${host.id}`}> {host.username}</NavLink>
-                  </p>
+                  <p>Host: <NavLink style={{ "text-decoration": "none" }} to={`/users/${host.id}`}>{host.username}</NavLink></p>
                   {host.id !== userId ?
                     <div>
                       {host &&

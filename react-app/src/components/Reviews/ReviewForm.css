@@ -1,0 +1,35 @@
+#leave-review-div {
+  padding: 5px;
+}
+
+
+#rating-div {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+}
+
+.rating-select {
+  border-radius: 5px;
+  width: 30px;
+  margin: 5px;
+}
+
+#review-div {
+  padding: 5px;
+}
+
+#reviewBody {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 385px;
+  height: 100px;
+  margin: 5px;
+}
+
+
+#submit-button-div {
+  display: flex;
+  flex-direction: row-reverse;
+}

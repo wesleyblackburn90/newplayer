@@ -51,3 +51,15 @@
 .sign-up-btn {
   width: 60px;
 }
+
+#blurb {
+  width: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 30px;
+  font-size: larger;
+}
+
+#login-signup-buttons {
+  width: 160px;
+}
