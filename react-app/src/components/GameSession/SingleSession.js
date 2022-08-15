@@ -121,7 +121,7 @@ function SingleSession() {
             <div id="single-session-div-bottom">
               <div id="single-session-div-bottom-left">
                 <p id="description" style={{ "margin": "20px" }}>Description: {session.description}</p>
-                <p>Number of players needed: {session.players_num}</p>
+                <p>Number of players needed: {session.players_num - sessionPlayers.length}</p>
                 <div id="players-list-div">
                   <p style={{ "text-decoration": "underline" }}>Players joined</p>
                   {newArr && newArr.length ?

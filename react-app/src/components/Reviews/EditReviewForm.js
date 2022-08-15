@@ -84,7 +84,8 @@ function EditReviewForm({ singleReview, profileId, setShowModal }) {
           <option value="5">5</option>
         </select>
         <h3> Review </h3>
-        <input
+        <textarea
+          rows="5"
           id="reviewBody"
           type="text"
           placeholder="Leave your review"
