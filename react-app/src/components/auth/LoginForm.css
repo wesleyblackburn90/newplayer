@@ -63,3 +63,23 @@
 #login-signup-buttons {
   width: 160px;
 }
+
+#login-form-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#log-in-errors {
+  width: 308px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 70px;
+}
+
+#log-in-errors>* {
+  margin: 20px;
+}

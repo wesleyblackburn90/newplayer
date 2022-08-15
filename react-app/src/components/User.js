@@ -14,7 +14,6 @@ function User() {
   const reviews = useSelector(state => state.review)
   const sessionList = useSelector(state => state.gameSession)
   const hostSessions = Object.values(sessionList).filter(session => session.organizer_id === parseInt(userId))
-  console.log(hostSessions)
 
   let userReviews
   let totalRating

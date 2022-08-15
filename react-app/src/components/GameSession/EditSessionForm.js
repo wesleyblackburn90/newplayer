@@ -51,37 +51,45 @@ function EditSessionForm({ session, setShowModal }) {
   }, [dispatch])
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-
-    const payload = {
-      organizer_id: sessionUser.id,
-      location_name,
-      address,
-      city,
-      state,
-      zip_code,
-      game,
-      description,
-      pic_url,
-      players_num
-    }
-
     try {
-      await dispatch(updateSessionThunk(payload, sessionId)).then(history.push(`/sessions/${session.id}`))
-      setShowModal(false)
-    } catch {
-      return dispatch(updateSessionThunk(payload)).catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-      })
+      e.preventDefault()
+
+      const payload = {
+        organizer_id: sessionUser.id,
+        location_name,
+        address,
+        city,
+        state,
+        zip_code,
+        game,
+        description,
+        pic_url,
+        players_num
+      }
+
+      const newSessions = await dispatch(updateSessionThunk(payload, sessionId))
+      if (newSessions) {
+        history.push(`/sessions/${session.id}`)
+        setShowModal(false)
+      }
+    } catch (err) {
+      let newErrors
+      let prettyErrors
+      if (err) {
+        console.log(err)
+        newErrors = Object.values(err).map((error) => error[0].split(":"))
+        console.log(newErrors)
+        if (newErrors) {
+          prettyErrors = Object.values(newErrors).map((error) => error[1])
+          console.log(prettyErrors)
+        }
+      }
+      setErrors(prettyErrors)
     }
   }
 
   return (
     <>
-      {errors.map((error) => {
-        <ul> {error} </ul>
-      })}
       <form onSubmit={handleSubmit}>
         <p>Where is the name of the location of the game session?</p>
         <input
@@ -207,7 +215,10 @@ function EditSessionForm({ session, setShowModal }) {
           onChange={updatePlayers}
         />
         <button className="button" type="submit">Update your session!</button>
-        {/* <NavLink to={`/sessions/${sessionId}`}>Cancel</NavLink> */}
+        {errors && errors?.map((error) => {
+          <li> {error} </li>
+        })}
+
       </form>
     </>
   )
