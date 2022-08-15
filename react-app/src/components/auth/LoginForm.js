@@ -43,6 +43,8 @@ const LoginForm = () => {
     return <Redirect to='/' />;
   }
 
+  console.log(errors)
+
   return (
     <div id='login-form-div'>
       <div id='left-side-login-div'>

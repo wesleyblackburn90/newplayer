@@ -37,8 +37,9 @@ function EditSessionForm({ session, setShowModal }) {
     if (address.length < 3 || address.length > 75) errors.push('Address must be longer than 3 characters and less than 75')
     if (city.length < 1 || city.length > 30) errors.push("Please enter a valid city name")
     // if (state.length < 4 || state.length > 14) errors.push("Please enter a valid state!")
-    if (zip_code.length !== 5) errors.push("Please enter a valid 5 digit zipcode!")
+    if (zip_code.toString().length !== 5) errors.push("Please enter a valid 5 digit zipcode!")
     if (game.length < 2) errors.push("Please give the name of your game!")
+    console.log(zip_code)
     if (game.length > 100) errors.push("Please shorten the name of your game!")
     if (description.length > 2000) errors.push("Please leave a shorter description!")
     if (players_num < 2 || players_num > 2000) errors.push("Number of players must be 2 or higher!")
@@ -87,6 +88,8 @@ function EditSessionForm({ session, setShowModal }) {
       setErrors(prettyErrors)
     }
   }
+
+  console.log(errors)
 
   return (
     <>
@@ -215,10 +218,10 @@ function EditSessionForm({ session, setShowModal }) {
           onChange={updatePlayers}
         />
         <button className="button" type="submit">Update your session!</button>
-        {errors && errors?.map((error) => {
-          <li> {error} </li>
-        })}
 
+        {errors.length ? errors.map((error, i) => {
+          return <li key={i}> {error} </li>
+        }) : null}
       </form>
     </>
   )
