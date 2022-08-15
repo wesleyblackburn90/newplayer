@@ -91,7 +91,7 @@ function EditReviewForm({ singleReview, profileId, setShowModal }) {
           placeholder="Leave your review"
           value={comment}
           onChange={updateComment} />
-        <button type='submit' className="reviewFormButton button">Submit review</button>
+        <button type='submit' className="reviewFormButton button">Submit review!</button>
       </form >
     </div>
   )
