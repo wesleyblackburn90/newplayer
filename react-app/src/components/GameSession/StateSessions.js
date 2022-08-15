@@ -34,7 +34,7 @@ function StateSessions() {
         <div className="sessions-main-div">
           {newArr?.map(({ id, location_name, address, city, state, zip_code, game, description, pic_url, players_num }) => (
             <div key={id} className='state-sessions-main-div-cards'>
-              <img className="sessions-main-div-img" src={`${pic_url}`} />
+              <img className="sessions-main-div-img" src={`${pic_url}`} onError='this.onError=null;this.src="/static/boardgame.jpg"' />
               <h3>Location</h3>
               <p>{location_name} at {city}, {state}</p>
               <h3>Game</h3>

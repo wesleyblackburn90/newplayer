@@ -19,7 +19,7 @@ function SessionCard({ session }) {
     <>
       <div id='session-card-div'>
         <NavLink className='session-card' to={`/sessions/${session.id}`}>
-          <img className='session-card-img' src={`${session.pic_url}`} />
+          <img className='session-card-img' src={`${session.pic_url}`} onError='this.onError=null;this.src="/static/boardgame.jpg"' />
           <h3>Now playing</h3>
           <p>{session.game}</p>
           <p>Playing at {session.location_name}</p>

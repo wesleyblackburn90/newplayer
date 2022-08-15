@@ -84,10 +84,10 @@ function SingleSession() {
     <div id="single-session-container">
       {session && host &&
         <div id="whole-single-session-div">
-          <img id="profile-background-img" src={session.pic_url}></img>
+          <img id="profile-background-img" src={session.pic_url} onError='this.onError=null;this.src="/static/boardgame.jpg"'></img>
           <div id="main-single-session-div">
             <div id='single-session-div-top'>
-              <img id='single-session-img' onerror='this.src="https://i2.wp.com/s802022855.onlinehome.us/wp-content/uploads/2014/12/settlers_startgame.jpg"' src={`${session.pic_url}`} />
+              <img id='single-session-img' src={`${session.pic_url}`} onError='this.onError=null;this.src="/static/boardgame.jpg"' />
               <div id='single-session-div-top-right'>
                 <div id='top-right-info'>
                   <p>{session.game}</p>

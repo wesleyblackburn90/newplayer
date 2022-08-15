@@ -51,7 +51,7 @@ function CreateSession() {
     e.preventDefault()
 
     if (!pic_url) {
-      pic_url = "https://i2.wp.com/s802022855.onlinehome.us/wp-content/uploads/2014/12/settlers_startgame.jpg"
+      pic_url = "/static/boardgame.jpg"
     }
 
     const payload = {

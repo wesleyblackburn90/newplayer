@@ -16,7 +16,21 @@ const LoginForm = () => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
-      setErrors(data);
+      // console.log(data)
+      // let newErrors
+      // let prettyErrors
+      // if (data) {
+      //   newErrors = Object.values(data).map((error) => error.split(":"))
+      //   console.log(newErrors)
+      //   if (newErrors) {
+      //     prettyErrors = Object.values(newErrors).map((error) => {
+      //       return error[0] + error[1].split('').splice(11).join('')
+      //       // return error[1]
+      //     })
+      //     console.log(prettyErrors)
+      //   }
+      // }
+      setErrors(data)
     }
   };
 
@@ -40,7 +54,7 @@ const LoginForm = () => {
         <form id='login-form' onSubmit={onLogin}>
           <div>
             {errors.map((error, index) => (
-              <div key={index}>{error}</div>
+              <li key={index}>{error}</li>
             ))}
           </div>
           {/* <NavLink to='/' id='login-newplayer-link'>New Player</NavLink> */}
