@@ -106,7 +106,7 @@ class Session(db.Model):
     #relationships
     # game = db.relationship('Game', back_populates='session')
     organizer = db.relationship('User', back_populates='session')
-    player = db.relationship('Player', back_populates='session')
+    player = db.relationship('Player', back_populates='session', cascade="all, delete")
     # location = db.relationship('Location', back_populates='session')
 
     def to_dict(self):
