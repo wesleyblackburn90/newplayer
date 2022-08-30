@@ -2,8 +2,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import SessionsBar from "./SessionsBar";
 import "./HomePage.css"
+import SearchBar from "../SearchBar/SearchBar";
+import { useSelector } from "react-redux";
 
 function HomePage() {
+  const sessions = useSelector(state => state.gameSession)
+
   return (
     <>
       <div id='splash-page-banner'>
@@ -15,6 +19,7 @@ function HomePage() {
         </div>
       </div>
       <SessionsBar />
+      <SearchBar placeholder="Find a game" data={sessions} />
     </>
   )
 }

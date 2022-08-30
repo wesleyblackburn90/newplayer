@@ -9,6 +9,7 @@ import UsersProfile from "../Profiles/UsersProfile";
 import { addNewPlayer, getAllPlayers } from "../../store/players";
 import "./SingleSession.css"
 import { getAllUsers } from "../../store/user";
+import defaultImg from '../defaultImg/boardgame.jpg'
 
 function SingleSession() {
   const history = useHistory()
@@ -22,6 +23,8 @@ function SingleSession() {
   const alreadyJoined = Object.values(sessionPlayers).filter((player) => player.user_id === parseInt(userId))
 
   const [users, setUsers] = useState([])
+  const [errorImg, setErrorImg] = useState(true)
+
   let newArr = []
   if (sessionPlayers && allUsers) {
     sessionPlayers.map((player) => {
@@ -80,14 +83,21 @@ function SingleSession() {
     await dispatch(deleteSessionThunk(sessionId)).then(history.push('/sessions'))
   }
 
+  function imgErrorHandler(e) {
+    if (errorImg) {
+      setErrorImg(false)
+    }
+    e.target.src = defaultImg
+  }
+
   return (
     <div id="single-session-container">
       {session && host &&
         <div id="whole-single-session-div">
-          <img id="profile-background-img" src={session.pic_url} onError='this.onError=null;this.src="/static/boardgame.jpg"'></img>
+          <img id="profile-background-img" src={session.pic_url} onError={imgErrorHandler}></img>
           <div id="main-single-session-div">
             <div id='single-session-div-top'>
-              <img id='single-session-img' src={`${session.pic_url}`} onError='this.onError=null;this.src="/static/boardgame.jpg"' />
+              <img id='single-session-img' src={`${session.pic_url}`} onError={imgErrorHandler} />
               <div id='single-session-div-top-right'>
                 <div id='top-right-info'>
                   <p>{session.game}</p>

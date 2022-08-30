@@ -29,3 +29,12 @@
   text-decoration: none;
   color: white;
 }
+
+.search-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.hide {
+  display: none;
+}
