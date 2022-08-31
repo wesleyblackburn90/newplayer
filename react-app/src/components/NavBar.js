@@ -17,7 +17,11 @@ const NavBar = () => {
         <NavLink to='/' exact={true} activeClassName='active' id="new-player-logo">
           New Player
         </NavLink>
-        {/* <SearchBar placeholder="Find a game" data={sessions} /> */}
+        <div id='search-bar-wrapper'>
+          <div id='search-bar-container'>
+            <SearchBar placeholder="Find a game" data={sessions} />
+          </div>
+        </div>
         {!sessionUser ?
           <div className="logged-out-buttons-div">
             <NavLink to='/login' exact={true} activeClassName='active' className="button">

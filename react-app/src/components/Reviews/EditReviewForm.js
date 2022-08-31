@@ -42,12 +42,9 @@ function EditReviewForm({ singleReview, profileId, setShowModal }) {
       let newErrors
       let prettyErrors
       if (err) {
-        console.log(err)
         newErrors = Object.values(err).map((error) => error[0].split(":"))
-        console.log(newErrors)
         if (newErrors) {
           prettyErrors = Object.values(newErrors).map((error) => error[1])
-          console.log(prettyErrors)
         }
       }
       setValidationErrors(prettyErrors)
