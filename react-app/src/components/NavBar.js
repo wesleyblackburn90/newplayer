@@ -6,15 +6,18 @@ import DemoUser from './auth/DemoUser';
 import { useSelector } from 'react-redux';
 import CreateSession from './GameSession/CreateSession'
 import "./NavBar.css"
+import SearchBar from './SearchBar/SearchBar';
 
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user)
+  const sessions = useSelector(state => state.gameSession)
   return (
     <nav>
       <div id="main-nav-bar-div">
         <NavLink to='/' exact={true} activeClassName='active' id="new-player-logo">
           New Player
         </NavLink>
+        {/* <SearchBar placeholder="Find a game" data={sessions} /> */}
         {!sessionUser ?
           <div className="logged-out-buttons-div">
             <NavLink to='/login' exact={true} activeClassName='active' className="button">

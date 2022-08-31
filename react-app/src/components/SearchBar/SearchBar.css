@@ -1,3 +1,9 @@
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .searchResult {
   margin-top: 5px;
   width: 300px;
@@ -13,4 +19,18 @@
 }
 
 
-.searchItem {}
+.searchResult .searchItem {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  color: black;
+}
+
+.searchItem {
+  text-decoration: none;
+}
+
+.searchItem:hover {
+  background-color: lightgray;
+}
