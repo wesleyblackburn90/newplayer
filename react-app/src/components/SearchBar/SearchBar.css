@@ -2,9 +2,14 @@
   display: flex;
 }
 
+.searchInputs>button {
+  height: 52px;
+  width: 52px;
+}
+
 .search input {
   background-color: white;
-  border: 0;
+  border: lightgray 1px solid;
   border-radius: 2px;
   font-size: 20pt;
   padding: 15px;
@@ -23,7 +28,7 @@
   position: absolute;
   /* margin-top: 50px; */
   width: 300px;
-  height: 200px;
+  height: auto;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
   overflow: hidden;
@@ -60,6 +65,12 @@
 .searchIcon {
   /* border: lightgray solid 1px; */
   margin: 5px;
-  width: 45px;
-  height: 45px;
+  width: 35px;
+  height: 35px;
+}
+
+#search-clear-button {
+  background-color: white;
+  border: lightgray 1px solid;
+  cursor: pointer;
 }

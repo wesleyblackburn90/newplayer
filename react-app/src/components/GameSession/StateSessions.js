@@ -4,18 +4,25 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useParams } from "react-router-dom";
 import { getSessionsThunk } from "../../store/gameSession";
 import "./StateSessions.css"
+import defaultImg from '../defaultImg/boardgame.jpg'
 
 function StateSessions() {
   const dispatch = useDispatch()
   const currentState = useParams()
   const stateName = Object.values(currentState)
-  console.log(stateName)
   const sessionList = useSelector((state) => Object.values(state.gameSession))
-  console.log(sessionList)
+  const [errorImg, setErrorImg] = useState(true)
+
   let newArr
   if (sessionList) {
     newArr = Object.values(sessionList).filter((ele) => ele.state === stateName[0])
-    console.log(newArr)
+  }
+
+  function imgErrorHandler(e) {
+    if (errorImg) {
+      setErrorImg(false)
+    }
+    e.target.src = defaultImg
   }
 
 
@@ -34,7 +41,7 @@ function StateSessions() {
         <div className="sessions-main-div">
           {newArr?.map(({ id, location_name, address, city, state, zip_code, game, description, pic_url, players_num }) => (
             <div key={id} className='state-sessions-main-div-cards'>
-              <img className="sessions-main-div-img" src={`${pic_url}`} onError='this.onError=null;this.src="/static/boardgame.jpg"' />
+              <img className="sessions-main-div-img" src={`${pic_url}`} onError={imgErrorHandler} />
               <h3>Location</h3>
               <p>{location_name} at {city}, {state}</p>
               <h3>Game</h3>

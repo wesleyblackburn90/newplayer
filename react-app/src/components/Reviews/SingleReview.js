@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom"
 import EditReviewFormModal from "./EditReviewFormModal"
 import './SingleReview.css'
 import { getAllUsers } from "../../store/user"
+import SessionCard from "../HomePage/SessionCard"
 
 function SingleReview({ singleReview, userId }) {
   const history = useHistory()
@@ -17,6 +18,10 @@ function SingleReview({ singleReview, userId }) {
     await dispatch(deleteReviewThunk(singleReview)).then(history.push(`/users/${userId}`))
   }
 
+  console.log(singleReview)
+  console.log(userId)
+  console.log(users)
+
   useEffect(() => {
     getAllUsers()
   }, dispatch)
@@ -26,6 +31,7 @@ function SingleReview({ singleReview, userId }) {
       {singleReview && singleReview.reviewer_id === sessionUser.id ?
         (
           <div className="review-div">
+            <h1></h1>
             <h1>Rating: {singleReview.rating}</h1>
             <h1>Review: {singleReview.comment}</h1>
             <EditReviewFormModal singleReview={singleReview} profileId={userId} />

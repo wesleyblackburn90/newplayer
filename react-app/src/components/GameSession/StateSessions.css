@@ -37,11 +37,13 @@ h3 {
   width: 200px;
   height: 150px;
   border-radius: 3px;
+  background-size: cover;
 }
 
 #state-sessions-image {
   display: flex;
   align-items: flex-start;
+  font-style: italic;
   width: 100%;
   height: 300px;
   background-size: 100%;
