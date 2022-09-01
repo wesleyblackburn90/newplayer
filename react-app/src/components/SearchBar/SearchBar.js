@@ -24,7 +24,7 @@ function SearchBar({ placeholder, data }) {
     <div className="search">
       <div className="searchInputs">
         <input className="searchInputField" type="text" placeholder={placeholder} onChange={handleFilter} />
-        <div className="searchIcon"></div>
+        <img className="searchIcon" src="/static/search.png"></img>
       </div>
       {filteredData.length != 0 && (
         <div className="searchResult">

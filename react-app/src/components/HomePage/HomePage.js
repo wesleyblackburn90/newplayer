@@ -19,7 +19,6 @@ function HomePage() {
         </div>
       </div>
       <SessionsBar />
-      <SearchBar placeholder="Find a game" data={sessions} />
     </>
   )
 }

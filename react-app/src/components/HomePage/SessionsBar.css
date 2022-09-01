@@ -17,11 +17,11 @@
 }
 
 #games-near-you-inner>select {
-  border-radius: 10px;
-  box-shadow: 5px 5px 5px gray;
-  border: none;
+  border-radius: 2px;
+  border: lightgray 1px solid;
   margin: 20px;
-  size: 10px;
+  height: 30px;
+  width: 200px;
 }
 
 #events-session-bar {
