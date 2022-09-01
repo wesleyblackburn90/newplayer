@@ -151,15 +151,18 @@ const SignUpForm = () => {
             </div>
             <button className="button" type='submit'>Sign Up</button>
           </form>
-          <div id='signup-errors-div'>
+          {errors.length ? <div id='signup-errors-div'>
             {errors.length > 0 &&
               <ul>
                 {errors?.map((error) => (
-                  <li> {error} </li>
+                  <p style={{ "color": "red" }}> {error} </p>
                 ))}
               </ul>
             }
           </div>
+            :
+            <h1 id="sign-up-header">Sign up to make your first game session!</h1>
+          }
         </div>
       </div>
     </>

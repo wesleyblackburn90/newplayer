@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 import "./SearchBar.css"
 
 function SearchBar({ placeholder, data }) {
-  console.log(data)
   const [filteredData, setFilteredData] = useState([])
+  const [inputPlaceholder, setInputPlaceholder] = useState(placeholder)
 
   const handleFilter = (e) => {
     const word = e.target.value
@@ -19,11 +19,17 @@ function SearchBar({ placeholder, data }) {
     }
   }
 
+  const closeSearch = () => {
+    const newPlaceholder = placeholder
+    setFilteredData([])
+    return setInputPlaceholder(newPlaceholder)
+  }
+
 
   return (
     <div className="search">
       <div className="searchInputs">
-        <input className="searchInputField" type="text" placeholder={placeholder} onChange={handleFilter} />
+        <input className="searchInputField" type="text" placeholder={inputPlaceholder} onChange={handleFilter} />
         <img className="searchIcon" src="/static/search.png"></img>
       </div>
       {filteredData.length != 0 && (
@@ -31,7 +37,7 @@ function SearchBar({ placeholder, data }) {
           {filteredData.slice(0, 10).map((value, key) => {
             return (
               <NavLink className="searchItem" to={`/sessions/${value.id}`}>
-                <p> {value.game} at {value.location_name}</p>
+                <p onClick={closeSearch}> {value.game} at {value.location_name}</p>
               </NavLink>
             )
           })}

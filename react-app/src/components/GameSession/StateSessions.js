@@ -30,7 +30,7 @@ function StateSessions() {
         <div id='state-session-banner'>
           <h1 id='state-sessions-image'>Find your new gaming spot in {stateName}</h1>
         </div>
-        <h1>Look for a session in {stateName}</h1>
+        <h1 style={{ "padding": "20px" }}>Look for a session in {stateName}</h1>
         <div className="sessions-main-div">
           {newArr?.map(({ id, location_name, address, city, state, zip_code, game, description, pic_url, players_num }) => (
             <div key={id} className='state-sessions-main-div-cards'>

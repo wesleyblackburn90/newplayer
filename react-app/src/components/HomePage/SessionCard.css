@@ -8,6 +8,7 @@
   margin: 20px;
   padding: 2px;
   box-shadow: 3px 3px 3px grey;
+  min-width: 245px;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -29,7 +30,7 @@
   height: 150px;
   border-radius: 5px;
   margin: none;
-  background-size: contain;
+  background-size: cover;
 }
 
 .session-card {

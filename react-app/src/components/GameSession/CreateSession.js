@@ -205,18 +205,23 @@ function CreateSession() {
                 value={players_num}
                 onChange={updatePlayers}
               />
+              <p style={{ "font-style": "italic" }}>All fields are required</p>
               <button className="button" type="submit">Create your session!</button>
             </form>
           </div>
-          <div id='create-errors-div'>
-            {errors.length > 0 &&
-              <ul>
-                {errors?.map((error) => (
-                  <p style={{ "color": "red" }}> {error} </p>
-                ))}
-              </ul>
-            }
-          </div>
+          {errors.length ?
+            <div id='create-errors-div'>
+              {errors.length > 0 &&
+                <ul>
+                  {errors?.map((error) => (
+                    <p style={{ "color": "red" }}> {error} </p>
+                  ))}
+                </ul>
+              }
+            </div>
+            :
+            <h1>Get your session started today!</h1>
+          }
         </div>
       </div>
     </>

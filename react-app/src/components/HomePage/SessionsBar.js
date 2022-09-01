@@ -106,21 +106,17 @@ function SessionsBar() {
             {state ?
               displaySessions && displaySessions.length > 0 ?
                 <div id='events-session-bar'>
-                  <div id='events-session-bar-inner'>
-                    {Object.values(displaySessions).map((session) => (
-                      <SessionCard session={session} />
-                    ))}
-                  </div>
+                  {Object.values(displaySessions).map((session) => (
+                    <SessionCard session={session} />
+                  ))}
                   <NavLink to={`/${state}/sessions`}>See all sessions in {state}</NavLink>
                 </div> :
                 <h1 id="no-events-header">There are currently no events being held in this state! Click Create a Session at the top of the page to be the first!</h1>
               :
               <div id='events-session-bar'>
-                <div id='events-session-bar-inner'>
-                  {sessionsArr.map((session) => (
-                    <SessionCard session={session} />
-                  ))}
-                </div>
+                {sessionsArr.map((session) => (
+                  <SessionCard session={session} />
+                ))}
               </div>
             }
           </div>
