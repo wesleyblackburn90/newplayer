@@ -34,7 +34,7 @@ function SessionsBar() {
     }
     fetchSessions().catch(console.error)
   }, [dispatch])
-  console.log(displaySessions)
+
   return (
     sessions ?
       <>

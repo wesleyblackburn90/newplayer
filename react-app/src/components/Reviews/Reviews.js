@@ -5,6 +5,7 @@ import { getReviewsThunk } from '../../store/review'
 import ReviewForm from "./ReviewForm";
 import SingleReview from "./SingleReview";
 import EditReviewFormModal from "./EditReviewFormModal";
+import { getAllUsers } from "../../store/user";
 
 function Reviews({ userReviews, user }) {
   const dispatch = useDispatch()
@@ -14,6 +15,7 @@ function Reviews({ userReviews, user }) {
   const reviews = useSelector((state) => state.review)
   const currentUserReviews = Object.values(reviews).filter((review) => review.reviewee_id === parseInt(userId))
   const reviewed = Object.values(currentUserReviews).filter((review) => review.reviewer_id === parseInt(currentUserId))
+
 
 
 

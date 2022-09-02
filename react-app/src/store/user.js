@@ -24,7 +24,6 @@ const usersReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_USERS: {
       const allUsers = { ...state }
-      console.log(action.users)
       action.users.users.forEach((user) => (allUsers[user.id] = user))
       return allUsers
     }
