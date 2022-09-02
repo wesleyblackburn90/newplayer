@@ -44,7 +44,7 @@ def seed_sessions():
     city='Spartanburg',
     state='South Carolina',
     zip_code='29301',
-    game='Werewolves of Miller"s Hollow',
+    game="Werewolves of Miller's Hollow",
     description="A bunch of us gotta lie to each other that we aren't werewolves!",
     pic_url='http://images10.newegg.com/ProductImage/A02L_1_20110421_7f4ec90f-06ae-43fe-92cc-ba74f10a4838890386.jpg',
     players_num='12'

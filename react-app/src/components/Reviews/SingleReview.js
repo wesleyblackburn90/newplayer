@@ -12,6 +12,8 @@ function SingleReview({ singleReview, userId }) {
   const dispatch = useDispatch()
   const sessionUser = useSelector((state) => state.session.user)
   const users = useSelector((state) => state.user)
+  const reviewer = Object.values(users).filter((user) => user.id === singleReview.reviewer_id)
+  console.log(reviewer)
 
   const handleDelete = async (e) => {
     e.preventDefault()
@@ -23,24 +25,25 @@ function SingleReview({ singleReview, userId }) {
   console.log(users)
 
   useEffect(() => {
-    getAllUsers()
+    dispatch(getAllUsers())
   }, dispatch)
 
   return (
     <div>
-      {singleReview && singleReview.reviewer_id === sessionUser.id ?
+      {reviewer && singleReview && singleReview.reviewer_id === sessionUser.id ?
         (
           <div className="review-div">
-            <h1></h1>
-            <h1>Rating: {singleReview.rating}</h1>
-            <h1>Review: {singleReview.comment}</h1>
+            <h1>User: {reviewer[0].username}</h1>
+            <h3>Rating: {singleReview.rating}</h3>
+            <h3>Review: {singleReview.comment}</h3>
             <EditReviewFormModal singleReview={singleReview} profileId={userId} />
             <button className="button" onClick={handleDelete}>Delete</button>
           </div>
         ) : (
           <div className="review-div">
-            <h1>Rating: {singleReview.rating}</h1>
-            <h1>Review: {singleReview.comment}</h1>
+            <h1>User: {reviewer[0].username}</h1>
+            <h3>Rating: {singleReview.rating}</h3>
+            <h3>Review: {singleReview.comment}</h3>
           </div>
         )
       }
