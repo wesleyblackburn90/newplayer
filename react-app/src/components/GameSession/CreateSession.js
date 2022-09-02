@@ -68,8 +68,11 @@ function CreateSession() {
     }
 
     try {
-      await dispatch(startSessionThunk(payload))
-      history.push("/sessions")
+      const newSession = await dispatch(startSessionThunk(payload))
+      console.log(newSession.session)
+      if (newSession) {
+        history.push(`/sessions/${newSession.session.id}`)
+      }
     } catch (err) {
       let newErrors
       let prettyErrors
