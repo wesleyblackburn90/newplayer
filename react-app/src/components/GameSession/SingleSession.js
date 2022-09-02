@@ -80,7 +80,7 @@ function SingleSession() {
   }
 
   const handleDelete = async () => {
-    await dispatch(deleteSessionThunk(sessionId)).then(history.push('/sessions'))
+    await dispatch(deleteSessionThunk(sessionId)).then(window.alert("Session successfully deleted")).then(history.push('/'))
   }
 
   function imgErrorHandler(e) {
