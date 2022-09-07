@@ -2,6 +2,10 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  background: rgba(106, 106, 253, 1.0);
+  background: -webkit-linear-gradient(top left, rgba(106, 106, 253, 1.0), rgba(255, 255, 255, 1.0));
+  background: -moz-linear-gradient(top left, rgba(106, 106, 253, 1.0), rgba(255, 255, 255, 1.0));
+  background: linear-gradient(to bottom right, rgba(106, 106, 253, 1.0), rgba(255, 255, 255, 1.0));
 }
 
 .state-sessions-main-div-cards {
@@ -15,6 +19,11 @@
   overflow: auto;
   overflow-x: hidden;
   box-shadow: 5px 5px 5px rgb(155, 152, 152);
+  background-color: white;
+}
+
+.state-sessions-main-div-cards>p {
+  margin: 2px;
 }
 
 h3 {

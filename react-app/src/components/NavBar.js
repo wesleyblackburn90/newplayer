@@ -11,6 +11,7 @@ import SearchBar from './SearchBar/SearchBar';
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user)
   const sessions = useSelector(state => state.gameSession)
+
   return (
     <nav>
       <div id="main-nav-bar-div">
@@ -36,6 +37,9 @@ const NavBar = () => {
           <div className="logged-in-buttons-div">
             <NavLink className='button' id='create-button' to='/sessions/new' exact={true}>
               Create a session
+            </NavLink>
+            <NavLink className="button" to={`/users/${sessionUser.id}`}>
+              Profile
             </NavLink>
             <LogoutButton />
           </div>
