@@ -10,7 +10,6 @@ function SessionsBar() {
   const history = useHistory()
   const sessions = useSelector(state => state?.gameSession)
   const sessionsArr = Object.values(sessions)
-  console.log(sessionsArr)
   const [state, setState] = useState("")
   const [displaySessions, setDisplaySessions] = useState([])
   const [randomSessions, setRandomSessions] = useState([])
@@ -31,20 +30,15 @@ function SessionsBar() {
 
   useEffect(() => {
     let randomArr = []
-    let newArr = Object.values(sessions)
-    console.log(newArr)
+    let newArr = [...Object.values(sessions)]
     for (let i = 0; i < 4; i++) {
       let random = Math.floor(Math.random() * newArr.length)
       randomArr.push(newArr[random])
-      console.log(newArr)
       newArr.splice(random, 1)
-      console.log(newArr)
     }
+    console.log(randomArr)
     setRandomSessions(randomArr)
   }, [sessions])
-
-
-  console.log(sessionsArr)
 
 
   while (displaySessions.length > 4) {
