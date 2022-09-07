@@ -76,7 +76,7 @@ function User() {
           </div>
           <div id="user-profile-reviews-div">
             <h2>See what other users had </h2>
-            <h2>to say about {user.username}</h2>
+            <h2 style={{ "border-bottom": "2px black solid" }}>to say about {user.username}</h2>
             <Reviews userReviews={userReviews} user={user} />
           </div>
         </div>

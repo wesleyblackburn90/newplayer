@@ -24,7 +24,9 @@ const SignUpForm = () => {
         let newErrors
         let prettyErrors
         if (data) {
+          console.log(data)
           newErrors = Object.values(data).map((error) => error.split(":"))
+          console.log(newErrors)
           if (newErrors) {
             prettyErrors = Object.values(newErrors).map((error) => error[1])
             console.log(prettyErrors)
@@ -155,7 +157,7 @@ const SignUpForm = () => {
             {errors.length > 0 &&
               <ul>
                 {errors?.map((error) => (
-                  <p style={{ "color": "red" }}> {error} </p>
+                  <p style={{ "color": "red" }}> * {error} </p>
                 ))}
               </ul>
             }

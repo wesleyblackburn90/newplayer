@@ -34,8 +34,8 @@ h3 {
 }
 
 .sessions-main-div-img {
-  width: 200px;
-  height: 150px;
+  /* width: 200px;
+  height: 150px; */
   border-radius: 3px;
   background-size: cover;
 }

@@ -86,7 +86,7 @@ const LoginForm = () => {
           </form>
           <div id="log-in-errors">
             {errors.map((error, index) => (
-              <p style={{ "color": "red" }} key={index}>{error}</p>
+              <p style={{ "color": "red" }} key={index}> * {error}</p>
             ))}
           </div>
         </div>

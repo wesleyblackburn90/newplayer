@@ -9,7 +9,7 @@ import defaultImg from '../defaultImg/boardgame.jpg'
 function SessionCard({ session }) {
   const dispatch = useDispatch()
   const players = useSelector((state) => (state.players))
-  const sessionPlayers = Object.values(players).filter((player) => player.session_id === session.id)
+  const sessionPlayers = Object.values(players).filter((player) => player.session_id === session?.id)
 
   const [errorImg, setErrorImg] = useState(true)
 
@@ -28,13 +28,13 @@ function SessionCard({ session }) {
   return (
     <>
       <div id='session-card-div'>
-        <NavLink className='session-card' to={`/sessions/${session.id}`}>
-          <img className='session-card-img' src={`${session.pic_url}`} onError={imgErrorHandler} />
+        <NavLink className='session-card' to={`/sessions/${session?.id}`}>
+          <img className='session-card-img' src={`${session?.pic_url}`} onError={imgErrorHandler} />
           <h3>Now playing</h3>
-          <p>{session.game}</p>
-          <p>Playing at {session.location_name}</p>
-          {sessionPlayers.length < session.players_num ?
-            <p> Needs {session.players_num - sessionPlayers.length} more players!</p>
+          <p>{session?.game}</p>
+          <p>Playing at {session?.location_name}</p>
+          {sessionPlayers.length < session?.players_num ?
+            <p> Needs {session?.players_num - sessionPlayers.length} more players!</p>
             :
             <p> This session is full! </p>
           }

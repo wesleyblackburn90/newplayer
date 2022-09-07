@@ -77,14 +77,21 @@ function CreateSession() {
       let newErrors
       let prettyErrors
       if (err) {
-        newErrors = Object.values(err).map((error) => error[0].split(":"))
+        console.log("err", err)
+        let errorArr = Object.values(err)
+        console.log(errorArr)
+        newErrors = Object.values(errorArr[0]).map((error) => error.split(":"))
+        console.log("newErrors", newErrors)
         if (newErrors) {
           prettyErrors = Object.values(newErrors).map((error) => error[1])
+          console.log(prettyErrors)
         }
       }
       setErrors(prettyErrors)
     }
   }
+
+  console.log(errors)
 
   return (
     <>
@@ -217,7 +224,7 @@ function CreateSession() {
               {errors.length > 0 &&
                 <ul>
                   {errors?.map((error) => (
-                    <p style={{ "color": "red" }}> {error} </p>
+                    <p style={{ "color": "red" }}> * {error} </p>
                   ))}
                 </ul>
               }

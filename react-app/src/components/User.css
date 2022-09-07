@@ -53,3 +53,7 @@
 #user-profile-reviews-div {
   width: 410px;
 }
+
+#user-profile-reviews-div>h2 {
+  margin: 10px;
+}

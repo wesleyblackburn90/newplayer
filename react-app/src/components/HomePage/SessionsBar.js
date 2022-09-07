@@ -8,25 +8,14 @@ import "./SessionsBar.css"
 function SessionsBar() {
   const dispatch = useDispatch()
   const history = useHistory()
-  const sessions = useSelector(state => state.gameSession)
+  const sessions = useSelector(state => state?.gameSession)
   const sessionsArr = Object.values(sessions)
+  console.log(sessionsArr)
   const [state, setState] = useState("")
   const [displaySessions, setDisplaySessions] = useState([])
+  const [randomSessions, setRandomSessions] = useState([])
 
   const updateState = (e) => setState(e.target.value)
-
-  useEffect(() => {
-    const statesArr = Object.values(sessions).filter((currentState) => currentState.state === state)
-    setDisplaySessions(statesArr)
-  }, [state])
-
-  while (displaySessions.length > 4) {
-    displaySessions.splice(4)
-  }
-
-  while (sessionsArr.length > 4) {
-    sessionsArr.splice(4)
-  }
 
   useEffect(() => {
     const fetchSessions = async () => {
@@ -34,6 +23,38 @@ function SessionsBar() {
     }
     fetchSessions().catch(console.error)
   }, [dispatch])
+
+  useEffect(() => {
+    const statesArr = Object.values(sessions).filter((currentState) => currentState.state === state)
+    setDisplaySessions(statesArr)
+  }, [state])
+
+  useEffect(() => {
+    let randomArr = []
+    let newArr = Object.values(sessions)
+    console.log(newArr)
+    for (let i = 0; i < 4; i++) {
+      let random = Math.floor(Math.random() * newArr.length)
+      randomArr.push(newArr[random])
+      console.log(newArr)
+      newArr.splice(random, 1)
+      console.log(newArr)
+    }
+    setRandomSessions(randomArr)
+  }, [sessions])
+
+
+  console.log(sessionsArr)
+
+
+  while (displaySessions.length > 4) {
+    displaySessions.splice(4)
+  }
+
+  // while (sessionsArr.length > 4) {
+  //   sessionsArr.splice(4)
+  // }
+
 
   return (
     sessions ?
@@ -114,7 +135,7 @@ function SessionsBar() {
                 <h1 id="no-events-header">There are currently no events being held in this state! Click Create a Session at the top of the page to be the first!</h1>
               :
               <div id='events-session-bar'>
-                {sessionsArr.map((session) => (
+                {randomSessions?.map((session) => (
                   <SessionCard session={session} />
                 ))}
               </div>

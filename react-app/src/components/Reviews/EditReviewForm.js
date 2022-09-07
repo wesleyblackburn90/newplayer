@@ -69,7 +69,7 @@ function EditReviewForm({ singleReview, profileId, setShowModal }) {
     <div>
       <h1>Edit your review</h1>
       {validationErrors && validationErrors.length > 0 && validationErrors.map((error) => {
-        return <li>{error}</li>
+        return <p style={{ "color": "red" }}> * {error}</p>
       })}
       <form onSubmit={handleUpdate} id="leaveReviewInputs" >
         <h3> Rating </h3>
