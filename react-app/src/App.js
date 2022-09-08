@@ -16,6 +16,7 @@ import StateSessions from './components/GameSession/StateSessions'
 import EditSessionForm from './components/GameSession/EditSessionForm';
 import Footer from './components/Footer/Footer'
 import PageNotFound from './components/404page/404page';
+import Jirby from './components/Jirby/Jirby';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -48,6 +49,9 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
+        <Route path='/jirby' exact={true}>
+          <Jirby />
+        </Route>
         <ProtectedRoute path='/' exact={true} >
           <HomePage />
         </ProtectedRoute>
