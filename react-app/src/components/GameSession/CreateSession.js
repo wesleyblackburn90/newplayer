@@ -69,7 +69,6 @@ function CreateSession() {
 
     try {
       const newSession = await dispatch(startSessionThunk(payload))
-      console.log(newSession.session)
       if (newSession) {
         history.push(`/sessions/${newSession.session.id}`)
       }
@@ -77,21 +76,15 @@ function CreateSession() {
       let newErrors
       let prettyErrors
       if (err) {
-        console.log("err", err)
         let errorArr = Object.values(err)
-        console.log(errorArr)
         newErrors = Object.values(errorArr[0]).map((error) => error.split(":"))
-        console.log("newErrors", newErrors)
         if (newErrors) {
           prettyErrors = Object.values(newErrors).map((error) => error[1])
-          console.log(prettyErrors)
         }
       }
       setErrors(prettyErrors)
     }
   }
-
-  console.log(errors)
 
   return (
     <>

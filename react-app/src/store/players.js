@@ -12,7 +12,6 @@ const addPlayers = (player) => ({
 })
 
 export const getAllPlayers = () => async (dispatch) => {
-  console.log("I made it to the thunk")
   const res = await fetch('/api/players')
   if (res.ok) {
     const data = await res.json()

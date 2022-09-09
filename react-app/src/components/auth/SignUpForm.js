@@ -24,12 +24,9 @@ const SignUpForm = () => {
         let newErrors
         let prettyErrors
         if (data) {
-          console.log(data)
           newErrors = Object.values(data).map((error) => error.split(":"))
-          console.log(newErrors)
           if (newErrors) {
             prettyErrors = Object.values(newErrors).map((error) => error[1])
-            console.log(prettyErrors)
           }
         }
         setErrors(prettyErrors)
@@ -82,7 +79,6 @@ const SignUpForm = () => {
   //   newErrors = Object.values(errors).map((error) => error.split(":"))
   //   if (newErrors) {
   //     prettyErrors = Object.values(newErrors).map((error) => error[1])
-  //     console.log(prettyErrors)
   //   }
   // }
 

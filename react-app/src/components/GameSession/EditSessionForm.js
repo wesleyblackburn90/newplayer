@@ -40,7 +40,6 @@ function EditSessionForm({ session, setShowModal }) {
     // if (state.length < 4 || state.length > 14) errors.push("Please enter a valid state!")
     if (zip_code.toString().length !== 5) errors.push("Please enter a valid 5 digit zipcode!")
     if (game.length < 2) errors.push("Please give the name of your game!")
-    console.log(zip_code)
     if (game.length > 100) errors.push("Please shorten the name of your game!")
     if (description.length > 2000) errors.push("Please leave a shorter description!")
     if (players_num < 2 || players_num > 2000) errors.push("Number of players must be 2 or higher!")
@@ -78,19 +77,15 @@ function EditSessionForm({ session, setShowModal }) {
       let newErrors
       let prettyErrors
       if (err) {
-        console.log(err)
         newErrors = Object.values(err).map((error) => error[0].split(":"))
-        console.log(newErrors)
         if (newErrors) {
           prettyErrors = Object.values(newErrors).map((error) => error[1])
-          console.log(prettyErrors)
         }
       }
       setErrors(prettyErrors)
     }
   }
 
-  console.log(errors)
 
   return (
     <>

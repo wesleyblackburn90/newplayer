@@ -1,8 +1,9 @@
 import React from "react";
+import "./jirby.css"
 
 function Jirby() {
   return (
-    <img src="/static/kirbyJiff.png"></img>
+    <img id="jirby" src="/static/kirbyJiff.png" ></img >
   )
 }
 

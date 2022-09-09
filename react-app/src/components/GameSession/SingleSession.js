@@ -34,7 +34,6 @@ function SingleSession() {
         }
       })
     })
-    console.log(newArr)
   }
 
   useEffect(() => {
@@ -122,7 +121,7 @@ function SingleSession() {
                         :
                         <EditSessionFormModal session={session} />
                       }
-                      <button className="button" onClick={handleDelete}>Delete session</button>
+                      <button style={{ "width": "150px" }} className="button" onClick={handleDelete}>Delete session</button>
                     </>
                   }
                 </div>

@@ -11,8 +11,6 @@ function EditReviewForm({ singleReview, profileId, setShowModal }) {
   const [comment, setComment] = useState(singleReview.comment)
   const [showReviewForm, setShowReviewForm] = useState("hide-review-form")
   const [validationErrors, setValidationErrors] = useState([])
-  console.log(comment)
-  console.log(rating)
 
 
   const updateRating = (e) => setRating(e.target.value)
@@ -33,7 +31,6 @@ function EditReviewForm({ singleReview, profileId, setShowModal }) {
       const newReview = await dispatch(updateReviewThunk(payload))
 
       if (newReview) {
-        console.log(newReview)
         history.push(`/users/${profileId}`)
         setShowModal(false)
       }

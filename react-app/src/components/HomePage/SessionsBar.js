@@ -36,7 +36,6 @@ function SessionsBar() {
       randomArr.push(newArr[random])
       newArr.splice(random, 1)
     }
-    console.log(randomArr)
     setRandomSessions(randomArr)
   }, [sessions])
 

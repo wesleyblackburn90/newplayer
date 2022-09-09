@@ -7,7 +7,7 @@ function EditSessionFormModal({ session }) {
 
   return (
     <>
-      <button className="button" onClick={() => setShowModal(true)}> Edit session </button>
+      <button className="button" style={{ "width": "150px" }} onClick={() => setShowModal(true)}> Edit session </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <EditSessionForm session={session} setShowModal={setShowModal} />

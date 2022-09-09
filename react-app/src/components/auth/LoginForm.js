@@ -19,12 +19,9 @@ const LoginForm = () => {
       let newErrors
       let prettyErrors
       if (data) {
-        console.log(data)
         newErrors = data.map((error) => error.split(":"))
-        console.log(newErrors)
         if (newErrors) {
           prettyErrors = Object.values(newErrors).map((error) => error[1])
-          console.log(prettyErrors)
         }
       }
       setErrors(prettyErrors)
@@ -42,8 +39,6 @@ const LoginForm = () => {
   if (user) {
     return <Redirect to='/' />;
   }
-
-  console.log(errors)
 
   return (
     <div id='login-form-div'>
