@@ -92,7 +92,7 @@ function ReviewForm({ singleReview, profileId }) {
         {/* <button onClick={handleCancelClick} className="reviewFormButton button">Cancel</button> */}
         {/* <button className="button" onClick={handleDelete}>Delete</button> */}
         {validationErrors && validationErrors.length > 0 && validationErrors.map((error) => {
-          return <li>{error}</li>
+          return <p style={{ "color": "red" }}> * {error}</p>
         })}
       </form >
     </div>

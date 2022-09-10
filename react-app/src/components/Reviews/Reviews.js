@@ -16,6 +16,9 @@ function Reviews({ userReviews, user }) {
   const currentUserReviews = Object.values(reviews).filter((review) => review.reviewee_id === parseInt(userId))
   const reviewed = Object.values(currentUserReviews).filter((review) => review.reviewer_id === parseInt(currentUserId))
 
+  console.log(userId)
+  console.log(currentUserId)
+
 
 
 
@@ -53,10 +56,14 @@ function Reviews({ userReviews, user }) {
         )
       })
       }
-      <div>
-        {reviewed.length ? null : <ReviewForm userReviews={userReviews} profileId={userId} />
-        }
-      </div>
+      {parseInt(userId) === currentUserId ?
+        null
+        :
+        <div>
+          {reviewed.length ? null : <ReviewForm userReviews={userReviews} profileId={userId} />
+          }
+        </div>
+      }
     </div>
   )
 }
