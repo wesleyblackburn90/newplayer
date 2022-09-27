@@ -12,7 +12,12 @@ const LogoutButton = () => {
 
   };
 
-  return <button className="button" onClick={onLogout}>Logout</button>;
+  return (
+    <button className="button" onClick={onLogout}>
+      <img src="/static/logout.png" alt="logout icon" />
+      <p>Log out</p>
+    </button>
+  );
 };
 
 export default LogoutButton;

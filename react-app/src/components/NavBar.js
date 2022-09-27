@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import CreateSession from './GameSession/CreateSession'
 import "./NavBar.css"
 import SearchBar from './SearchBar/SearchBar';
+import addSessionIcon from '../icons/icons8-plus.svg'
 
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user)
@@ -36,10 +37,12 @@ const NavBar = () => {
           :
           <div className="logged-in-buttons-div">
             <NavLink className='button' id='create-button' to='/sessions/new' exact={true}>
-              Create a session
+              <img src={addSessionIcon} alt="add session" />
+              <p>Create a session</p>
             </NavLink>
             <NavLink className="button" to={`/users/${sessionUser.id}`}>
-              Profile
+              <img src="/static/user.png" alt="profile icon" />
+              <p>Profile</p>
             </NavLink>
             <LogoutButton />
           </div>

@@ -16,10 +16,6 @@ function Reviews({ userReviews, user }) {
   const currentUserReviews = Object.values(reviews).filter((review) => review.reviewee_id === parseInt(userId))
   const reviewed = Object.values(currentUserReviews).filter((review) => review.reviewer_id === parseInt(currentUserId))
 
-  console.log(userId)
-  console.log(currentUserId)
-
-
 
 
   useEffect(() => {
