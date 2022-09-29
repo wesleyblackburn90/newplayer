@@ -53,12 +53,10 @@ function CreateSession() {
       pic_url,
       players_num
     }
-    console.log(payload)
+
 
     try {
-      console.log(payload, "<== payload in T/C")
       const newSession = await dispatch(startSessionThunk(payload))
-      console.log(newSession, "<=== new session")
       if (newSession) {
         history.push(`/sessions/${newSession.session.id}`)
       }

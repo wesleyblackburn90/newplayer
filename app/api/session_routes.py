@@ -17,11 +17,11 @@ def all_sessions():
 @session_routes.route('/new', methods=["GET", "POST"])
 def create_session():
   form = SessionForm()
-  print(form)
+
   form['csrf_token'].data = request.cookies['csrf_token']
 
   image = request.files["pic_url"]
-  print(image)
+
 
   if not allowed_file(image.filename):
     return {"errors":"file type not permitted"}, 400
@@ -29,7 +29,7 @@ def create_session():
   image.filename = get_unique_filename(image.filename)
 
   upload = upload_file_to_s3(image)
-  print("Hello, its me")
+
   if "url" not in upload:
     return upload, 400
 
