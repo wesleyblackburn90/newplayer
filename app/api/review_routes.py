@@ -26,7 +26,7 @@ def new_review():
       db.session.add(review)
       db.session.commit()
       return review.to_dict()
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    return {validation_errors_to_error_messages(form.errors)}, 401
 
 @review_routes.route('/<int:reviewId>', methods=['PUT'])
 def edit_review(reviewId):
@@ -47,7 +47,7 @@ def edit_review(reviewId):
 
     db.session.commit()
     return review.to_dict()
-  return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+  return {validation_errors_to_error_messages(form.errors)}, 401
 
 @review_routes.route('/<int:reviewId>', methods=['DELETE'])
 def delete_review(reviewId):

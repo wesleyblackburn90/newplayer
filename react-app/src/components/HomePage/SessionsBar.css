@@ -3,7 +3,6 @@
   justify-content: center;
   align-items: center;
   height: 90px;
-  color: rgb(129, 129, 243);
 }
 
 #games-near-you-inner {
@@ -13,7 +12,6 @@
   align-items: center;
   width: 60%;
   height: 45px;
-  color: rgb(129, 129, 243);
 }
 
 #games-near-you-inner>select {

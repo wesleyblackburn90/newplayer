@@ -36,15 +36,15 @@ function EditReviewForm({ singleReview, profileId, setShowModal }) {
       }
     }
     catch (err) {
-      let newErrors
-      let prettyErrors
-      if (err) {
-        newErrors = Object.values(err).map((error) => error[0].split(":"))
-        if (newErrors) {
-          prettyErrors = Object.values(newErrors).map((error) => error[1])
-        }
-      }
-      setValidationErrors(prettyErrors)
+      // let newErrors
+      // let prettyErrors
+      // if (err) {
+      //   newErrors = Object.values(err).map((error) => error[0].split(":"))
+      //   if (newErrors) {
+      //     prettyErrors = Object.values(newErrors).map((error) => error[1])
+      //   }
+      // }
+      setValidationErrors(err)
     }
   }
 

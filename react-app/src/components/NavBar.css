@@ -12,10 +12,10 @@
 
 #new-player-logo {
   font-family: 'Montserrat Subrayada', sans-serif;
-  font-size: 30pt;
+  font-size: 16pt;
   margin: 20px;
   text-decoration: none;
-  color: rgb(128, 128, 254);
+  color: rgb(255, 79, 31);
 }
 
 .logged-out-buttons-div,

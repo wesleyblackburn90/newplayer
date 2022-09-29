@@ -35,13 +35,27 @@ export const getSessionsThunk = () => async (dispatch) => {
 }
 
 export const startSessionThunk = (data) => async (dispatch) => {
+
+  const { address, city, state, description, game, location_name, organizer_id, pic_url, players_num, zip_code } = data
+
+  const formData = new FormData()
+
+  formData.append("address", address)
+  formData.append("city", city)
+  formData.append("state", state)
+  formData.append("description", description)
+  formData.append("game", game)
+  formData.append("location_name", location_name)
+  formData.append("organizer_id", organizer_id)
+  formData.append("pic_url", pic_url)
+  formData.append("players_num", players_num)
+  formData.append("zip_code", zip_code)
+
   const res = await fetch('/api/sessions/new', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
+    body: formData
   })
+
   if (res.ok) {
     const session = await res.json()
     return dispatch(startSession(session))

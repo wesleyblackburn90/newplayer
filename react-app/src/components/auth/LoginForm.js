@@ -15,17 +15,17 @@ const LoginForm = () => {
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
-    if (data) {
-      let newErrors
-      let prettyErrors
-      if (data) {
-        newErrors = data.map((error) => error.split(":"))
-        if (newErrors) {
-          prettyErrors = Object.values(newErrors).map((error) => error[1])
-        }
-      }
-      setErrors(prettyErrors)
-    }
+    // if (data) {
+    //   let newErrors
+    //   let prettyErrors
+    //   if (data) {
+    //     newErrors = data.map((error) => error.split(":"))
+    //     if (newErrors) {
+    //       prettyErrors = Object.values(newErrors).map((error) => error[1])
+    //     }
+    //   }
+    //   setErrors(prettyErrors)
+    // }
   };
 
   const updateEmail = (e) => {

@@ -24,4 +24,4 @@ def add_player():
     db.session.add(player)
     db.session.commit()
     return player.to_dict()
-  return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+  return {validation_errors_to_error_messages(form.errors)}, 401
