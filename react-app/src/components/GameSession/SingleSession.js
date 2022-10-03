@@ -10,6 +10,7 @@ import { addNewPlayer, getAllPlayers } from "../../store/players";
 import "./SingleSession.css"
 import { getAllUsers } from "../../store/user";
 import defaultImg from '../defaultImg/boardgame.jpg'
+import MapPageA from "../GoogleMap/MapPageA";
 
 function SingleSession() {
   const history = useHistory()
@@ -89,6 +90,11 @@ function SingleSession() {
     e.target.src = defaultImg
   }
 
+  let locationAddress
+  if (session) {
+    locationAddress = session.address + " " + session.city + " " + session.state
+  }
+
   return (
     <div id="single-session-container">
       {session && host &&
@@ -151,6 +157,7 @@ function SingleSession() {
                   <p className="location-info">{session.address}</p>
                   <p className="location-info">{session.city}, {session.state} {session.zip_code}</p>
                 </div>
+                <MapPageA locationAddress={locationAddress} />
               </div>
             </div>
           </div>

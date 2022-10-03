@@ -7,10 +7,14 @@
   margin-left: 45px;
   margin: 20px;
   padding: 2px;
-  box-shadow: 3px 3px 3px grey;
   min-width: 245px;
   overflow-x: hidden;
   overflow-y: auto;
+  transition: 0.5s;
+}
+
+#session-card-div:hover {
+  box-shadow: 5px 5px 5px gray;
 }
 
 #session-card-div::-webkit-scrollbar {
