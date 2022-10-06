@@ -10,6 +10,8 @@ import { addNewPlayer, getAllPlayers } from "../../store/players";
 import "./SingleSession.css"
 import { getAllUsers } from "../../store/user";
 import defaultImg from '../defaultImg/boardgame.jpg'
+import MapPageA from "../GoogleMap/MapPageA";
+import DeleteConfirmModal from "./DeleteConfirmModal";
 
 function SingleSession() {
   const history = useHistory()
@@ -89,6 +91,11 @@ function SingleSession() {
     e.target.src = defaultImg
   }
 
+  let locationAddress
+  if (session) {
+    locationAddress = session.address + " " + session.city + " " + session.state
+  }
+
   return (
     <div id="single-session-container">
       {session && host &&
@@ -121,7 +128,7 @@ function SingleSession() {
                         :
                         <EditSessionFormModal session={session} />
                       }
-                      <button style={{ "width": "150px" }} className="button" onClick={handleDelete}>Delete session</button>
+                      <DeleteConfirmModal sessions={session} />
                     </>
                   }
                 </div>
@@ -144,13 +151,16 @@ function SingleSession() {
                 </div>
               </div>
               <div id="single-session-div-bottom-right">
-                <img id="location-icon" src='/static/location.png' />
-                <div id='location-info-div'>
-                  <h2 style={{ "font-weight": "bold" }}>Location</h2>
-                  <p className="location-info">{session.location_name}</p>
-                  <p className="location-info">{session.address}</p>
-                  <p className="location-info">{session.city}, {session.state} {session.zip_code}</p>
+                <div style={{ display: "flex", flexDirection: "row" }} id="location-div">
+                  <img id="location-icon" src='/static/location.png' />
+                  <div id='location-info-div'>
+                    <h2 style={{ "font-weight": "bold" }}>Location</h2>
+                    <p className="location-info">{session.location_name}</p>
+                    <p className="location-info">{session.address}</p>
+                    <p className="location-info">{session.city}, {session.state} {session.zip_code}</p>
+                  </div>
                 </div>
+                <MapPageA locationAddress={locationAddress} />
               </div>
             </div>
           </div>

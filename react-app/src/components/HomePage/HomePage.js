@@ -4,6 +4,7 @@ import SessionsBar from "./SessionsBar";
 import "./HomePage.css"
 import SearchBar from "../SearchBar/SearchBar";
 import { useSelector } from "react-redux";
+import MapPageA from "../GoogleMap/MapPageA";
 
 function HomePage() {
   const sessions = useSelector(state => state.gameSession)

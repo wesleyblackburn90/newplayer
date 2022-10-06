@@ -74,15 +74,15 @@ function EditSessionForm({ session, setShowModal }) {
         setShowModal(false)
       }
     } catch (err) {
-      let newErrors
-      let prettyErrors
-      if (err) {
-        newErrors = Object.values(err).map((error) => error[0].split(":"))
-        if (newErrors) {
-          prettyErrors = Object.values(newErrors).map((error) => error[1])
-        }
-      }
-      setErrors(prettyErrors)
+      // let newErrors
+      // let prettyErrors
+      // if (err) {
+      //   newErrors = Object.values(err).map((error) => error[0].split(":"))
+      //   if (newErrors) {
+      //     prettyErrors = Object.values(newErrors).map((error) => error[1])
+      //   }
+      // }
+      setErrors(err)
     }
   }
 

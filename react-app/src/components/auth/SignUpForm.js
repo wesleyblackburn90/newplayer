@@ -20,17 +20,17 @@ const SignUpForm = () => {
     e.preventDefault();
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, first_name, last_name, email, password));
-      if (data) {
-        let newErrors
-        let prettyErrors
-        if (data) {
-          newErrors = Object.values(data).map((error) => error.split(":"))
-          if (newErrors) {
-            prettyErrors = Object.values(newErrors).map((error) => error[1])
-          }
-        }
-        setErrors(prettyErrors)
-      }
+      // if (data) {
+      //   let newErrors
+      //   let prettyErrors
+      //   if (data) {
+      //     newErrors = Object.values(data).map((error) => error.split(":"))
+      //     if (newErrors) {
+      //       prettyErrors = Object.values(newErrors).map((error) => error[1])
+      //     }
+      //   }
+      //   setErrors(prettyErrors)
+      // }
     }
   };
 
