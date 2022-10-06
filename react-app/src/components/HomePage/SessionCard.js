@@ -34,7 +34,7 @@ function SessionCard({ session }) {
           <p>{session?.game}</p>
           <p>Playing at {session?.location_name}</p>
           {sessionPlayers.length < session?.players_num ?
-            <p> Needs {session?.players_num - sessionPlayers.length} more players!</p>
+            <p> Needs {session?.players_num - sessionPlayers.length} more players! </p>
             :
             <p> This session is full! </p>
           }
