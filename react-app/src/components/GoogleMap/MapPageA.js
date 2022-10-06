@@ -13,8 +13,8 @@ const MapPageA = (locationAddress) => {
   })
 
   const containerStyle = {
-    width: '250px',
-    height: '250px'
+    width: '350px',
+    height: '350px'
   };
 
   const [map, setMap] = useState(null)
@@ -49,7 +49,7 @@ const MapPageA = (locationAddress) => {
 
     <div className="map_page__container">
 
-      <div style={{ height: '250px', width: '250px' }}>
+      <div style={{ height: '350px', width: '350px' }}>
         {isLoaded && currentPosition ? <GoogleMap
           mapContainerStyle={containerStyle}
           zoom={12}
@@ -67,11 +67,11 @@ const MapPageA = (locationAddress) => {
             }}
             streetView={false} >
 
-            <InfoWindow position={{ lat: currentPosition.lat, lng: currentPosition.lng }} >
+            {/* <InfoWindow position={{ lat: currentPosition.lat, lng: currentPosition.lng }} >
               <div>
                 <span style={{ color: `red` }}>{locationAddress.name}</span>
               </div>
-            </InfoWindow>
+            </InfoWindow> */}
           </Marker>
 
         </GoogleMap> : null}

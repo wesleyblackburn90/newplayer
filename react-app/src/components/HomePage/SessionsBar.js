@@ -55,7 +55,7 @@ function SessionsBar() {
         <div id="games-near-you-div">
           <div id="games-near-you-inner">
             <h1>Popular in: </h1>
-            <select className="state-selector" value={state} onChange={updateState}>
+            <select className="state-selector" value={state} onChange={updateState} placeholder="Choose a state">
               <option value={""}></option>
               <option value={"Alabama"}> Alabama </option>
               <option value={"Alaska"}> Alaska </option>
