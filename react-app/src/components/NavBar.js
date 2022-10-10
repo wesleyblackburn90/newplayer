@@ -1,17 +1,23 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import DemoUser from './auth/DemoUser';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import CreateSession from './GameSession/CreateSession'
 import "./NavBar.css"
 import SearchBar from './SearchBar/SearchBar';
 import addSessionIcon from '../icons/icons8-plus.svg'
+import { getSessionsThunk } from '../store/gameSession';
 
 const NavBar = () => {
+  const dispatch = useDispatch()
   const sessionUser = useSelector(state => state.session.user)
   const sessions = useSelector(state => state.gameSession)
+
+  useEffect(() => {
+    dispatch(getSessionsThunk)
+  }, dispatch)
 
   return (
     <nav>

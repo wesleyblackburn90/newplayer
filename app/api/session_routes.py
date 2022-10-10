@@ -1,6 +1,7 @@
 from distutils.command.upload import upload
 from flask import Blueprint, request, session
 from sqlalchemy import desc
+from app.config import Config
 from app.models import Session, db
 from app.forms import SessionForm
 from .auth_routes import validation_errors_to_error_messages
@@ -91,3 +92,8 @@ def delete_session(id):
   db.session.delete(session)
   db.session.commit()
   return session.to_dict()
+
+@session_routes.route('/apikey', methods=['GET'])
+def get_key():
+  key = Config.REACT_APP_GOOGLE_MAPS_API
+  return {"key": key}

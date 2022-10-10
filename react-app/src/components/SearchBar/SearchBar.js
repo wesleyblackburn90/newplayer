@@ -9,7 +9,7 @@ function SearchBar({ placeholder, data }) {
   const handleFilter = (e) => {
     const word = e.target.value
     const filter = Object.values(data).filter(value => {
-      return value.game.toLowerCase().includes(word.toLowerCase())
+      return value.game?.toLowerCase().includes(word?.toLowerCase())
     })
 
     if (word === "") {

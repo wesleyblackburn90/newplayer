@@ -1,11 +1,15 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api';
 import Geocode from "react-geocode"
+import { useDispatch, useSelector } from 'react-redux';
+import { getKeyThunk } from '../../store/gameSession';
 
 
 const MapPageA = (locationAddress) => {
+  const dispatch = useDispatch()
+  const apiKey = useSelector((state) => (state.gameSession.apiKey))
 
-  const [currentPosition, setCurrentPosition] = useState({ lat: 43.11016617798622, lng: -89.48826131670266 })
+  const [currentPosition, setCurrentPosition] = useState(null)
 
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
@@ -23,15 +27,16 @@ const MapPageA = (locationAddress) => {
     setMap(null)
   }, [])
 
-  Geocode.setApiKey(process.env.REACT_APP_GOOGLE_MAPS_API)
+  if (apiKey) {
+    Geocode.setApiKey(apiKey.key)
 
-  Geocode.setLanguage("en")
-
-  Geocode.setLocationType("ROOFTOP")
+    Geocode.setLanguage("en")
+  }
 
   const getAddress = async () => {
     try {
-      const res = await Geocode.fromAddress(Object.values(locationAddress))
+      let address = Object.values(locationAddress)[0]
+      const res = await Geocode.fromAddress(address)
       const { lat, lng } = res.results[0].geometry.location
       setCurrentPosition({ lat: lat, lng: lng })
     }
@@ -42,6 +47,7 @@ const MapPageA = (locationAddress) => {
 
   useEffect(() => {
     getAddress()
+    dispatch(getKeyThunk())
   }, [setCurrentPosition])
 
   return (

@@ -26,6 +26,7 @@ function SingleSession() {
 
   const [users, setUsers] = useState([])
   const [errorImg, setErrorImg] = useState(true)
+  const [currentPosition, setCurrentPosition] = useState({ lat: 43.11016617798622, lng: -89.48826131670266 })
 
   let newArr = []
   if (sessionPlayers && allUsers) {

@@ -2,6 +2,7 @@ const GET_SESSIONS = 'sessions/GET_SESSIONS'
 const START_SESSION = 'sessions/START_SESSIONS'
 const UPDATE_SESSION = 'sessions/UPDATE_SESSIONS'
 const DELETE_SESSION = 'sessions/DELETE_SESSIONS'
+const GET_KEY = 'sessions/GET_KEY'
 
 const getSessions = (sessions) => ({
   type: GET_SESSIONS,
@@ -21,6 +22,11 @@ const updateSession = (session) => ({
 const deleteSession = (session) => ({
   type: DELETE_SESSION,
   session
+})
+
+const getKey = (key) => ({
+  type: GET_KEY,
+  payload: key
 })
 
 export const getSessionsThunk = () => async (dispatch) => {
@@ -99,6 +105,17 @@ export const deleteSessionThunk = (sessionId) => async (dispatch) => {
   }
 }
 
+export const getKeyThunk = () => async (dispatch) => {
+  const res = await fetch('/api/sessions/apikey')
+  if (res.ok) {
+    const key = await res.json()
+    dispatch(getKey(key))
+  } else {
+    const error = await res.json()
+    throw error
+  }
+}
+
 const initialState = {}
 
 const gameSessionReducer = (state = initialState, action) => {
@@ -126,6 +143,9 @@ const gameSessionReducer = (state = initialState, action) => {
       const newState = { ...state }
       delete newState[action.session.id]
       return newState
+    }
+    case GET_KEY: {
+      return { ...state, apiKey: action.payload }
     }
     default:
       return state;
