@@ -10,8 +10,8 @@
 #login-pic {
   display: flex;
   flex-direction: row;
-  width: 40%;
-  height: 1000px;
+  min-width: 40%;
+  height: 100%;
 }
 
 #login-newplayer-link {

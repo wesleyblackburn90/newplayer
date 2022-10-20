@@ -43,9 +43,6 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        {/* <ProtectedRoute path='/users' exact={true} >
-          <UsersList />
-        </ProtectedRoute> */}
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
@@ -67,9 +64,6 @@ function App() {
         <ProtectedRoute path='/sessions/:sessionId' exact={true}>
           <SingleSession />
         </ProtectedRoute>
-        {/* <ProtectedRoute path='/sessions/:sessionId/edit'>
-          <EditSessionForm />
-        </ProtectedRoute> */}
         <Route path="*">
           <PageNotFound />
         </Route>
