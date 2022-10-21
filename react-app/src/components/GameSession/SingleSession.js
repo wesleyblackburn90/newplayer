@@ -161,6 +161,7 @@ function SingleSession() {
                     <p className="location-info">{session.city}, {session.state} {session.zip_code}</p>
                   </div>
                 </div>
+                <p>{session.date_time}</p>
                 <MapPageA locationAddress={locationAddress} />
               </div>
             </div>

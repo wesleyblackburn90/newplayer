@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from sqlalchemy import Integer
-from wtforms import IntegerField, StringField, TextAreaField
+from wtforms import IntegerField, StringField, TextAreaField, DateTimeField
 from wtforms.validators import DataRequired, Length, NumberRange
 
 class SessionForm(FlaskForm):
@@ -11,6 +11,7 @@ class SessionForm(FlaskForm):
   city = StringField('City', validators=[DataRequired("Please provide a city"), Length(min=3, max=30, message='City name must be between 3 and 30 characters')])
   state = StringField('State', validators=[DataRequired("Please provide a state"), Length(min=4, max=14)])
   zip_code = IntegerField("Zip Code", validators=[DataRequired("Please provide a zip code"), NumberRange(min=9999, max=100000, message="Please enter your 5 digit zip code")])
+  date_time = DateTimeField("Date Time", format="%Y-%m-%d %H:%M:%S")
   game = StringField('Game', validators=[DataRequired("Please provide a game"), Length(min=2, max=100, message='Game name must be between 2 and 50 characters')])
   pic_url = StringField('pic_url')
   players_num = IntegerField('players_num', validators=[DataRequired("Please choose how many players you need"), NumberRange(min=2, max=200, message="Please choose number of players needed between 2 and 200")])

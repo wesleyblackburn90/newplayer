@@ -1,3 +1,4 @@
+from email.policy import default
 from sqlalchemy import ForeignKey, PrimaryKeyConstraint
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -97,6 +98,7 @@ class Session(db.Model):
     city = db.Column(db.String, nullable=False)
     state = db.Column(db.String, nullable=False)
     zip_code = db.Column(db.Integer, nullable=False)
+    date_time = db.Column(db.DateTime)
     game = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
     pic_url = db.Column(db.String)
@@ -118,6 +120,7 @@ class Session(db.Model):
             'city': self.city,
             'state': self.state,
             'zip_code': self.zip_code,
+            'date_time': self.date_time,
             'game': self.game,
             'description': self.description,
             'pic_url': self.pic_url,

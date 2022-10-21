@@ -42,6 +42,7 @@ def create_session():
       city=form.data['city'],
       state=form.data['state'],
       zip_code=form.data['zip_code'],
+      date_time=form.data['date_time'],
       game=form.data['game'],
       description = form.data['description'],
       pic_url = upload["url"],
@@ -66,6 +67,7 @@ def edit_session(id):
     city = form.data['city'],
     state = form.data['state'],
     zip_code = form.data['zip_code'],
+    date_time = form.data['date_time'],
     game = form.data['game'],
     description = form.data['description']
     pic_url = form.data['pic_url'],
@@ -77,6 +79,7 @@ def edit_session(id):
     session.city = city
     session.state = state
     session.zip_code = zip_code
+    session.date_time = date_time
     session.game = game
     session.description = description
     session.pic_url = pic_url
