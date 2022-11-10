@@ -42,7 +42,8 @@ export const getSessionsThunk = () => async (dispatch) => {
 
 export const startSessionThunk = (data) => async (dispatch) => {
 
-  const { address, city, state, description, game, location_name, organizer_id, pic_url, players_num, zip_code } = data
+  const { address, city, state, description, game, location_name, organizer_id, pic_url, players_num, zip_code, date_time } = data
+  console.log(date_time)
 
   const formData = new FormData()
 
@@ -56,6 +57,7 @@ export const startSessionThunk = (data) => async (dispatch) => {
   formData.append("pic_url", pic_url)
   formData.append("players_num", players_num)
   formData.append("zip_code", zip_code)
+  formData.append("date_time", date_time)
 
   const res = await fetch('/api/sessions/new', {
     method: 'POST',

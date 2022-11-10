@@ -97,6 +97,13 @@ function SingleSession() {
     locationAddress = session.address + " " + session.city + " " + session.state
   }
 
+  console.log(session)
+
+  let sessionDate = session.date_time
+  // if (session.date_time) {
+  //   sessionDate = session.date_time.toISOString().slice(0, 10) + " " + session.date_time.toISOString().slice(11, 19)
+  // }
+
   return (
     <div id="single-session-container">
       {session && host &&
@@ -161,7 +168,8 @@ function SingleSession() {
                     <p className="location-info">{session.city}, {session.state} {session.zip_code}</p>
                   </div>
                 </div>
-                <p>{session.date_time}</p>
+                <p>{session.date_time?.slice(0, 16)}</p>
+                <p>{session.date_time?.slice()}</p>
                 <MapPageA locationAddress={locationAddress} />
               </div>
             </div>

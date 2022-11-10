@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { startSessionThunk } from '../../store/gameSession';
 import './CreateSession.css'
+import DateTimePicker from 'react-datetime-picker'
 
 function CreateSession() {
   const dispatch = useDispatch()
@@ -20,6 +21,7 @@ function CreateSession() {
   const [pic_url_loading, setPicLoading] = useState(false)
   const [players_num, setPlayers] = useState(2)
   const [errors, setErrors] = useState([])
+  const [date_time, setDateTime] = useState(new Date())
 
   const updateLocation = (e) => setLocation(e.target.value)
   const updateAddress = (e) => setAddress(e.target.value)
@@ -33,13 +35,19 @@ function CreateSession() {
     if (file) setPic(file)
   }
   const updatePlayers = (e) => setPlayers(e.target.value)
+  // console.log(date_time.toISOString().slice(0, 10) + " " + date_time.toISOString().slice(11, 19))
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
+    console.log("Hello")
+
     if (!pic_url) {
       pic_url = "/static/boardgame.jpg"
     }
+
+    console.log(date_time, "<= date time")
+
 
     const payload = {
       organizer_id: sessionUser.id,
@@ -48,16 +56,20 @@ function CreateSession() {
       city,
       state,
       zip_code,
+      date_time: date_time.toISOString().slice(0, 10) + " " + date_time.toISOString().slice(11, 19),
       game,
       description,
       pic_url,
       players_num
     }
+    console.log(payload, "<=== payload")
 
 
     try {
+      console.log(payload)
       const newSession = await dispatch(startSessionThunk(payload))
       if (newSession) {
+        console.log(newSession)
         history.push(`/sessions/${newSession.session.id}`)
       }
     } catch (err) {
@@ -173,6 +185,8 @@ function CreateSession() {
                 value={game}
                 onChange={updateGame}
               />
+              <p>When will you be playing?</p>
+              <DateTimePicker onChange={setDateTime} value={date_time} />
               <p>Please describe the details of your game session!</p>
               <input
                 type="text"
