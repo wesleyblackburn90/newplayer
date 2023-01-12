@@ -97,9 +97,7 @@ function SingleSession() {
     locationAddress = session.address + " " + session.city + " " + session.state
   }
 
-  console.log(session)
-
-  let sessionDate = session.date_time
+  // let sessionDate = session.date_time
   // if (session.date_time) {
   //   sessionDate = session.date_time.toISOString().slice(0, 10) + " " + session.date_time.toISOString().slice(11, 19)
   // }

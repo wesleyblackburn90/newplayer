@@ -34,7 +34,10 @@ def create_session():
   if "url" not in upload:
     return upload, 400
 
+  print("I'm in the route, yo")
+
   if form.validate_on_submit():
+    print("I'm in the validate thing")
     session = Session(
       organizer_id = form.data['organizer_id'],
       location_name=form.data['location_name'],

@@ -66,6 +66,7 @@ export const startSessionThunk = (data) => async (dispatch) => {
 
   if (res.ok) {
     const session = await res.json()
+    console.log("I'm ok!")
     return dispatch(startSession(session))
   } else {
     const error = await res.json()

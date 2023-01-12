@@ -40,13 +40,9 @@ function CreateSession() {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    console.log("Hello")
-
     if (!pic_url) {
       pic_url = "/static/boardgame.jpg"
     }
-
-    console.log(date_time, "<= date time")
 
 
     const payload = {
@@ -62,8 +58,6 @@ function CreateSession() {
       pic_url,
       players_num
     }
-    console.log(payload, "<=== payload")
-
 
     try {
       console.log(payload)
