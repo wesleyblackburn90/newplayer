@@ -64,11 +64,14 @@ export const startSessionThunk = (data) => async (dispatch) => {
     body: formData
   })
 
+  console.log(res)
+
   if (res.ok) {
     const session = await res.json()
     console.log("I'm ok!")
     return dispatch(startSession(session))
   } else {
+    console.log("I didn't make it out of the store :(")
     const error = await res.json()
     throw error
   }

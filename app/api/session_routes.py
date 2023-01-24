@@ -23,7 +23,6 @@ def create_session():
 
   image = request.files["pic_url"]
 
-
   if not allowed_file(image.filename):
     return {"errors":"file type not permitted"}, 400
 

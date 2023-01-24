@@ -59,6 +59,9 @@ function CreateSession() {
       players_num
     }
 
+    console.log(date_time)
+    console.log(typeof (date_time))
+
     try {
       console.log(payload)
       const newSession = await dispatch(startSessionThunk(payload))
@@ -76,6 +79,7 @@ function CreateSession() {
       //     prettyErrors = Object.values(newErrors).map((error) => error[1])
       //   }
       // }
+      console.log("I didn't work :(")
       setErrors(err)
     }
   }
