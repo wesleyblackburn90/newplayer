@@ -70,15 +70,6 @@ function CreateSession() {
         history.push(`/sessions/${newSession.session.id}`)
       }
     } catch (err) {
-      // let newErrors
-      // let prettyErrors
-      // if (err) {
-      //   let errorArr = Object.values(err)
-      //   newErrors = Object.values(errorArr[0]).map((error) => error.split(":"))
-      //   if (newErrors) {
-      //     prettyErrors = Object.values(newErrors).map((error) => error[1])
-      //   }
-      // }
       console.log("I didn't work :(")
       setErrors(err)
     }
@@ -175,7 +166,7 @@ function CreateSession() {
                 value={zip_code}
                 onChange={updateZipCode}
               />
-              <p>What game will you be playing, dingus?</p>
+              <p>What game will you be playing?</p>
               <input
                 type="text"
                 placeholder="Game"
