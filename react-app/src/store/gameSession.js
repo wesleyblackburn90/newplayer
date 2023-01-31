@@ -72,6 +72,7 @@ export const startSessionThunk = (data) => async (dispatch) => {
   } else {
     console.log("I didn't make it out of the store :(")
     const error = await res.json()
+    console.log(error)
     throw error
   }
 }

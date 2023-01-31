@@ -31,12 +31,9 @@ def create_session():
   upload = upload_file_to_s3(image)
 
   if "url" not in upload:
-    return upload, 400
-
-  print("I'm in the route, yo")
+    return upload, 401
 
   if form.validate_on_submit():
-    print("I'm in the validate thing")
     session = Session(
       organizer_id = form.data['organizer_id'],
       location_name=form.data['location_name'],
