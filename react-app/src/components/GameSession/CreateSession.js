@@ -178,7 +178,7 @@ function CreateSession() {
                 value={description}
                 onChange={updateDescription}
               />
-              <p>Please add an image of your event!</p>
+              <p>Please add an image of your event</p>
               <input
                 type="file"
                 accept="image/*"
