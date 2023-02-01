@@ -114,7 +114,7 @@ function EditSessionForm({ session, setShowModal }) {
           value={city}
           onChange={updateCity}
         />
-        <p>What is the name of the state?</p>
+        <p>What is the name of the state??</p>
         {/* <input
           type="text"
           placeholder="State"
