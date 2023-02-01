@@ -35,7 +35,6 @@ function CreateSession() {
     if (file) setPic(file)
   }
   const updatePlayers = (e) => setPlayers(e.target.value)
-  // console.log(date_time.toISOString().slice(0, 10) + " " + date_time.toISOString().slice(11, 19))
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -59,18 +58,13 @@ function CreateSession() {
       players_num
     }
 
-    console.log(date_time)
-    console.log(typeof (date_time))
-
     try {
       console.log(payload)
       const newSession = await dispatch(startSessionThunk(payload))
       if (newSession) {
-        console.log(newSession)
         history.push(`/sessions/${newSession.session.id}`)
       }
     } catch (err) {
-      console.log("I didn't work :(")
       setErrors(err)
     }
   }

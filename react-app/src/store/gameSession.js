@@ -43,8 +43,6 @@ export const getSessionsThunk = () => async (dispatch) => {
 export const startSessionThunk = (data) => async (dispatch) => {
 
   const { address, city, state, description, game, location_name, organizer_id, pic_url, players_num, zip_code, date_time } = data
-  console.log(data)
-  console.log(date_time)
 
   const formData = new FormData()
 
@@ -67,12 +65,9 @@ export const startSessionThunk = (data) => async (dispatch) => {
 
   if (res.ok) {
     const session = await res.json()
-    console.log("I'm ok!")
     return dispatch(startSession(session))
   } else {
-    console.log("I didn't make it out of the store :(")
     const error = await res.json()
-    console.log(error)
     throw error
   }
 }

@@ -1,6 +1,6 @@
 from email.policy import default
 from sqlalchemy import ForeignKey, PrimaryKeyConstraint
-from .db import db
+from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 import datetime
@@ -8,6 +8,8 @@ import datetime
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
+    if environment == "production":
+        __table_args__ = {"schema": SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
@@ -90,9 +92,11 @@ class User(db.Model, UserMixin):
 
 class Session(db.Model):
     __tablename__ = 'sessions'
+    if environment == "production":
+        __table_args__ = {"schema": SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    organizer_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    organizer_id = db.Column(db.Integer, db.ForeignKey(f'{SCHEMA}.users.id'))
     location_name = db.Column(db.String, nullable=False)
     address = db.Column(db.String, nullable=False)
     city = db.Column(db.String, nullable=False)
@@ -130,10 +134,12 @@ class Session(db.Model):
 
 class Player(db.Model):
     __tablename__ = 'players'
+    if environment == "production":
+        __table_args__ = {"schema": SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    session_id = db.Column(db.Integer, db.ForeignKey('sessions.id'), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    session_id = db.Column(db.Integer, db.ForeignKey(f'{SCHEMA}.sessions.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(f'{SCHEMA}.users.id'), nullable=False)
 
     #relationships
     session = db.relationship('Session', back_populates='player')
@@ -150,10 +156,12 @@ class Player(db.Model):
 
 class Review(db.Model):
     __tablename__ = 'reviews'
+    if environment == "production":
+        __table_args__ = {"schema": SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    reviewer_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    reviewee_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    reviewer_id = db.Column(db.Integer, db.ForeignKey(f'{SCHEMA}.users.id'), nullable=False)
+    reviewee_id = db.Column(db.Integer, db.ForeignKey(f'{SCHEMA}.users.id'), nullable=False)
     rating = db.Column(db.Integer, nullable=False)
     comment = db.Column(db.String)
 
