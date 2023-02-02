@@ -96,7 +96,7 @@ class Session(db.Model):
         __table_args__ = {"schema": SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    organizer_id = db.Column(db.Integer, db.ForeignKey(f'{SCHEMA}.users.id'))
+    organizer_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
     location_name = db.Column(db.String, nullable=False)
     address = db.Column(db.String, nullable=False)
     city = db.Column(db.String, nullable=False)
@@ -138,8 +138,8 @@ class Player(db.Model):
         __table_args__ = {"schema": SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    session_id = db.Column(db.Integer, db.ForeignKey(f'{SCHEMA}.sessions.id'), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey(f'{SCHEMA}.users.id'), nullable=False)
+    session_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('sessions.id')), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
 
     #relationships
     session = db.relationship('Session', back_populates='player')
@@ -160,8 +160,8 @@ class Review(db.Model):
         __table_args__ = {"schema": SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    reviewer_id = db.Column(db.Integer, db.ForeignKey(f'{SCHEMA}.users.id'), nullable=False)
-    reviewee_id = db.Column(db.Integer, db.ForeignKey(f'{SCHEMA}.users.id'), nullable=False)
+    reviewer_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
+    reviewee_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     rating = db.Column(db.Integer, nullable=False)
     comment = db.Column(db.String)
 
