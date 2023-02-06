@@ -14,9 +14,9 @@ seed_commands = AppGroup('seed')
 @seed_commands.command('all')
 def seed():
     if environment == 'production':
-        undo_users()
-        undo_reviews()
         undo_sessions()
+        undo_reviews()
+        undo_users()
     seed_users()
     seed_reviews()
     seed_sessions()

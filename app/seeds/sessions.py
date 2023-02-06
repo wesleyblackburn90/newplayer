@@ -1,4 +1,4 @@
-from app.models import db, Session
+from app.models import db, Session, SCHEMA
 
 def seed_sessions():
   session_one = Session(
@@ -173,5 +173,8 @@ def seed_sessions():
   db.session.commit()
 
 def undo_sessions():
-    db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
+    if environment == "production":
+      db.session.execute(f'TRUNCATE table {SCHEMA}.sessions RESTART IDENTITY CASCADE;')
+    else:
+      db.session.execute("DELETE FROM sessions")
     db.session.commit()
