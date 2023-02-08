@@ -1,4 +1,4 @@
-from app.models import db, Session, SCHEMA
+from app.models import db, Session, SCHEMA, environment
 
 def seed_sessions():
   session_one = Session(
