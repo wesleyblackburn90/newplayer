@@ -14,12 +14,12 @@ seed_commands = AppGroup('seed')
 @seed_commands.command('all')
 def seed():
     if environment == 'production':
-        undo_sessions()
         undo_reviews()
+        undo_sessions()
         undo_users()
     seed_users()
-    seed_reviews()
     seed_sessions()
+    seed_reviews()
     # seed_games()
     # Add other seed functions here
 
