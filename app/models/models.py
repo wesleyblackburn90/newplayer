@@ -102,7 +102,7 @@ class Session(db.Model):
     city = db.Column(db.String, nullable=False)
     state = db.Column(db.String, nullable=False)
     zip_code = db.Column(db.Integer, nullable=False)
-    date_time = db.Column(db.String)
+    date_time = db.Column(db.DateTime)
     game = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
     pic_url = db.Column(db.String)
