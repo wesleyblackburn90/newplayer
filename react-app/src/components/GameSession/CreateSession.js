@@ -168,7 +168,7 @@ function CreateSession() {
                 value={game}
                 onChange={updateGame}
               />
-              <p>When will you be playing?</p>
+              <p>When will you be playing??</p>
               <DateTimePicker onChange={setDateTime} value={date_time} />
               <p>Please describe the details of your game session!</p>
               <input
