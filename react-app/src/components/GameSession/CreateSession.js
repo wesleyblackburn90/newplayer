@@ -160,7 +160,7 @@ function CreateSession() {
                 value={zip_code}
                 onChange={updateZipCode}
               />
-              <p>What game will you be playing?</p>
+              <p>What game will you be playing??</p>
               <input
                 type="text"
                 placeholder="Game"
