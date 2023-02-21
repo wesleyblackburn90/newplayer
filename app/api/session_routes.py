@@ -21,6 +21,9 @@ def create_session():
 
   form['csrf_token'].data = request.cookies['csrf_token']
 
+  if "pic_url" not in request.files:
+    return {"errors": "image required"}, 400
+
   image = request.files["pic_url"]
 
   if not allowed_file(image.filename):
