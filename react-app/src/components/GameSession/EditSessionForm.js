@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory, useParams } from 'react-router-dom';
 import { getSessionsThunk, updateSessionThunk } from '../../store/gameSession';
 import "./EditSessionForm.css"
+import DateTimePicker from 'react-datetime-picker';
 
 function EditSessionForm({ session, setShowModal }) {
   const dispatch = useDispatch()
@@ -20,6 +21,7 @@ function EditSessionForm({ session, setShowModal }) {
   const [pic_url, setPic] = useState(session.pic_url)
   const [players_num, setPlayers] = useState(session.players_num)
   const [errors, setErrors] = useState([])
+  const [date_time, setDateTime] = useState(session.date_time)
 
   const updateLocation = (e) => setLocation(e.target.value)
   const updateAddress = (e) => setAddress(e.target.value)
@@ -30,6 +32,7 @@ function EditSessionForm({ session, setShowModal }) {
   const updateDescription = (e) => setDescription(e.target.value)
   const updatePic = (e) => setPic(e.target.value)
   const updatePlayers = (e) => setPlayers(e.target.value)
+  const updateDateTime = (e) => setDateTime(e.target.value)
 
   useEffect(() => {
     let errors = []
@@ -63,6 +66,7 @@ function EditSessionForm({ session, setShowModal }) {
         state,
         zip_code,
         game,
+        date_time,
         description,
         pic_url,
         players_num
@@ -190,6 +194,12 @@ function EditSessionForm({ session, setShowModal }) {
           value={game}
           onChange={updateGame}
         />
+        <p>When will you be playing??</p>
+        <DateTimePicker
+          onChange={setDateTime}
+          value={date_time}
+          disabled={true}
+        />
         <p>Please describe the details of your game session!</p>
         <input
           type="text"
@@ -213,6 +223,7 @@ function EditSessionForm({ session, setShowModal }) {
           value={players_num}
           onChange={updatePlayers}
         />
+        <p style={{ "color": "red" }}>* Warning: Date and time cannot be updated!</p>
         <button className="button" type="submit">Update your session!</button>
 
         {errors.length ? errors.map((error, i) => {

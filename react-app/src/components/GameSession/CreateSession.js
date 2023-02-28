@@ -43,7 +43,6 @@ function CreateSession() {
       pic_url = "/static/boardgame.jpg"
     }
 
-
     const payload = {
       organizer_id: sessionUser.id,
       location_name,
