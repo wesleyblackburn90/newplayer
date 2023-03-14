@@ -167,7 +167,6 @@ function SingleSession() {
                   </div>
                 </div>
                 <p>{session.date_time?.slice(0, 16)}</p>
-                <p>{session.date_time?.slice()}</p>
                 <MapPageA locationAddress={locationAddress} />
               </div>
             </div>

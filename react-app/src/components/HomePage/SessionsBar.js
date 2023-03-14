@@ -56,7 +56,7 @@ function SessionsBar() {
           <div id="games-near-you-inner">
             <h1>Popular in: </h1>
             <select className="state-selector" value={state} onChange={updateState} placeholder="Choose a state">
-              <option value={""}></option>
+              <option value={""}>Choose a state</option>
               <option value={"Alabama"}> Alabama </option>
               <option value={"Alaska"}> Alaska </option>
               <option value={"Arizona"}> Arizona </option>
@@ -112,10 +112,10 @@ function SessionsBar() {
         </div>
         <div id="sessions-container">
           <div id='sessions-bar-container'>
-            {state ?
-              <h1 className="suggestion-header">Events in {state}</h1>
-              :
+            {!state || state === "Choose a state" ?
               <h1 className="suggestion-header" style={{ 'color': 'black' }}>Events that you might like </h1>
+              :
+              <h1 className="suggestion-header">Events in {state}</h1>
             }
             {state ?
               displaySessions && displaySessions.length > 0 ?

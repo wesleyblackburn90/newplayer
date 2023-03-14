@@ -77,4 +77,10 @@
   color: white;
   text-decoration: none;
   padding: 12px 16px 12px 18px;
+  transition: 0.2s;
+}
+
+#all-sessions-button:hover {
+  margin-right: 10px;
+  box-shadow: 5px 5px 5px black;
 }
