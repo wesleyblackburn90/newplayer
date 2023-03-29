@@ -73,7 +73,7 @@
 
 #all-sessions-button {
   border-radius: 4px;
-  background-color: rgb(255, 79, 31);
+  background-color: #ff4f1f;
   color: white;
   text-decoration: none;
   padding: 12px 16px 12px 18px;
@@ -84,3 +84,7 @@
   margin-right: 10px;
   box-shadow: 5px 5px 5px black;
 }
+
+/* .state-selector {
+  background-color: aquamarine;
+} */

@@ -17,12 +17,12 @@
   width: 300px;
 }
 
-/* .searchInputField {
+.searchInputField {
   background-color: transparent;
   padding: 15px;
   border: lightgray solid 1px;
   width: fit-content;
-} */
+}
 
 .searchResult {
   position: absolute;

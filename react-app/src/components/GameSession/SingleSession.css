@@ -85,6 +85,9 @@
   padding: 40px;
   width: 50%;
   height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 #single-session-div-bottom-right {

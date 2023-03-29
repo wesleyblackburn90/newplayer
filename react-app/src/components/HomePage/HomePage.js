@@ -19,6 +19,7 @@ function HomePage() {
           </div> */}
         </div>
       </div>
+      <p id="welcome-statement">Welcome to my app, New Player, where you can create or join table top game sessions! Just search in the top search bar for a game you want to play and join!</p>
       <SessionsBar />
     </>
   )
