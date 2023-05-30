@@ -58,7 +58,6 @@ function CreateSession() {
     }
 
     try {
-      console.log(payload)
       const newSession = await dispatch(startSessionThunk(payload))
       if (newSession) {
         history.push(`/sessions/${newSession.session.id}`)

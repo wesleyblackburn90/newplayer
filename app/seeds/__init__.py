@@ -2,7 +2,7 @@ from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .reviews import seed_reviews, undo_reviews
 from .sessions import seed_sessions, undo_sessions
-from app.models import environment
+from app.models import db, environment, SCHEMA
 # from .games import seed_games, undo_games
 
 # Creates a seed group to hold our commands
@@ -14,9 +14,12 @@ seed_commands = AppGroup('seed')
 @seed_commands.command('all')
 def seed():
     if environment == 'production':
-        undo_reviews()
-        undo_sessions()
-        undo_users()
+        # Before seeding, truncate all tables prefixed with schema name
+        db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.sessions RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.reviews RESTART IDENTITY CASCADE;")
+        # Add a truncate command here for every table that will be seeded.
+        db.session.commit()
     seed_users()
     seed_sessions()
     seed_reviews()

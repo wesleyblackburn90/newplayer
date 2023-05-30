@@ -48,9 +48,12 @@ const LoginForm = () => {
         <NavLink to='/' id='login-newplayer-link'>New Player</NavLink>
         <div id="login-form-container">
           <form id='login-form' onSubmit={onLogin}>
-            <div>
-            </div>
-            {/* <NavLink to='/' id='login-newplayer-link'>New Player</NavLink> */}
+            <ul>
+              <li>
+                Facebook
+              </li>
+              <li>  </li>
+            </ul>
             <h1>Log in</h1>
             <div className='login-inputs'>
               <label htmlFor='email'>Email:  </label>
