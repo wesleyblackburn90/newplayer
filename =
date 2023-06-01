@@ -1,0 +1,95 @@
+Script started on 2023-06-01 10:52:43-04:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="120" LINES="34"]
+            if script.upgrade_ops.is_empty():
+                directives[:] = []
+                logger.info('No changes in schema detected.')
+
+    connectable = engine_from_config(
+        config.get_section(config.config_ini_section),
+        prefix='sqlalchemy.',
+        poolclass=pool.NullPool,
+    )
+
+    with connectable.connect() as connection:
+        context.configure(
+            connection=connection,
+            target_metadata=target_metadata,
+            process_revision_directives=process_revision_directives,
+            **current_app.extensions['migrate'].configure_args
+        )
+
+        # Create a schema (only in production)
+        if environment == "production":
+            connection.execute(f"CREATE SCHEMA IF NOT EXISTS {SCHEMA}")
+
+        # Set search path to your schema (only in production)
+        with context.begin_transaction():
+            if environment == "production":
+                context.execute(f"SET search_path TO {SCHEMA}")
+            context.run_migrations()
+
+# keep logic at bottom of file to run migration functions
+if context.is_offline_mode():
+    run_migrations_offline()
+else:
+    run_migrations_online()]0;wesleyblackburn90@DESKTOP-6333E44: ~/DefAppAcademy/capstone[01;32mwesleyblackburn90@DESKTOP-6333E44[00m:[01;34m~/DefAppAcademy/capstone[00m$             if script.upgrade_ops.is_empty():
+bash: syntax error near unexpected token `:'
+]0;wesleyblackburn90@DESKTOP-6333E44: ~/DefAppAcademy/capstone[01;32mwesleyblackburn90@DESKTOP-6333E44[00m:[01;34m~/DefAppAcademy/capstone[00m$                 directives[:] = []
+directives[:]: command not found
+]0;wesleyblackburn90@DESKTOP-6333E44: ~/DefAppAcademy/capstone[01;32mwesleyblackburn90@DESKTOP-6333E44[00m:[01;34m~/DefAppAcademy/capstone[00m$                 logger.info('No changes in schema detected.')
+bash: syntax error near unexpected token `'No changes in schema detected.''
+]0;wesleyblackburn90@DESKTOP-6333E44: ~/DefAppAcademy/capstone[01;32mwesleyblackburn90@DESKTOP-6333E44[00m:[01;34m~/DefAppAcademy/capstone[00m$ 
+]0;wesleyblackburn90@DESKTOP-6333E44: ~/DefAppAcademy/capstone[01;32mwesleyblackburn90@DESKTOP-6333E44[00m:[01;34m~/DefAppAcademy/capstone[00m$     connectable = engine_from_config(
+bash: syntax error near unexpected token `('
+]0;wesleyblackburn90@DESKTOP-6333E44: ~/DefAppAcademy/capstone[01;32mwesleyblackburn90@DESKTOP-6333E44[00m:[01;34m~/DefAppAcademy/capstone[00m$         config.get_section(config.config_ini_section),
+bash: syntax error near unexpected token `config.config_ini_section'
+]0;wesleyblackburn90@DESKTOP-6333E44: ~/DefAppAcademy/capstone[01;32mwesleyblackburn90@DESKTOP-6333E44[00m:[01;34m~/DefAppAcademy/capstone[00m$         prefix='sqlalchemy.',
+]0;wesleyblackburn90@DESKTOP-6333E44: ~/DefAppAcademy/capstone[01;32mwesleyblackburn90@DESKTOP-6333E44[00m:[01;34m~/DefAppAcademy/capstone[00m$         poolclass=pool.NullPool,
+]0;wesleyblackburn90@DESKTOP-6333E44: ~/DefAppAcademy/capstone[01;32mwesleyblackburn90@DESKTOP-6333E44[00m:[01;34m~/DefAppAcademy/capstone[00m$     )
+bash: syntax error near unexpected token `)'
+]0;wesleyblackburn90@DESKTOP-6333E44: ~/DefAppAcademy/capstone[01;32mwesleyblackburn90@DESKTOP-6333E44[00m:[01;34m~/DefAppAcademy/capstone[00m$ 
+]0;wesleyblackburn90@DESKTOP-6333E44: ~/DefAppAcademy/capstone[01;32mwesleyblackburn90@DESKTOP-6333E44[00m:[01;34m~/DefAppAcademy/capstone[00m$     with connectable.connect() as connection:
+bash: syntax error near unexpected token `('
+]0;wesleyblackburn90@DESKTOP-6333E44: ~/DefAppAcademy/capstone[01;32mwesleyblackburn90@DESKTOP-6333E44[00m:[01;34m~/DefAppAcademy/capstone[00m$         context.configure(
+bash: syntax error near unexpected token `newline'
+]0;wesleyblackburn90@DESKTOP-6333E44: ~/DefAppAcademy/capstone[01;32mwesleyblackburn90@DESKTOP-6333E44[00m:[01;34m~/DefAppAcademy/capstone[00m$             connection=connection,
+]0;wesleyblackburn90@DESKTOP-6333E44: ~/DefAppAcademy/capstone[01;32mwesleyblackburn90@DESKTOP-6333E44[00m:[01;34m~/DefAppAcademy/capstone[00m$             target_metadata=target_metadata,
+]0;wesleyblackburn90@DESKTOP-6333E44: ~/DefAppAcademy/capstone[01;32mwesleyblackburn90@DESKTOP-6333E44[00m:[01;34m~/DefAppAcademy/capstone[00m$             process_revision_directives=process_revision_directives,
+]0;wesleyblackburn90@DESKTOP-6333E44: ~/DefAppAcademy/capstone[01;32mwesleyblackburn90@DESKTOP-6333E44[00m:[01;34m~/DefAppAcademy/capstone[00m$             **current_app.extensions['migrate'].configure_args
+**current_app.extensions[migrate].configure_args: command not found
+]0;wesleyblackburn90@DESKTOP-6333E44: ~/DefAppAcademy/capstone[01;32mwesleyblackburn90@DESKTOP-6333E44[00m:[01;34m~/DefAppAcademy/capstone[00m$         )
+bash: syntax error near unexpected token `)'
+]0;wesleyblackburn90@DESKTOP-6333E44: ~/DefAppAcademy/capstone[01;32mwesleyblackburn90@DESKTOP-6333E44[00m:[01;34m~/DefAppAcademy/capstone[00m$ 
+]0;wesleyblackburn90@DESKTOP-6333E44: ~/DefAppAcademy/capstone[01;32mwesleyblackburn90@DESKTOP-6333E44[00m:[01;34m~/DefAppAcademy/capstone[00m$         # Create a schema (only in production)
+]0;wesleyblackburn90@DESKTOP-6333E44: ~/DefAppAcademy/capstone[01;32mwesleyblackburn90@DESKTOP-6333E44[00m:[01;34m~/DefAppAcademy/capstone[00m$         if environment == "production":
+>             connection.execute(f"CREATE SCHEMA IF NOT EXISTS {SCHEMA}")
+bash: syntax error near unexpected token `f"CREATE SCHEMA IF NOT EXISTS {SCHEMA}"'
+]0;wesleyblackburn90@DESKTOP-6333E44: ~/DefAppAcademy/capstone[01;32mwesleyblackburn90@DESKTOP-6333E44[00m:[01;34m~/DefAppAcademy/capstone[00m$ 
+]0;wesleyblackburn90@DESKTOP-6333E44: ~/DefAppAcademy/capstone[01;32mwesleyblackburn90@DESKTOP-6333E44[00m:[01;34m~/DefAppAcademy/capstone[00m$         # Set search path to your schema (only in production)
+]0;wesleyblackburn90@DESKTOP-6333E44: ~/DefAppAcademy/capstone[01;32mwesleyblackburn90@DESKTOP-6333E44[00m:[01;34m~/DefAppAcademy/capstone[00m$         with context.begin_transaction():
+bash: syntax error near unexpected token `('
+]0;wesleyblackburn90@DESKTOP-6333E44: ~/DefAppAcademy/capstone[01;32mwesleyblackburn90@DESKTOP-6333E44[00m:[01;34m~/DefAppAcademy/capstone[00m$             if environment == "production":
+>                 context.execute(f"SET search_path TO {SCHEMA}")
+bash: syntax error near unexpected token `f"SET search_path TO {SCHEMA}"'
+]0;wesleyblackburn90@DESKTOP-6333E44: ~/DefAppAcademy/capstone[01;32mwesleyblackburn90@DESKTOP-6333E44[00m:[01;34m~/DefAppAcademy/capstone[00m$             context.run_migrations()
+> 
+> # keep logic at bottom of file to run migration functions
+> if context.is_offline_mode():
+bash: syntax error near unexpected token `:'
+]0;wesleyblackburn90@DESKTOP-6333E44: ~/DefAppAcademy/capstone[01;32mwesleyblackburn90@DESKTOP-6333E44[00m:[01;34m~/DefAppAcademy/capstone[00m$     run_migrations_offline()
+> else:
+bash: syntax error near unexpected token `else:'
+]0;wesleyblackburn90@DESKTOP-6333E44: ~/DefAppAcademy/capstone[01;32mwesleyblackburn90@DESKTOP-6333E44[00m:[01;34m~/DefAppAcademy/capstone[00m$     run_migrations_online()[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kgit a[Kstatus
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31m=[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+]0;wesleyblackburn90@DESKTOP-6333E44: ~/DefAppAcademy/capstone[01;32mwesleyblackburn90@DESKTOP-6333E44[00m:[01;34m~/DefAppAcademy/capstone[00m$ git push
+Username for 'https://github.com': wesleyblackburn0 90
+Password for 'https://wesleyblackburn90@github.com': 
+Enumerating objects: 7, done.
+Counting objects:  14% (1/7)Counting objects:  28% (2/7)Cou

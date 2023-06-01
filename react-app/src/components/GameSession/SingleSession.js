@@ -149,7 +149,7 @@ function SingleSession() {
                   {newArr && newArr.length ?
                     <div>
                       {newArr && newArr.map((player) => {
-                        return <p>{player.username}</p>
+                        return <NavLink to={`/users/${player.id}`}>{player.username}</NavLink>
                       })}
                     </div>
                     : <p>No players yet</p>
