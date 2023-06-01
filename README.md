@@ -2,7 +2,7 @@
 
 Welcome to New Player! An app that you can use to find other users that are looking for people to join in on their table top games. Meet up with friends or make new new ones!
 
-Live Link: [https://new-player-app.herokuapp.com/](https://new-player.onrender.com/)
+Live Link: https://new-player.onrender.com/
 
 ## Technologies used
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
