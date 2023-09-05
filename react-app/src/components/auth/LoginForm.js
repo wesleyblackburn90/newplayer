@@ -48,11 +48,6 @@ const LoginForm = () => {
         <NavLink to='/' id='login-newplayer-link'>New Player</NavLink>
         <div id="login-form-container">
           <form id='login-form' onSubmit={onLogin}>
-            <h1>Choose a login method</h1>
-            <div className='social-media-login'>
-              <img src="static/facebook.png" style={{"height" : "50px", "width": "50px"}}></img>
-              <img src="static/github.png" style={{"height" : "50px", "width": "50px"}}></img>
-            </div>
             <h1>Log in</h1>
             <div className='login-inputs'>
               <label htmlFor='email'>Email:  </label>
