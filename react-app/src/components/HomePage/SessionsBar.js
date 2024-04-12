@@ -113,7 +113,7 @@ function SessionsBar() {
         <div id="sessions-container">
           <div id='sessions-bar-container'>
             {!state || state === "Choose a state" ?
-              <h1 className="suggestion-header" style={{ 'color': 'black' }}>Events that you might like </h1>
+              <h1 className="suggestion-header" style={{ 'color': 'black' }}>Events that you might like: </h1>
               :
               <h1 className="suggestion-header">Events in {state}</h1>
             }
