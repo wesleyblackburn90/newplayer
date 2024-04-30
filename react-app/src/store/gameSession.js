@@ -58,6 +58,10 @@ export const startSessionThunk = (data) => async (dispatch) => {
   formData.append("zip_code", zip_code)
   formData.append("date_time", date_time)
 
+  for (var pair of formData.entries()) {
+    console.log(pair[0]+ ', ' + pair[1]);
+}
+
   const res = await fetch('/api/sessions/new', {
     method: 'POST',
     body: formData

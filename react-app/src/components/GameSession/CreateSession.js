@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { startSessionThunk } from '../../store/gameSession';
 import './CreateSession.css'
 import DateTimePicker from 'react-datetime-picker'
+import boardgame from './boardgame.jpg'
 
 function CreateSession() {
   const dispatch = useDispatch()
@@ -18,7 +19,7 @@ function CreateSession() {
   const [game, setGame] = useState('')
   const [description, setDescription] = useState('')
   let [pic_url, setPic] = useState('')
-  const [pic_url_loading, setPicLoading] = useState(false)
+  //const [pic_url_loading, setPicLoading] = useState(false)
   const [players_num, setPlayers] = useState(2)
   const [errors, setErrors] = useState([])
   const [date_time, setDateTime] = useState(new Date())
@@ -40,7 +41,7 @@ function CreateSession() {
     e.preventDefault()
 
     if (!pic_url) {
-      pic_url = "/static/boardgame.jpg"
+      pic_url = new File([""], boardgame, {url: boardgame})
     }
 
     const payload = {
